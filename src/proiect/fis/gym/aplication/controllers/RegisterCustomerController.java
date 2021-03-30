@@ -6,6 +6,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.*;
 import proiect.fis.gym.aplication.exceptions.UsernameAlreadyExistsException;
+import proiect.fis.gym.aplication.exceptions.corectEmailException;
 import proiect.fis.gym.aplication.services.CustomerService;
 
 
@@ -29,6 +30,8 @@ public class RegisterCustomerController extends RegisterController {
             CustomerService.addUser(usernameField.getText(), passwordField.getText(), selectRoleChoiceBox.getValue(), firstNameField.getText(), lastNameField.getText(), phoneField.getText(), emailField.getText());
             registerMessage.setText("Account created successfully!");
         } catch (UsernameAlreadyExistsException e) {
+            registerMessage.setText(e.getMessage());
+        } catch (corectEmailException e){
             registerMessage.setText(e.getMessage());
         }
     }
