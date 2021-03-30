@@ -62,4 +62,6 @@
         <Button onAction="#handleBackToLoginButton" text="Back to login"/>
     </HBox>
 
+    <Text fx:id="registerMessage" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+
 </GridPane>
