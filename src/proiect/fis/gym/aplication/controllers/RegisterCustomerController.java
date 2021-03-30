@@ -36,36 +36,7 @@ public class RegisterCustomerController extends RegisterController {
     }
 
     public void handleSubmitRegistrationButton(ActionEvent actionEvent){
-        String userDirectory = Paths.get("").toAbsolutePath().toString();
-        //System.out.println(userDirectory);
 
-        String dbPath = userDirectory + "\\src\\proiect\\fis\\gym\\aplication\\databases\\" ;
-        //System.out.println(dbPath);
-
-        // create/open a database
-        NitriteBuilder builder = Nitrite.builder();
-        Nitrite dbCustomer = Nitrite.builder().compressed().filePath(dbPath + "Customers.db").openOrCreate();
-
-        // create an object repository
-        ObjectRepository<Customer> customerStore = dbCustomer.getRepository(Customer.class);
-
-        // observe any change to the repository
-        customerStore.register(new ChangeListener() {
-            @Override
-            public void onChange(ChangeInfo changeInfo) {
-                // your logic based on action
-            }
-        });
-
-        // initialize an employee object
-
-        //validate entry fields
-
-
-        //constructor
-
-
-        dbCustomer.close();
     }
 
     public void handleBackToLoginButton(){

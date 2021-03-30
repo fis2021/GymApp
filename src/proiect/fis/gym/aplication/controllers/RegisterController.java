@@ -15,6 +15,8 @@ public abstract class RegisterController {
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
+    protected static int criteriaRegisterAdmin  = 0;
+
     public void selectRoleChoiceBoxAction(ChoiceBox<String> choiceBox) {
         choiceBox.getSelectionModel().selectedItemProperty().addListener
                 ((v, oldValue, newValue) ->
@@ -33,7 +35,29 @@ public abstract class RegisterController {
                 );
     }
 
+    public boolean passwordMatcher(TextField passwordField, TextField confirmPasswordField, Label warningLabel){
+        confirmPasswordField.textProperty().addListener((observable, oldValue, newValue) ->
+        {
+            //System.out.println("textfield changed from " + oldValue + " to " + newValue);
+
+            if (!passwordField.getText().equals(confirmPasswordField.getText()) ){
+                warningLabel.setVisible(true);
+            }
+            else{
+                warningLabel.setVisible(false);
+            }
+        });
+
+        if(warningLabel.isVisible()  || passwordField.getText().equals("")){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
     public boolean checkEmail(TextField emailField, Label warningLabel) {
+
         emailField.textProperty().addListener((observable, oldValue, newValue) ->
         {
             //System.out.println("textfield changed from " + oldValue + " to " + newValue);
@@ -48,7 +72,7 @@ public abstract class RegisterController {
             }
         });
 
-        if(warningLabel.visibleProperty().equals(true)){
+        if(warningLabel.isVisible() || !emailField.getText().equals("")){
             return false;
         }
         else{
