@@ -9,7 +9,7 @@ public class Admin {
     private String password;
     private String email;
     //cod pt register ca admin
-    private static String companyCode;
+    //private static final String adminCode = "1234";
 
     public Admin(String firstName, String lastName, String username, String password, String email) {
         this.firstName = firstName;
@@ -61,10 +61,6 @@ public class Admin {
         this.password = password;
     }
 
-    public static void setCompanyCode(String companyCode) {
-        Admin.companyCode = companyCode;
-    }
-
     public String getFirstName() {
         return firstName;
     }
@@ -79,10 +75,6 @@ public class Admin {
 
     public String getPassword() {
         return password;
-    }
-
-    public static String getCompanyCode() {
-        return companyCode;
     }
 
     public String getEmail() {

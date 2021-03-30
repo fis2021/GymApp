@@ -21,3 +21,4 @@ buildNumber.properties
 !src/**/build/
 
 .java-version
+src/proiect/fis/gym/aplication/databases/
