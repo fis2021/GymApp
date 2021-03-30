@@ -14,7 +14,6 @@ import javafx.scene.control.TextField;
 public class RegisterCustomerController extends RegisterController {
     public TextField firstNameField;
     public TextField lastNameField;
-    public TextField ageField;
     public TextField phoneField;
     public TextField emailField;
     public TextField usernameField;

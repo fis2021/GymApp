@@ -15,7 +15,7 @@ repositories {
     mavenCentral()
 }
 
-group = 'org.loose.fis'
+group = 'proiect.fis'
 version = '0.1.0-SNAPSHOT'
 description = 'GymAplication'
 
