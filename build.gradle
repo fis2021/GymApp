@@ -15,9 +15,9 @@ repositories {
     mavenCentral()
 }
 
-group = 'org.loose.fis'
+group = 'proiect.fis'
 version = '0.1.0-SNAPSHOT'
-description = 'A simple registration example using Java 15+, JavaFX, Maven / Gradle and saving users in Nitrite Java (with encoded passwords).'
+description = 'GymAplication'
 
 sourceCompatibility = 11
 targetCompatibility = 11
@@ -29,4 +29,4 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.10.1'
 }
 
-mainClassName = 'org.loose.fis.sre.Main'
+mainClassName = 'proiect.fis.gym.aplication.Main'
