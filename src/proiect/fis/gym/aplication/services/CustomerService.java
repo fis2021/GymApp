@@ -2,8 +2,7 @@ package proiect.fis.gym.aplication.services;
 
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
-import proiect.fis.gym.aplication.exceptions.UsernameAlreadyExistsException;
-import proiect.fis.gym.aplication.exceptions.corectEmailException;
+import proiect.fis.gym.aplication.exceptions.*;
 import proiect.fis.gym.aplication.model.Customer;
 
 import java.util.regex.Matcher;
@@ -27,10 +26,39 @@ public class CustomerService {
         customerRepository = database.getRepository(Customer.class);
     }
 
-    public static void addUser(String username, String password, String role, String firstName, String lastName, String phoneNumber, String email) throws UsernameAlreadyExistsException, corectEmailException {
+    public static void addUser(String username, String password, String role, String firstName, String lastName, String phoneNumber, String email) throws UsernameAlreadyExistsException, corectEmailException, FieldsAreNotEmptyException, ValidPasswordException, ValidUsernameException, validPhoneNumberException {
+        checkFieldsAreNotEmpty(username,password,role,firstName,lastName,phoneNumber,email);
         checkUserDoesNotAlreadyExist(username);
+        checkUsername(username);
+        checkPassword(password);
         checkEmailIsValid(email);
+        checkPhoneNumber(phoneNumber);
         customerRepository.insert(new Customer(username, encodePassword(username, password), role, firstName, lastName, phoneNumber, email));
+    }
+
+    private static void checkPhoneNumber(String phoneNumber) throws validPhoneNumberException{
+        String regex= "^\\+(?:[0-9] ?){6,14}[0-9]$";
+        Pattern pat = Pattern.compile(regex);
+        if( !(pat.matcher(phoneNumber).matches()) )
+            throw new validPhoneNumberException();
+    }
+
+    private static void checkUsername(String username) throws ValidUsernameException{
+        if(username.length()<5)
+            throw new ValidUsernameException();
+    }
+
+    private static void checkPassword(String password) throws ValidPasswordException{
+        String regex= "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,20}$";
+        Pattern pat = Pattern.compile(regex);
+        if( !(pat.matcher(password).matches()) )
+            throw new ValidPasswordException();
+    }
+
+    private static void checkFieldsAreNotEmpty(String username, String password, String role, String firstName, String lastName, String phoneNumber, String email) throws FieldsAreNotEmptyException{
+        if(username.isEmpty() || password.isEmpty() || role.isEmpty() || firstName.isEmpty() || lastName.isEmpty() || phoneNumber.isEmpty() || email.isEmpty()){
+            throw new FieldsAreNotEmptyException();
+        }
     }
 
     private static void checkEmailIsValid(String email) throws corectEmailException {
