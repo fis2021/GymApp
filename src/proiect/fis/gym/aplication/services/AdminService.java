@@ -5,6 +5,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import org.dizitart.no2.*;
+import org.dizitart.no2.event.ChangeInfo;
+import org.dizitart.no2.event.ChangeListener;
 import org.dizitart.no2.objects.ObjectRepository;
 import proiect.fis.gym.aplication.exceptions.*;
 import proiect.fis.gym.aplication.model.Admin;
@@ -35,6 +37,20 @@ public class AdminService {
                 .openOrCreate("test", "test");
 
         adminRepository = database.getRepository(Admin.class);
+
+        // observe any change to the repository
+        adminRepository.register(new ChangeListener() {
+
+            @Override
+            public void onChange(ChangeInfo changeInfo) {
+                // your logic based on action
+                database.close();
+            }
+        });
+    }
+
+    public static void closeDatabase(){
+        adminRepository.close();
     }
 
     public static void addUser(TextField adminCode, GridPane gridPane, PasswordField confirmPassword, String firstName, String lastName, String email, String username, String password)

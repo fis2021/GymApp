@@ -25,6 +25,7 @@ public abstract class RegisterController {
                                 Stage stage = (Stage) choiceBox.getScene().getWindow();
                                 String loadedFXML = "register" + newValue.replace(" ", "") + ".fxml";
                                 String path = "../fxml/" + loadedFXML;
+                                System.out.println(path);
                                 Parent viewRegisterRoot = FXMLLoader.load(getClass().getResource(path));
                                 Scene scene = new Scene(viewRegisterRoot, 700, 500);
                                 stage.setScene(scene);

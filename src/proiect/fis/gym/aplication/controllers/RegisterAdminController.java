@@ -55,7 +55,6 @@ public class RegisterAdminController extends RegisterController {
 
     @FXML
     public void initialize(){
-        AdminService.initDatabase();
         selectRoleChoiceBoxAction(selectRoleChoiceBox);
 
         checkEmail(emailField, emailWarningLabel);
@@ -82,12 +81,14 @@ public class RegisterAdminController extends RegisterController {
 
     public void handleSubmitRegistrationButton(ActionEvent actionEvent) {
         try {
+            AdminService.initDatabase();
             AdminService.addUser(adminCodeField, gridPaneAdmin, confirmPasswordField,firstNameField.getText(), lastNameField.getText(), emailField.getText(), usernameField.getText(), passwordField.getText());
             registrationMessageLabel.setText("Account created successfully!");
             registrationMessageLabel.setVisible(true);
         } catch (UsernameAlreadyExistsException | EmptyFieldsException | InvalidPasswordException | NotMatchingPasswordsException | InvalidEmailException | InvalidAdminCodeException e) {
             registrationMessageLabel.setText(e.getMessage());
             registrationMessageLabel.setVisible(true);
+            AdminService.closeDatabase();
         }
     }
 
