@@ -49,6 +49,8 @@
 
     <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
 
+    <Label fx:id="passwordRegexWarning"  visible="false" text="Poor password" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+
     <Label text="Confirm Password:" GridPane.columnIndex="0" GridPane.rowIndex="7" />
 
     <PasswordField fx:id="confirmPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
