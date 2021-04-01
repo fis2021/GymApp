@@ -8,6 +8,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import proiect.fis.gym.aplication.exceptions.IncorectLoginException;
+import proiect.fis.gym.aplication.services.CustomerService;
+import proiect.fis.gym.aplication.services.LoginService;
 
 import java.io.IOException;
 
@@ -34,30 +37,22 @@ public class LoginController {
 
     @FXML
     public void handleLoginButton() {
-        String username = usernameField.getText();
-        String password = passwordField.getText();
+       int c=0;
 
-        if (username == null || username.isEmpty()) {
-            loginMessage.setText("Please type in a username!");
-            return;
-        }
+        try {
+            c=LoginService.login(usernameField.getText(), passwordField.getText());
+            if(c==1) {
+            Stage stage = (Stage) usernameField.getScene().getWindow();
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../fxml/CustomerAfterLoginPage.fxml")), 700, 500));
+            }
+       } catch (IncorectLoginException e) {
+           loginMessage.setText(e.getMessage());
+        } catch (IOException e){
+            e.printStackTrace();
+       }
 
-        if (password == null || password.isEmpty()) {
-            loginMessage.setText("Password cannot be empty");
-            return;
-        }
-
-        if (username.equals("customer") && password.equals("customer")) {
-            loginMessage.setText("Logged in as student!");
-            return;
-        }
-
-        if (username.equals("manager") && password.equals("manager")) {
-            loginMessage.setText("Logged in as manager!");
-            return;
-        }
-
-        loginMessage.setText("Incorrect login!");
     }
+
+
 }
 

@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.*;
 import proiect.fis.gym.aplication.exceptions.*;
 import proiect.fis.gym.aplication.services.CustomerService;
+import proiect.fis.gym.aplication.services.LoginService;
 
 
 public class RegisterCustomerController extends RegisterController {
