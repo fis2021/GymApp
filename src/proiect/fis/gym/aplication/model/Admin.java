@@ -9,25 +9,16 @@ public class Admin {
     private String password;
     private String email;
     //cod pt register ca admin
-    private static String companyCode;
+    //private static final String adminCode = "1234";
 
-    public Admin(String firstName, String lastName, String username, String password, String email) {
+    public Admin(){}
+
+    public Admin(String firstName, String lastName, String email, String username, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.email = email;
         this.username = username;
         this.password = password;
-        this.email = email;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Admin admin = (Admin) o;
-        return Objects.equals(firstName, admin.firstName) &&
-                Objects.equals(lastName, admin.lastName) &&
-                Objects.equals(username, admin.username) &&
-                Objects.equals(password, admin.password);
     }
 
     @Override
@@ -41,8 +32,20 @@ public class Admin {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Admin admin = (Admin) o;
+        return firstName.equals(admin.firstName) &&
+                lastName.equals(admin.lastName) &&
+                username.equals(admin.username) &&
+                password.equals(admin.password) &&
+                email.equals(admin.email);
+    }
+
+    @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, username, password);
+        return Objects.hash(firstName, lastName, username, password, email);
     }
 
     public void setFirstName(String firstName) {
@@ -61,10 +64,6 @@ public class Admin {
         this.password = password;
     }
 
-    public static void setCompanyCode(String companyCode) {
-        Admin.companyCode = companyCode;
-    }
-
     public String getFirstName() {
         return firstName;
     }
@@ -79,10 +78,6 @@ public class Admin {
 
     public String getPassword() {
         return password;
-    }
-
-    public static String getCompanyCode() {
-        return companyCode;
     }
 
     public String getEmail() {

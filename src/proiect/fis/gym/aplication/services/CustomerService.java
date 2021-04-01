@@ -59,7 +59,7 @@ public class CustomerService {
     }
 
     private static void checkPassword(String password) throws ValidPasswordException{
-        String regex= "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,20}$";
+        String regex= "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=_])(?=\\S+$).{8,20}$";
         Pattern pat = Pattern.compile(regex);
         if( !(pat.matcher(password).matches()) )
             throw new ValidPasswordException();
