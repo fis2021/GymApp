@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import proiect.fis.gym.aplication.services.FileSystemService;
 import proiect.fis.gym.aplication.services.CustomerService;
+import proiect.fis.gym.aplication.services.LoginService;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -18,6 +19,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         initDirectory();
         CustomerService.initDatabase();
+        LoginService.initDatabase();
         Parent root = FXMLLoader.load(getClass().getResource("fxml/login.fxml"));
         primaryStage.setTitle("Gym Aplication");
         primaryStage.setScene(new Scene(root, 400, 400));

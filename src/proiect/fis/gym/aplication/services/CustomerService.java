@@ -1,6 +1,10 @@
 package proiect.fis.gym.aplication.services;
 
+import javafx.fxml.FXML;
 import org.dizitart.no2.Nitrite;
+import org.dizitart.no2.event.ChangeInfo;
+import org.dizitart.no2.event.ChangeListener;
+import org.dizitart.no2.event.ChangeType;
 import org.dizitart.no2.objects.ObjectRepository;
 import proiect.fis.gym.aplication.exceptions.*;
 import proiect.fis.gym.aplication.model.Customer;
@@ -24,7 +28,13 @@ public class CustomerService {
                 .openOrCreate("Geo", "Rares");
 
         customerRepository = database.getRepository(Customer.class);
+
     }
+
+    public static ObjectRepository<Customer> getCustomerRepository(){
+        return customerRepository;
+    }
+
 
     public static void addUser(String username, String password, String role, String firstName, String lastName, String phoneNumber, String email) throws UsernameAlreadyExistsException, corectEmailException, FieldsAreNotEmptyException, ValidPasswordException, ValidUsernameException, validPhoneNumberException {
         checkFieldsAreNotEmpty(username,password,role,firstName,lastName,phoneNumber,email);
