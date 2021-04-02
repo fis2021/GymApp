@@ -10,6 +10,7 @@ import org.dizitart.no2.objects.ObjectRepository;
 import proiect.fis.gym.aplication.exceptions.IncorectLoginException;
 import proiect.fis.gym.aplication.model.Admin;
 import proiect.fis.gym.aplication.model.Customer;
+import proiect.fis.gym.aplication.model.GymManager;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -21,6 +22,7 @@ public class LoginService {
 
     private static ObjectRepository<Customer> customerRepository;
     private static ObjectRepository<Admin> adminRepository;
+    private static ObjectRepository<GymManager> managerRepository;
 
     public static void initDatabase() {
 
@@ -30,6 +32,7 @@ public class LoginService {
 
         customerRepository = CustomerService.getCustomerRepository();//database.getRepository(Customer.class);
         adminRepository = AdminService.getAdminRepository();
+        managerRepository = GymManagerService.getGymManagerRepository();
     }
 
     public static int login(String username,String password) throws IncorectLoginException{
@@ -49,12 +52,21 @@ public class LoginService {
             }
         }
 
+        for(GymManager manager : managerRepository.find()){
+            if(username.equals(manager.getUsername()) && pw.equals(manager.getPassword())){
+                ok=3;
+                break;
+            }
+        }
+
         if(ok==1){
             return 1;
         }else if (ok==2){
             return 2;
-        }else {
-            throw new IncorectLoginException();
+        }else if(ok==3) {
+            return 3;
+        }else{
+                throw new IncorectLoginException();
         }
     }
 

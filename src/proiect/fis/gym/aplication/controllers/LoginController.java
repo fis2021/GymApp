@@ -49,6 +49,10 @@ public class LoginController {
                 Stage stage = (Stage) usernameField.getScene().getWindow();
                 stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../fxml/AdminAfterLoginPage.fxml")), 700, 500));
             }
+            if(c==3){
+                Stage stage = (Stage) usernameField.getScene().getWindow();
+                stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../fxml/ManagerAfterLoginPage.fxml")), 700, 500));
+            }
        } catch (IncorectLoginException e) {
            loginMessage.setText(e.getMessage());
         } catch (IOException e){
