@@ -68,14 +68,14 @@ public class RegisterAdminController extends RegisterController {
 
     public void handleSubmitRegistrationButton(ActionEvent actionEvent) {
         try {
-            AdminService.initDatabase();
+            //AdminService.initDatabase();
             AdminService.addUser(adminCodeField, gridPaneAdmin, confirmPasswordField,firstNameField.getText(), lastNameField.getText(), emailField.getText(), usernameField.getText(), passwordField.getText());
             registrationMessageLabel.setText("Account created successfully!");
             registrationMessageLabel.setVisible(true);
         } catch (UsernameAlreadyExistsException | FieldsAreNotEmptyException | ValidPasswordException | NotMatchingPasswordsException | corectEmailException | InvalidAdminCodeException e) {
             registrationMessageLabel.setText(e.getMessage());
             registrationMessageLabel.setVisible(true);
-            AdminService.closeDatabase();
+            //AdminService.closeDatabase();
         }
     }
 
