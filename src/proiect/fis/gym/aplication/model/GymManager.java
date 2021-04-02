@@ -2,42 +2,32 @@ package proiect.fis.gym.aplication.model;
 
 import java.util.Objects;
 
+//probabil va genera conflicte, dar e in regula.
+//se adauga un field de username, cam atata tot
+
 public class GymManager {
     private String firstName;
     private String lastName;
-    private int age;
+    private String phoneNumber;
+    private String email;
     private String gymLocation;
     private String companyName;
+    private String username;
+    private String password;
 
-    public GymManager(String firstName, String lastName, int age, String gymLocation, String companyName) {
+    public GymManager(String firstName, String lastName, String phoneNumber, String email, String gymLocation, String companyName, String username, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.age = age;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
         this.gymLocation = gymLocation;
         this.companyName = companyName;
+        this.username = username;
+        this.password = password;
     }
 
-    public String getFirstName() { return firstName; }
-    public String getLastName() { return lastName; }
-    public int getAge() { return age; }
-    public String getGymLocation() { return gymLocation; }
-    public String getCompanyName() { return companyName; }
+    public GymManager(){
 
-    public void setFirstName(String firstName) { this.firstName = firstName; }
-    public void setLastName(String lastName) { this.lastName = lastName; }
-    public void setAge(int age) { this.age = age; }
-    public void setGymLocation(String gymLocation) { this.gymLocation = gymLocation; }
-    public void setCompanyName(String companyName) { this.companyName = companyName; }
-
-    @Override
-    public String toString() {
-        return "GymManager{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", age=" + age +
-                ", gymLocation='" + gymLocation + '\'' +
-                ", companyName='" + companyName + '\'' +
-                '}';
     }
 
     @Override
@@ -45,11 +35,82 @@ public class GymManager {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GymManager that = (GymManager) o;
-        return age == that.age && Objects.equals(firstName, that.firstName) && Objects.equals(lastName, that.lastName) && Objects.equals(gymLocation, that.gymLocation) && Objects.equals(companyName, that.companyName);
+        return firstName.equals(that.firstName) &&
+                lastName.equals(that.lastName) &&
+                phoneNumber.equals(that.phoneNumber) &&
+                email.equals(that.email) &&
+                gymLocation.equals(that.gymLocation) &&
+                companyName.equals(that.companyName) &&
+                username.equals(that.username) &&
+                password.equals(that.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, age, gymLocation, companyName);
+        return Objects.hash(firstName, lastName, phoneNumber, email, gymLocation, companyName, username, password);
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getGymLocation() {
+        return gymLocation;
+    }
+
+    public void setGymLocation(String gymLocation) {
+        this.gymLocation = gymLocation;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
