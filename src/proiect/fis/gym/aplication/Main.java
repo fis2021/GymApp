@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import proiect.fis.gym.aplication.services.AdminService;
 import proiect.fis.gym.aplication.services.FileSystemService;
 import proiect.fis.gym.aplication.services.CustomerService;
 import proiect.fis.gym.aplication.services.LoginService;
@@ -18,6 +19,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         initDirectory();
+        AdminService.initDatabase();
         CustomerService.initDatabase();
         LoginService.initDatabase();
         Parent root = FXMLLoader.load(getClass().getResource("fxml/login.fxml"));

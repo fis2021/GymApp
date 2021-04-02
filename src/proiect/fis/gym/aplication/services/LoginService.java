@@ -8,6 +8,7 @@ import org.dizitart.no2.event.ChangeListener;
 import org.dizitart.no2.event.ChangeType;
 import org.dizitart.no2.objects.ObjectRepository;
 import proiect.fis.gym.aplication.exceptions.IncorectLoginException;
+import proiect.fis.gym.aplication.model.Admin;
 import proiect.fis.gym.aplication.model.Customer;
 
 import java.nio.charset.StandardCharsets;
@@ -19,6 +20,7 @@ import static proiect.fis.gym.aplication.services.FileSystemService.getPathToFil
 public class LoginService {
 
     private static ObjectRepository<Customer> customerRepository;
+    private static ObjectRepository<Admin> adminRepository;
 
     public static void initDatabase() {
 
@@ -27,7 +29,7 @@ public class LoginService {
                 .openOrCreate("Geo", "Rares");*/
 
         customerRepository = CustomerService.getCustomerRepository();//database.getRepository(Customer.class);
-
+        adminRepository = AdminService.getAdminRepository();
     }
 
     public static int login(String username,String password) throws IncorectLoginException{
@@ -39,8 +41,18 @@ public class LoginService {
                 break;
             }
         }
+
+        for(Admin admin : adminRepository.find()){
+            if(username.equals(admin.getUsername()) && pw.equals(admin.getPassword())){
+                ok=2;
+                break;
+            }
+        }
+
         if(ok==1){
             return 1;
+        }else if (ok==2){
+            return 2;
         }else {
             throw new IncorectLoginException();
         }
