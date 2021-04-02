@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import javax.xml.soap.Text;
 import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -77,6 +78,31 @@ public abstract class RegisterController {
                 warningLabel.setVisible(false);
             }
         });
+    }
+
+    protected void checkPhoneNumberFormat(TextField phoneField, Label phoneWarningLabel){
+        phoneField.textProperty().addListener((observable, oldValue, newValue) ->
+        {
+            String regex= "^\\+(?:[0-9] ?){6,14}[0-9]$";
+            Pattern pat = Pattern.compile(regex);
+            if( !(pat.matcher(newValue).matches()) ) {
+                phoneWarningLabel.setVisible(true);
+            }
+            else{
+                phoneWarningLabel.setVisible(false);
+            }
+        });
+    }
+
+    protected void checkUsernameFormat(TextField usernameField, Label usernameWarningLabel){
+        usernameField.textProperty().addListener(((observable, oldValue, newValue) -> {
+            if(newValue.length()<5){
+                usernameWarningLabel.setVisible(true);
+            }
+            else{
+                usernameWarningLabel.setVisible(false);
+            }
+        }));
     }
 
     public void handleBackToLoginButtonLogic(Control control){

@@ -34,15 +34,6 @@ public class AdminService {
 
         adminRepository = database.getRepository(Admin.class);
 
-        // observe any change to the repository
-        adminRepository.register(new ChangeListener() {
-
-            @Override
-            public void onChange(ChangeInfo changeInfo) {
-                // your logic based on action
-                database.close();
-            }
-        });
     }
 
     public static void closeDatabase(){
