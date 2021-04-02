@@ -5,8 +5,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
 import proiect.fis.gym.aplication.model.GymManager;
 import proiect.fis.gym.aplication.services.*;
+
+import proiect.fis.gym.aplication.services.AdminService;
+import proiect.fis.gym.aplication.services.FileSystemService;
+import proiect.fis.gym.aplication.services.CustomerService;
+import proiect.fis.gym.aplication.services.LoginService;
+
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -17,6 +24,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         initDirectory();
+        AdminService.initDatabase();
         CustomerService.initDatabase();
         LoginService.initDatabase();
         GymManagerService.initDatabase();
