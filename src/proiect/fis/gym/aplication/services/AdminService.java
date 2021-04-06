@@ -10,6 +10,7 @@ import org.dizitart.no2.event.ChangeListener;
 import org.dizitart.no2.objects.ObjectRepository;
 import proiect.fis.gym.aplication.exceptions.*;
 import proiect.fis.gym.aplication.model.Admin;
+import proiect.fis.gym.aplication.model.Customer;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -33,7 +34,10 @@ public class AdminService {
                 .openOrCreate("Geo", "Rares");
 
         adminRepository = database.getRepository(Admin.class);
+    }
 
+    public static ObjectRepository<Admin> getAdminRepository(){
+        return adminRepository;
     }
 
     public static void closeDatabase(){
