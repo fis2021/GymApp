@@ -58,19 +58,14 @@ public class RegisterGymManagerController extends RegisterController {
 
     public void handleSubmitRegistrationButton(){
         try {
-            //GymManagerService.initDatabase();
             GymManagerService.addUser(gridPane, confirmPasswordField, firstNameField.getText(),
                     lastNameField.getText(), phoneField.getText(), emailField.getText(),
                     gymLocation.getText(), companyName.getText(), usernameField.getText(), passwordField.getText());
             registrationMessageLabel.setText("Account created successfully!");
             registrationMessageLabel.setVisible(true);
-        } catch (UsernameAlreadyExistsException | FieldsAreNotEmptyException | ValidPasswordException |
-                NotMatchingPasswordsException | corectEmailException  |
-                validPhoneNumberException | ValidUsernameException e
-                ) {
+        } catch (UsernameAlreadyExistsException | FieldsAreNotEmptyException | ValidPasswordException | NotMatchingPasswordsException | corectEmailException | validPhoneNumberException | ValidUsernameException | ManagerUsernameIsNotOnShortListException e) {
             registrationMessageLabel.setText(e.getMessage());
             registrationMessageLabel.setVisible(true);
-           // GymManagerService.closeDatabase();
         }
     }
 
