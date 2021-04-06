@@ -11,10 +11,15 @@ import proiect.fis.gym.aplication.exceptions.*;
 import proiect.fis.gym.aplication.model.Admin;
 import proiect.fis.gym.aplication.model.GymManager;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static proiect.fis.gym.aplication.services.FileSystemService.getPathToFile;
 
 public class GymManagerService extends RegisterService{
     private static ObjectRepository<GymManager> gymManagerRepository;
+    private static final ArrayList<String> usernameList = new ArrayList<String>(Arrays.asList("GymOne", "Nextfit", "GeoGym", "RaresGym"));
 
     public static void initDatabase() {
 
@@ -32,17 +37,29 @@ public class GymManagerService extends RegisterService{
 
     public static void addUser( GridPane gridPane, PasswordField confirmPassword, String firstName, String lastName, String phoneNumber, String email, String gymLocation, String companyCode, String username, String password)
             throws UsernameAlreadyExistsException, FieldsAreNotEmptyException, ValidPasswordException, NotMatchingPasswordsException,
-            corectEmailException, validPhoneNumberException, ValidUsernameException
-    {
+            corectEmailException, validPhoneNumberException, ValidUsernameException, ManagerUsernameIsNotOnShortListException {
         checkUserDoesNotAlreadyExist(username);
-        checkEmptyFields(gridPane);
         checkInvalidEmail(email);
+        checkManagersList(username);
         checkInvalidPasswordException(password);
         checkNotMatchingPasswords(password, confirmPassword.getText());
         checkPhoneNumber(phoneNumber);
         checkUsername(username);
-
         gymManagerRepository.insert(new GymManager(firstName, lastName, phoneNumber, email, gymLocation, companyCode, username, encodePassword(username, password)));
+    }
+
+    private static void checkManagersList(String typedUsername) throws ManagerUsernameIsNotOnShortListException{
+        int exists = 0;
+        for(String username: usernameList){
+            if(username.equals(typedUsername)){
+                exists = 1;
+                break;
+            }
+        }
+
+        if(exists == 0){
+            throw new ManagerUsernameIsNotOnShortListException();
+        }
     }
 
     private static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
