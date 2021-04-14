@@ -19,7 +19,7 @@ import static proiect.fis.gym.aplication.services.FileSystemService.getPathToFil
 
 public class GymManagerService extends RegisterService{
     private static ObjectRepository<GymManager> gymManagerRepository;
-    private static final ArrayList<String> usernameList = new ArrayList<String>(Arrays.asList("GymOne", "Nextfit", "GeoGym", "RaresGym"));
+    private static final ArrayList<String> usernameList = new ArrayList<String>(Arrays.asList("GymOne", "SmartFit", "Iguana"));
 
     public static void initDatabase() {
 
