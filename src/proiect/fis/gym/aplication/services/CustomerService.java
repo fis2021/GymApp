@@ -35,7 +35,6 @@ public class CustomerService {
         return customerRepository;
     }
 
-
     public static void addUser(String username, String password, String role, String firstName, String lastName, String phoneNumber, String email) throws UsernameAlreadyExistsException, corectEmailException, FieldsAreNotEmptyException, ValidPasswordException, ValidUsernameException, validPhoneNumberException {
         checkFieldsAreNotEmpty(username,password,role,firstName,lastName,phoneNumber,email);
         checkUserDoesNotAlreadyExist(username);
