@@ -6,7 +6,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="735.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proiect.fis.gym.aplication.controllers.LoginController">
+<?import javafx.scene.text.Text?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="proiect.fis.gym.aplication.controllers.CustomerController"
+            prefHeight="400.0" prefWidth="600.0">
 
     <children>
         <Button layoutX="80.0" layoutY="81.0" mnemonicParsing="false">
@@ -22,7 +26,7 @@
             </graphic>
         </Button>
     </children>
-   
+
     <children>
         <Button layoutX="80.0" layoutY="300.0" mnemonicParsing="false">
             <font>
@@ -52,10 +56,12 @@
                 </ImageView>
             </graphic>
         </Button>
+
     </children>
 
-    <Button layoutX="257.0" layoutY="83.0" mnemonicParsing="false" text="Create subscription" />
-    <Button layoutX="257.0" layoutY="303.0" mnemonicParsing="false" text="Create subscription" />
-    <Button layoutX="257.0" layoutY="519.0" mnemonicParsing="false" text="Create subscription" />
+    <Button onAction="#handleCreateSubscription" layoutX="257.0" layoutY="83.0" text="Create subscription"/>
+    <Button onAction="#handleCreateSubscription" layoutX="257.0" layoutY="303.0" text="Create subscription"/>
+    <Button onAction="#handleCreateSubscription" layoutX="257.0" layoutY="519.0" text="Create subscription"/>
 
+    <Text fx:id="sceneChanger" text="ok"/>
 </AnchorPane>
