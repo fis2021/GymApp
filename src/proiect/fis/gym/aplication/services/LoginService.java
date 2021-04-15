@@ -55,6 +55,7 @@ public class LoginService {
         for(GymManager manager : managerRepository.find()){
             if(username.equals(manager.getUsername()) && pw.equals(manager.getPassword())){
                 ok=3;
+
                 break;
             }
         }

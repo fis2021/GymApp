@@ -28,7 +28,8 @@ public class Main extends Application {
         CustomerService.initDatabase();
         GymManagerService.initDatabase();
         LoginService.initDatabase();
-        Parent root = FXMLLoader.load(getClass().getResource("fxml/CustomerAfterLoginPage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/login.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getResource("fxml/CustomerAfterLoginPage.fxml"));
         primaryStage.setTitle("Gym Aplication");
         primaryStage.setScene(new Scene(root, 800, 800));
         primaryStage.show();
