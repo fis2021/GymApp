@@ -15,6 +15,7 @@ import proiect.fis.gym.aplication.services.LoginService;
 import java.io.IOException;
 
 public class LoginController {
+    private static String currentUsername;
 
     @FXML
     public Text loginMessage;
@@ -38,7 +39,7 @@ public class LoginController {
     @FXML
     public void handleLoginButton() {
        int c=0;
-
+        currentUsername = usernameField.getText();
         try {
             c=LoginService.login(usernameField.getText(), passwordField.getText());
             if(c==1) {
@@ -50,9 +51,11 @@ public class LoginController {
                 stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../fxml/AdminAfterLoginPage.fxml")), 700, 500));
             }
             if(c==3){
+                //currentUsername = usernameField.getText();
                 Stage stage = (Stage) usernameField.getScene().getWindow();
-                stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../fxml/ManagerAfterLoginPage.fxml")), 700, 500));
+                stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../fxml/GymManagerProfile.fxml")), 800, 800));
             }
+
        } catch (IncorectLoginException e) {
            loginMessage.setText(e.getMessage());
         } catch (IOException e){
@@ -61,6 +64,9 @@ public class LoginController {
 
     }
 
+    public static String getCurrentUsername(){
+        return currentUsername;
+    }
 
 }
 
