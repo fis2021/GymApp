@@ -7,9 +7,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import proiect.fis.gym.aplication.exceptions.CourseAlreadyExistException;
+import proiect.fis.gym.aplication.exceptions.FieldsAreNotEmptyException;
 import proiect.fis.gym.aplication.exceptions.IncorectLoginException;
+import proiect.fis.gym.aplication.model.Course;
 import proiect.fis.gym.aplication.model.GymManager;
 import proiect.fis.gym.aplication.services.GymManagerService;
 
@@ -33,6 +37,14 @@ public class GymManagerProfileController {
     public GridPane courseGridPane;
     @FXML
     public Button submitNewCourseButton;
+    @FXML
+    public TextField courseNameTextField;
+    @FXML
+    public TextField trainerNameTextField;
+    @FXML
+    public TextField scheduleTextField;
+    @FXML
+    public Label errorMessageAddCourseLabel;
 
     private String currentUserName;
 
@@ -46,22 +58,58 @@ public class GymManagerProfileController {
         }
     }
 
-    private void modifyCurrentManagerProfile(String username) throws IncorectLoginException {
-        for(GymManager manager : GymManagerService.getGymManagerRepository().find()){
-            if(username.equals(manager.getUsername()) ){
-                gymNameLabel.setText(manager.getCompanyName());
-                managerNameLabel.setText(manager.getFirstName() + " " + manager.getLastName());
-                locationLabel.setText(manager.getGymLocation());
-                phoneLabel.setText(manager.getPhoneNumber());
-                emailLabel.setText(manager.getEmail());
-                break;
+    public static GymManager getManagerFromDatabase(String username){
+        for(GymManager manager : GymManagerService.getGymManagerRepository().find()) {
+            if (username.equals(manager.getUsername())) {
+                return manager;
             }
+        }
+        return null;
+    }
+
+    private void modifyCurrentManagerProfile(String username) throws IncorectLoginException {
+        GymManager manager = getManagerFromDatabase(username);
+        if(manager != null){
+            gymNameLabel.setText(manager.getCompanyName());
+            managerNameLabel.setText(manager.getFirstName() + " " + manager.getLastName());
+            locationLabel.setText(manager.getGymLocation());
+            phoneLabel.setText(manager.getPhoneNumber());
+            emailLabel.setText(manager.getEmail());
         }
     }
 
     public void handleAddCourseButton(ActionEvent actionEvent) {
         courseGridPane.setVisible(true);
         submitNewCourseButton.setVisible(true);
+    }
+
+    public void handleSubmitNewCourseButton(ActionEvent actionEvent){
+        Course toBeAdded;
+        GymManager currentManager = getManagerFromDatabase(currentUserName);
+
+        //testam daca sunt valide casutele de nume, antrenor, program
+        try {
+            if(CommonFunctionality.checkTextFieldsInAPaneAreNotEmpty(courseGridPane)) {
+                toBeAdded = new Course(courseNameTextField.getText(), trainerNameTextField.getText(), scheduleTextField.getText());
+
+                if (!currentManager.findCourse(toBeAdded)) {
+                    currentManager.getCourseList().add(toBeAdded);
+                }
+                else {
+                    throw new CourseAlreadyExistException();
+                }
+
+                GymManagerService.getGymManagerRepository().update(currentManager);
+                errorMessageAddCourseLabel.setVisible(false);
+            }
+            else{
+                throw new FieldsAreNotEmptyException();
+            }
+        }
+        catch(FieldsAreNotEmptyException | CourseAlreadyExistException e){
+            errorMessageAddCourseLabel.setVisible(true);
+            errorMessageAddCourseLabel.setText(e.getMessage());
+        }
     }
 
     private void openNewScene(String fxmlLoaded){
@@ -76,6 +124,8 @@ public class GymManagerProfileController {
             e.printStackTrace();
        }
     }
+
+
 
     public void handleLogOutButton(ActionEvent actionEvent) {
         openNewScene("login.fxml");
