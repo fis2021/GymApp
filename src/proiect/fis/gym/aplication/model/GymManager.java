@@ -1,5 +1,8 @@
 package proiect.fis.gym.aplication.model;
 
+import org.dizitart.no2.objects.Id;
+
+import java.util.ArrayList;
 import java.util.Objects;
 
 //probabil va genera conflicte, dar e in regula.
@@ -12,8 +15,10 @@ public class GymManager {
     private String email;
     private String gymLocation;
     private String companyName;
+    @Id
     private String username;
     private String password;
+    private ArrayList<Course> courseList;
 
     public GymManager(String firstName, String lastName, String phoneNumber, String email, String gymLocation, String companyName, String username, String password) {
         this.firstName = firstName;
@@ -24,10 +29,21 @@ public class GymManager {
         this.companyName = companyName;
         this.username = username;
         this.password = password;
+        courseList = new ArrayList<Course>();
     }
 
     public GymManager(){
 
+    }
+
+    public boolean findCourse(Course toBeFound){
+        for(Course course: courseList){
+            if(toBeFound.equals(course)){
+                return true;
+            }
+        }
+
+        return false;
     }
 
     @Override
@@ -48,6 +64,14 @@ public class GymManager {
     @Override
     public int hashCode() {
         return Objects.hash(firstName, lastName, phoneNumber, email, gymLocation, companyName, username, password);
+    }
+
+    public ArrayList<Course> getCourseList() {
+        return courseList;
+    }
+
+    public void setCourseList(ArrayList<Course> courseList) {
+        this.courseList = courseList;
     }
 
     public String getFirstName() {

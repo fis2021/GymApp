@@ -77,17 +77,17 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField id="labelCourseName" prefHeight="31.0" prefWidth="204.0" text="curs" GridPane.columnIndex="1">
+            <TextField fx:id="courseNameTextField" prefHeight="31.0" prefWidth="204.0" text="curs" GridPane.columnIndex="1">
                <font>
                   <Font size="15.0" />
                </font>
             </TextField>
-            <TextField id="trainerLabel" text="trainer" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextField fx:id="trainerNameTextField" text="trainer" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="15.0" />
                </font>
             </TextField>
-            <TextField id="scheduleLabel" text="program" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField fx:id="scheduleTextField" text="program" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="15.0" />
                </font>
@@ -97,9 +97,18 @@
 
       <Button id="logOutButton" layoutX="698.0" layoutY="40.0" mnemonicParsing="false" onAction="#handleLogOutButton" text="Log out" />
 
-      <Button fx:id="submitNewCourseButton" layoutX="599.0" layoutY="371.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" text="Submit new course" visible="false" />
+      <Button fx:id="submitNewCourseButton" layoutX="599.0" layoutY="371.0" mnemonicParsing="false" onAction="#handleSubmitNewCourseButton" prefHeight="26.0" prefWidth="150.0" text="Submit new course" visible="false" />
 
       <Button layoutX="226.0" layoutY="223.0" mnemonicParsing="false" onAction="#handleViewCoursesButton" prefHeight="26.0" prefWidth="120.0" text="View Courses" />
+
+      <Label fx:id="errorMessageAddCourseLabel"
+             layoutX="555.0" layoutY="429.0" prefHeight="26.0" prefWidth="200" text="trm"
+             alignment="CENTER_RIGHT"
+             visible="false">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
 
    </children>
 </AnchorPane>
