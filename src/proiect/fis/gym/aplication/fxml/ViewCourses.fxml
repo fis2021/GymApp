@@ -39,7 +39,7 @@
          </font>
       </Button>
 
-      <Label fx:id="warningLabel" alignment="CENTER_RIGHT" layoutX="431.0" layoutY="549.0" prefHeight="31.0" prefWidth="310.0" text="warning Label" visible="false">
+      <Label fx:id="warningLabel" alignment="CENTER_RIGHT" layoutX="470" layoutY="630" prefHeight="31.0" prefWidth="310.0" text="warning Label" visible="false">
          <font>
             <Font size="15.0" />
          </font>
