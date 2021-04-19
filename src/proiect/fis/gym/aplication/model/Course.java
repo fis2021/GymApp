@@ -1,16 +1,21 @@
 package proiect.fis.gym.aplication.model;
 
+import javafx.scene.control.Button;
+
 import java.util.Objects;
 
 public class Course {
     private String name;
     private String trainer;
     private String schedule;
+    //private Button editButton;
 
     public Course(String name, String trainer, String schedule) {
         this.name = name;
         this.trainer = trainer;
         this.schedule = schedule;
+
+        //editButton = new Button("EDIT");
     }
 
     public Course(){
@@ -60,4 +65,12 @@ public class Course {
     public void setSchedule(String schedule) {
         this.schedule = schedule;
     }
+
+    /*public Button getEditButton() {
+        return editButton;
+    }
+
+    public void setEditButton(Button editButton) {
+        this.editButton = editButton;
+    }*/
 }
