@@ -1,5 +1,6 @@
 package proiect.fis.gym.aplication.controllers;
 
+import com.sun.xml.internal.org.jvnet.fastinfoset.FastInfosetException;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +12,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import proiect.fis.gym.aplication.exceptions.CourseAlreadyExistException;
+import proiect.fis.gym.aplication.exceptions.FieldsAreNotEmptyException;
 import proiect.fis.gym.aplication.exceptions.IncorectLoginException;
 import proiect.fis.gym.aplication.model.Course;
 import proiect.fis.gym.aplication.model.GymManager;
@@ -30,6 +33,8 @@ public class ViewCoursesController {
     public Button editButton;
     @FXML
     public Button stopEditButton;
+    @FXML
+    public Label warningLabel;
     TableColumn<Course, String> column1 = new TableColumn<>("Course");
     TableColumn<Course, String> column2 = new TableColumn<>("Trainer");
     TableColumn<Course, String> column3 = new TableColumn<>("Schedule");
@@ -93,38 +98,86 @@ public class ViewCoursesController {
 
     public void changeNameCellEvent(TableColumn.CellEditEvent edittedCell){
         Course courseSelected = (Course)coursesTableView.getSelectionModel().getSelectedItem();
+        
+        try {
+            if (!edittedCell.getNewValue().toString().equals("")) {
+                GymManager manager = GymManagerProfileController.getManagerFromDatabase(LoginController.getCurrentUsername());
+                //testam daca cursul nu e duplicat:
+                Course courseEditted = new Course(edittedCell.getNewValue().toString(), courseSelected.getTrainer(), courseSelected.getSchedule());
+                if(manager.findCourse(courseEditted)){
+                    throw new CourseAlreadyExistException();
+                }
 
-        //update in baza de data la current entry:
-        GymManager manager = GymManagerProfileController.getManagerFromDatabase(LoginController.getCurrentUsername());
-        manager.getCourseFromList(courseSelected).setName(edittedCell.getNewValue().toString());
-        GymManagerService.getGymManagerRepository().update(manager);
+                //update in baza de data la current entry:
+                manager.getCourseFromList(courseSelected).setName(edittedCell.getNewValue().toString());
+                GymManagerService.getGymManagerRepository().update(manager);
 
-        //modificam tabelul:
-        courseSelected.setName(edittedCell.getNewValue().toString());
+                //modificam tabelul:
+                courseSelected.setName(edittedCell.getNewValue().toString());
+                warningLabel.setVisible(false);
+            }else{
+                throw new FieldsAreNotEmptyException();
+            }
+        }catch (FieldsAreNotEmptyException | CourseAlreadyExistException e){
+            warningLabel.setVisible(true);
+            warningLabel.setText(e.getMessage());
+        }
     }
 
     public void changeTrainerCellEvent(TableColumn.CellEditEvent edittedCell){
         Course courseSelected = (Course)coursesTableView.getSelectionModel().getSelectedItem();
 
-        //update in baza de data la current entry:
-        GymManager manager = GymManagerProfileController.getManagerFromDatabase(LoginController.getCurrentUsername());
-        manager.getCourseFromList(courseSelected).setTrainer(edittedCell.getNewValue().toString());
-        GymManagerService.getGymManagerRepository().update(manager);
+        try {
+            if (!edittedCell.getNewValue().toString().equals("")) {
+                GymManager manager = GymManagerProfileController.getManagerFromDatabase(LoginController.getCurrentUsername());
+                //testam daca cursul nu e duplicat:
+                Course courseEditted = new Course(courseSelected.getName(), edittedCell.getNewValue().toString(), courseSelected.getSchedule());
+                if(manager.findCourse(courseEditted)){
+                    throw new CourseAlreadyExistException();
+                }
 
-        //modificam tabelul:
-        courseSelected.setTrainer(edittedCell.getNewValue().toString());
+                //update in baza de data la current entry:
+                manager.getCourseFromList(courseSelected).setTrainer(edittedCell.getNewValue().toString());
+                GymManagerService.getGymManagerRepository().update(manager);
+
+                //modificam tabelul:
+                courseSelected.setTrainer(edittedCell.getNewValue().toString());
+                warningLabel.setVisible(false);
+            } else {
+                throw new FieldsAreNotEmptyException();
+            }
+        }catch (FieldsAreNotEmptyException | CourseAlreadyExistException e){
+            warningLabel.setVisible(true);
+            warningLabel.setText(e.getMessage());
+        }
     }
 
     public void changeScheduleCellEvent(TableColumn.CellEditEvent edittedCell){
         Course courseSelected = (Course)coursesTableView.getSelectionModel().getSelectedItem();
 
-        //update in baza de data la current entry:
-        GymManager manager = GymManagerProfileController.getManagerFromDatabase(LoginController.getCurrentUsername());
-        manager.getCourseFromList(courseSelected).setSchedule(edittedCell.getNewValue().toString());
-        GymManagerService.getGymManagerRepository().update(manager);
+        try {
+            if(!edittedCell.getNewValue().toString().equals("")) {
+                GymManager manager = GymManagerProfileController.getManagerFromDatabase(LoginController.getCurrentUsername());
+                //testam daca cursul nu e duplicat:
+                Course courseEditted = new Course(courseSelected.getName(), courseSelected.getTrainer(), edittedCell.getNewValue().toString());
+                if(manager.findCourse(courseEditted)){
+                    throw new CourseAlreadyExistException();
+                }
 
-        //modificam tabelul:
-        courseSelected.setSchedule(edittedCell.getNewValue().toString());
+                //update in baza de data la current entry:
+                manager.getCourseFromList(courseSelected).setSchedule(edittedCell.getNewValue().toString());
+                GymManagerService.getGymManagerRepository().update(manager);
+
+                //modificam tabelul:
+                courseSelected.setSchedule(edittedCell.getNewValue().toString());
+                warningLabel.setVisible(false);
+            }else{
+                throw new FieldsAreNotEmptyException();
+            }
+        }catch (FieldsAreNotEmptyException | CourseAlreadyExistException e){
+            warningLabel.setVisible(true);
+            warningLabel.setText(e.getMessage());
+        }
     }
 
     public void handleStopEditButton(ActionEvent actionEvent) {
