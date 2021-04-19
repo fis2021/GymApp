@@ -12,6 +12,10 @@ public class Customer {
     private String lastName;
     private String phoneNumber;
     private String email;
+    private String subscriptionExpirationDay;
+    private String subscriptionExpirationMonth;
+    private String subscriptionExpirationYear;
+    private String gym;
 
     public Customer(String username, String password, String role, String firstName, String lastName, String phoneNumber, String email) {
         this.username = username;
@@ -21,6 +25,39 @@ public class Customer {
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.email = email;
+        gym ="";
+        subscriptionExpirationDay="";
+        subscriptionExpirationMonth="";
+        subscriptionExpirationYear="";
+
+    }
+
+    public String getSubscriptionExpirationDay() {
+        return subscriptionExpirationDay;
+    }
+
+    public String getSubscriptionExpirationMonth() {
+        return subscriptionExpirationMonth;
+    }
+
+    public String getSubscriptionExpirationYear() {
+        return subscriptionExpirationYear;
+    }
+
+    public void setSubscriptionExpirationDay(String subscriptionExpirationDay) {
+        this.subscriptionExpirationDay = subscriptionExpirationDay;
+    }
+
+    public void setSubscriptionExpirationMonth(String subscriptionExpirationMonth) {
+        this.subscriptionExpirationMonth = subscriptionExpirationMonth;
+    }
+
+    public void setSubscriptionExpirationYear(String subscriptionExpirationYear) {
+        this.subscriptionExpirationYear = subscriptionExpirationYear;
+    }
+
+    public void setGym(String gym) {
+        this.gym = gym;
     }
 
     public Customer(){
