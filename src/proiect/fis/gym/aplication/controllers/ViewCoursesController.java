@@ -78,6 +78,7 @@ public class ViewCoursesController {
             coursesTableView.getColumns().add(column1);
             coursesTableView.getColumns().add(column2);
             coursesTableView.getColumns().add(column3);
+            addButtonToTable("DELETE");
         }
 
         if(manager != null){
@@ -183,5 +184,42 @@ public class ViewCoursesController {
     public void handleStopEditButton(ActionEvent actionEvent) {
         coursesTableView.setEditable(false);
         stopEditButton.setDisable(true);
+    }
+
+    private void addButtonToTable(String buttonText) {
+        TableColumn<Course, Void> colBtn = new TableColumn();
+
+        Callback<TableColumn<Course, Void>, TableCell<Course, Void>> cellFactory = new Callback<TableColumn<Course, Void>, TableCell<Course, Void>>() {
+            @Override
+            public TableCell<Course, Void> call(final TableColumn<Course, Void> param) {
+                final TableCell<Course, Void> cell = new TableCell<Course, Void>() {
+
+                    //functionalitate pt butonul de delete:
+                    private final Button btn = new Button(buttonText);
+                    {
+                        btn.setOnAction((ActionEvent event) -> {
+                            //Course data = getTableView().getItems().get(getIndex());
+                            //System.out.println("selectedData: " + data);
+                        });
+                    }
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(btn);
+                        }
+                    }
+                };
+                return cell;
+            }
+        };
+
+        colBtn.setCellFactory(cellFactory);
+
+        coursesTableView.getColumns().add(colBtn);
+
     }
 }

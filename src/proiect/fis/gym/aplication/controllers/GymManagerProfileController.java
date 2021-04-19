@@ -118,7 +118,7 @@ public class GymManagerProfileController {
             String path = "../fxml/" + fxmlLoaded;
             //System.out.println(path);
             Parent viewRegisterRoot = FXMLLoader.load(getClass().getResource(path));
-            Scene scene = new Scene(viewRegisterRoot, 800, 800);
+            Scene scene = new Scene(viewRegisterRoot, 880, 800);
             stage.setScene(scene);
        } catch (IOException e) {
             e.printStackTrace();
