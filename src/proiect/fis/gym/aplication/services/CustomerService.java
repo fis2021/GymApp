@@ -55,20 +55,26 @@ public class CustomerService {
         enoughMoney(cardOwnerName,expM,expY,cardN,CVC,duration);
         for (Customer customer : customerRepository.find()) {
             if (Objects.equals(username, customer.getUsername())) {
-                customer.setGym(gym);
+                int i;
+                if(gym.equals("Smartfit"))
+                    i=0;
+                else if(gym.equals("Gym one"))
+                    i=1;
+                else i=2;
                 LocalDate currentdate= LocalDate.now();
-                String m = ""+currentdate.getMonth();
-                if(!(m.equals("DECEMBER"))) {
-                    customer.setSubscriptionExpirationDay("" + currentdate.getDayOfMonth());
-                    customer.setSubscriptionExpirationYear("" + currentdate.getYear());
+                if(duration.equals("1 month - 50$")) {
                     currentdate = currentdate.plusMonths(1);
-                    customer.setSubscriptionExpirationMonth("" + currentdate.getMonth());
-                }else if(m.equals("DECEMBER")){
-                    customer.setSubscriptionExpirationDay("" + currentdate.getDayOfMonth());
-                    currentdate = currentdate.plusMonths(1);
-                    customer.setSubscriptionExpirationYear("" + currentdate.getYear());
-                    customer.setSubscriptionExpirationMonth("" + currentdate.getMonth());
+                }else if(duration.equals("3 months - 130$")){
+                    currentdate = currentdate.plusMonths(3);
+                }else if(duration.equals("6 months - 240$")){
+                    currentdate = currentdate.plusMonths(6);
+                }else if(duration.equals("1 year - 440$")){
+                    currentdate = currentdate.plusMonths(12);
                 }
+                customer.setSubscriptionExpirationDay(i,"" + currentdate.getDayOfMonth());
+                customer.setSubscriptionExpirationYear(i,"" + currentdate.getYear());
+                customer.setSubscriptionExpirationMonth(i,"" + currentdate.getMonth());
+                customerRepository.update(customer);
                 break;
             }
         }
