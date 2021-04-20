@@ -1,15 +1,16 @@
 package proiect.fis.gym.aplication.services;
 
-import javafx.fxml.FXML;
 import org.dizitart.no2.Nitrite;
-import org.dizitart.no2.event.ChangeInfo;
-import org.dizitart.no2.event.ChangeListener;
-import org.dizitart.no2.event.ChangeType;
+import org.dizitart.no2.NitriteId;
+import org.dizitart.no2.WriteResult;
 import org.dizitart.no2.objects.ObjectRepository;
+import org.dizitart.no2.util.Iterables;
 import proiect.fis.gym.aplication.exceptions.*;
+import proiect.fis.gym.aplication.model.Bank;
 import proiect.fis.gym.aplication.model.Customer;
 
-import java.util.regex.Matcher;
+import javax.swing.plaf.synth.Region;
+import java.time.LocalDate;
 import java.util.regex.Pattern;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -21,6 +22,7 @@ import static proiect.fis.gym.aplication.services.FileSystemService.getPathToFil
 public class CustomerService {
 
     private static ObjectRepository<Customer> customerRepository;
+    private static ObjectRepository<Bank> bankRepository;
 
     public static void initDatabase() {
         Nitrite database = Nitrite.builder()
@@ -28,7 +30,7 @@ public class CustomerService {
                 .openOrCreate("Geo", "Rares");
 
         customerRepository = database.getRepository(Customer.class);
-
+        bankRepository=BankService.getBankRepository();
     }
 
     public static ObjectRepository<Customer> getCustomerRepository(){
@@ -43,6 +45,93 @@ public class CustomerService {
         checkEmailIsValid(email);
         checkPhoneNumber(phoneNumber);
         customerRepository.insert(new Customer(username, encodePassword(username, password), role, firstName, lastName, phoneNumber, email));
+    }
+
+    public static void makePayment(String gym,String cardOwnerName,String expM,String expY,String cardN,String CVC,String duration,String username) throws incorectCardDetailsException, IncorectCardNumberException, IncorectCVCException,NotEnoughMoneyException,CheckPaymentFieldNotEmptyException{
+        paymentFieldsException(cardOwnerName,expM,expY,cardN,CVC,username);
+        CVCException(CVC);
+        cardNumberException(cardN);
+        cardDetailsException(cardOwnerName,expM,expY,cardN,CVC);
+        enoughMoney(cardOwnerName,expM,expY,cardN,CVC,duration);
+        for (Customer customer : customerRepository.find()) {
+            if (Objects.equals(username, customer.getUsername())) {
+                int i;
+                if(gym.equals("Smartfit"))
+                    i=0;
+                else if(gym.equals("Gym one"))
+                    i=1;
+                else i=2;
+                LocalDate currentdate= LocalDate.now();
+                if(duration.equals("1 month - 50$")) {
+                    currentdate = currentdate.plusMonths(1);
+                }else if(duration.equals("3 months - 130$")){
+                    currentdate = currentdate.plusMonths(3);
+                }else if(duration.equals("6 months - 240$")){
+                    currentdate = currentdate.plusMonths(6);
+                }else if(duration.equals("1 year - 440$")){
+                    currentdate = currentdate.plusMonths(12);
+                }
+                customer.setSubscriptionExpirationDay(i,"" + currentdate.getDayOfMonth());
+                customer.setSubscriptionExpirationYear(i,"" + currentdate.getYear());
+                customer.setSubscriptionExpirationMonth(i,"" + currentdate.getMonth());
+                customerRepository.update(customer);
+                break;
+            }
+        }
+    }
+
+    private static void paymentFieldsException(String cardOwnerName,String expM,String expY,String cardN,String CVC,String username) throws CheckPaymentFieldNotEmptyException{
+        if(cardOwnerName.isEmpty() || expM.isEmpty() || expY.isEmpty() || cardN.isEmpty() || CVC.isEmpty() || username.isEmpty()) {
+            throw new CheckPaymentFieldNotEmptyException();
+        }
+    }
+
+    private static void enoughMoney(String cardOwnerName,String expM,String expY,String cardN,String CVC,String duration) throws NotEnoughMoneyException{
+        float a=0;
+        if(duration.equals("1 month - 50$"))
+            a=50;
+        if(duration.equals("3 months - 130$"))
+            a=130;
+        if(duration.equals("6 months - 240$"))
+            a=240;
+        if(duration.equals("1 year - 440$"))
+            a=440;
+
+        for(Bank bank : bankRepository.find()){
+            if(cardOwnerName.equals(bank.getNumeDetinator()) && expM.equals(bank.getLuna()) && expY.equals(bank.getAnu()) && cardN.equals(bank.getNumarCard()) && CVC.equals(bank.getCVC())){
+                if((a > Float.parseFloat(bank.getSum()))){
+                    throw new NotEnoughMoneyException();
+                }else{
+                    bank.setSum(Float.toString(Float.parseFloat(bank.getSum())-a) );
+                   bankRepository.update(bank);
+                }
+            }
+        }
+    }
+
+    private static void CVCException(String CVC) throws IncorectCVCException{
+        if(CVC.length()!=3){
+            throw new IncorectCVCException();
+        }
+    }
+
+    private static void cardNumberException(String cardN) throws IncorectCardNumberException{
+        String regex= "^\\d{16}$";
+        Pattern pat = Pattern.compile(regex);
+        if( !(pat.matcher(cardN).matches()) )
+            throw new IncorectCardNumberException();
+    }
+
+    private static void cardDetailsException(String cardOwnerName,String expM,String expY,String cardN,String CVC) throws incorectCardDetailsException {
+        int ok=0;
+        for(Bank bank : bankRepository.find()){
+            if(cardOwnerName.equals(bank.getNumeDetinator()) && expM.equals(bank.getLuna()) && expY.equals(bank.getAnu()) && cardN.equals(bank.getNumarCard()) && CVC.equals(bank.getCVC())){
+                ok=1;
+                break;
+            }
+        }
+        if(ok==0)
+            throw new incorectCardDetailsException();
     }
 
     private static void checkPhoneNumber(String phoneNumber) throws validPhoneNumberException{

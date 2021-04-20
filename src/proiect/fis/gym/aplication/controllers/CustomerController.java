@@ -4,20 +4,32 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import proiect.fis.gym.aplication.exceptions.*;
+import proiect.fis.gym.aplication.services.BankService;
+import proiect.fis.gym.aplication.services.CustomerService;
 
 import java.io.IOException;
 
 import static javafx.fxml.FXMLLoader.load;
 
-public class CustomerController {
+public class CustomerController extends RegisterController{
 
     @FXML
     private Text sceneChanger;
 
+    @FXML
+    private ChoiceBox<String> selectGym,year,month,duration;
+
+    @FXML
+    private TextField ownerName,cardNumber,cvc,username;
+
+    @FXML
+    private Text paymentMessage;
 
     @FXML
     public void handleCreateSubscription(){
@@ -29,5 +41,20 @@ public class CustomerController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+
+
+    public void handleMakePaymentButton(){
+        try {
+            CustomerService.makePayment(selectGym.getValue(),ownerName.getText(),month.getValue(),year.getValue(),cardNumber.getText(),cvc.getText(),duration.getValue(),username.getText());
+            paymentMessage.setText("Payment made succesfully");
+        } catch (incorectCardDetailsException | IncorectCardNumberException | IncorectCVCException | NotEnoughMoneyException | CheckPaymentFieldNotEmptyException e) {
+            paymentMessage.setText(e.getMessage());
+        }
+    }
+
+    public void handleBackToLoginButton(){
+        handleBackToLoginButtonLogic(selectGym);
     }
 }
