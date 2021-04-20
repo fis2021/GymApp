@@ -109,12 +109,6 @@ public class CustomerService {
         }
     }
 
-    Bank WriteToDB(Bank bnk){
-        WriteResult writeResult = bankRepository.insert(bnk);
-        NitriteId nitriteId = Iterables.firstOrDefault(writeResult);
-        return bankRepository.getById(nitriteId);
-    }
-
     private static void CVCException(String CVC) throws IncorectCVCException{
         if(CVC.length()!=3){
             throw new IncorectCVCException();
