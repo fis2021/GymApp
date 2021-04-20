@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="434.0" prefWidth="651.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proiect.fis.gym.aplication.controllers.ViewCoursesController">
+<AnchorPane prefHeight="614.0" prefWidth="769.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proiect.fis.gym.aplication.controllers.ViewCoursesController">
    <children>
 
       <Label layoutX="37.0" layoutY="62.0" text="Courses:">
@@ -12,9 +12,12 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Button fx:id="backToProfileButton" layoutX="408.0" layoutY="59.0" mnemonicParsing="false" onAction="#handleBackToProfileButton" prefHeight="26.0" prefWidth="151.0" text="Back to profile" />
+      <Button fx:id="backToProfileButton" layoutX="590.0" layoutY="57.0" mnemonicParsing="false" onAction="#handleBackToProfileButton" prefHeight="26.0" prefWidth="151.0" text="Back to profile">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
 
-      <StackPane layoutX="36.0" layoutY="120.0" prefHeight="249.0" prefWidth="600">
+      <StackPane layoutX="36.0" layoutY="120.0" prefHeight="400" prefWidth="705">
          <children>
             <TableView fx:id="coursesTableView" prefHeight="269.0" prefWidth="567.0">
               <columns>
@@ -23,6 +26,30 @@
             </TableView>
          </children>
       </StackPane>
+
+      <Button fx:id="editButton" layoutX="181.0" layoutY="59.0" mnemonicParsing="false" onAction="#handleEditButton" prefHeight="26.0" prefWidth="66.0" text="EDIT">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+
+      <Button fx:id="stopEditButton" disable="true" layoutX="371.0" layoutY="57.0" mnemonicParsing="false" onAction="#handleStopEditButton" text="STOP EDIT">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+
+      <Label
+              fx:id="warningLabel"
+              alignment="CENTER_RIGHT"
+              layoutX="431.0" layoutY="549.0" prefHeight="31.0" prefWidth="310.0"
+              text="warning Label"
+              visible="false"
+      >
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
 
    </children>
 </AnchorPane>

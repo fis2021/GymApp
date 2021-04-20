@@ -46,6 +46,16 @@ public class GymManager {
         return false;
     }
 
+    public Course getCourseFromList(Course toBeFound){
+        for(Course course:courseList){
+            if(course.equals(toBeFound)){
+                return course;
+            }
+        }
+
+        return null;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

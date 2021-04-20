@@ -4,6 +4,7 @@ import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import proiect.fis.gym.aplication.exceptions.FieldsAreNotEmptyException;
+import proiect.fis.gym.aplication.model.GymManager;
 
 
 public class CommonFunctionality {
@@ -19,4 +20,5 @@ public class CommonFunctionality {
         }
         return true;
     }
+
 }

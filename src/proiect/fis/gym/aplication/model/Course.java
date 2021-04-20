@@ -66,11 +66,4 @@ public class Course {
         this.schedule = schedule;
     }
 
-    /*public Button getEditButton() {
-        return editButton;
-    }
-
-    public void setEditButton(Button editButton) {
-        this.editButton = editButton;
-    }*/
 }
