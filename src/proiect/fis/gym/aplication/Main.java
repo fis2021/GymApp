@@ -24,6 +24,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         initDirectory();
+        BankService.initDatabase();
         AdminService.initDatabase();
         CustomerService.initDatabase();
         GymManagerService.initDatabase();
