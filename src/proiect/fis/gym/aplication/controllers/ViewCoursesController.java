@@ -10,7 +10,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.text.Font;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import javafx.util.Callback;
 import proiect.fis.gym.aplication.exceptions.CourseAlreadyExistException;
 import proiect.fis.gym.aplication.exceptions.FieldsAreNotEmptyException;
@@ -22,6 +25,8 @@ import proiect.fis.gym.aplication.services.GymManagerService;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.Observable;
+
+import static javafx.geometry.Pos.CENTER;
 
 public class ViewCoursesController {
 
@@ -35,10 +40,13 @@ public class ViewCoursesController {
     public Button stopEditButton;
     @FXML
     public Label warningLabel;
+    @FXML
+    public Button yesButton;
+    @FXML
+    public Button noButton;
     TableColumn<Course, String> column1 = new TableColumn<>("Course");
     TableColumn<Course, String> column2 = new TableColumn<>("Trainer");
     TableColumn<Course, String> column3 = new TableColumn<>("Schedule");
-
 
     @FXML
     private void initialize(){
@@ -78,6 +86,7 @@ public class ViewCoursesController {
             coursesTableView.getColumns().add(column1);
             coursesTableView.getColumns().add(column2);
             coursesTableView.getColumns().add(column3);
+            addButtonToTable("DELETE");
         }
 
         if(manager != null){
@@ -184,4 +193,50 @@ public class ViewCoursesController {
         coursesTableView.setEditable(false);
         stopEditButton.setDisable(true);
     }
+
+    private void addButtonToTable(String buttonText) {
+        TableColumn<Course, Void> colBtn = new TableColumn();
+
+        Callback<TableColumn<Course, Void>, TableCell<Course, Void>> cellFactory = new Callback<TableColumn<Course, Void>, TableCell<Course, Void>>() {
+            @Override
+            public TableCell<Course, Void> call(final TableColumn<Course, Void> param) {
+                final TableCell<Course, Void> cell = new TableCell<Course, Void>() {
+
+                    //functionalitate pt butonul de delete:
+                    private final Button btn = new Button(buttonText);
+                    {
+                        btn.setOnAction((ActionEvent event) -> {
+                            //stergem din baza de date:
+                            GymManager manager = GymManagerProfileController.getManagerFromDatabase(LoginController.getCurrentUsername());
+                            Course deletedCourse = getTableView().getItems().get(getIndex());
+
+                            if(manager.findCourse(deletedCourse)){
+                                manager.getCourseList().remove(manager.getCourseFromList(deletedCourse));
+                                GymManagerService.getGymManagerRepository().update(manager);
+                            }
+                            //stergem din tabel:
+                            coursesTableView.getItems().remove(deletedCourse);
+                        });
+                    }
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(btn);
+                        }
+                    }
+                };
+                return cell;
+            }
+        };
+
+        colBtn.setCellFactory(cellFactory);
+
+        coursesTableView.getColumns().add(colBtn);
+
+    }
+
 }
