@@ -71,6 +71,7 @@ public class CustomerService {
                 }else if(duration.equals("1 year - 440$")){
                     currentdate = currentdate.plusMonths(12);
                 }
+                customer.setGym(i,gym);
                 customer.setSubscriptionExpirationDay(i,"" + currentdate.getDayOfMonth());
                 customer.setSubscriptionExpirationYear(i,"" + currentdate.getYear());
                 customer.setSubscriptionExpirationMonth(i,"" + currentdate.getMonth());
