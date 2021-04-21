@@ -44,16 +44,16 @@ public class LoginController {
             c=LoginService.login(usernameField.getText(), passwordField.getText());
             if(c==1) {
             Stage stage = (Stage) usernameField.getScene().getWindow();
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../fxml/CustomerAfterLoginPage.fxml")), 800, 800));
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../fxml/CustomerAfterLoginPage.fxml")), 800, 500));
             }
             if(c==2){
                 Stage stage = (Stage) usernameField.getScene().getWindow();
-                stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../fxml/AdminAfterLoginPage.fxml")), 700, 500));
+                stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../fxml/AdminAfterLoginPage.fxml")), 800, 500));
             }
             if(c==3){
                 //currentUsername = usernameField.getText();
                 Stage stage = (Stage) usernameField.getScene().getWindow();
-                stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../fxml/GymManagerProfile.fxml")), 800, 800));
+                stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../fxml/GymManagerProfile.fxml")), 800, 500));
             }
 
        } catch (IncorectLoginException e) {
