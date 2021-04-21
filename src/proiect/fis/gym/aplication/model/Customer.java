@@ -123,8 +123,8 @@ public class Customer {
         return gym;
     }
 
-    public void setGym(String[] gym) {
-        this.gym = gym;
+    public void setGym(int i,String gym) {
+        this.gym[i] = gym;
     }
 
     public int getK() {
