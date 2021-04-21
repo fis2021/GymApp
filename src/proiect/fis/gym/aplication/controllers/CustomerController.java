@@ -6,11 +6,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import proiect.fis.gym.aplication.exceptions.*;
-import proiect.fis.gym.aplication.services.BankService;
 import proiect.fis.gym.aplication.services.CustomerService;
 
 import java.io.IOException;
@@ -37,6 +35,41 @@ public class CustomerController extends RegisterController{
             Stage stage =(Stage) sceneChanger.getScene().getWindow();
             Parent viewRegisterRoot = FXMLLoader.load(getClass().getResource("../fxml/MakePayment.fxml"));
             Scene scene = new Scene(viewRegisterRoot, 700, 500);
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+    public void handleViewCoursesButton1() {
+        try {
+            Stage stage =(Stage) sceneChanger.getScene().getWindow();
+            Parent viewRegisterRoot = FXMLLoader.load(getClass().getResource("../fxml/SmartfitDetails.fxml"));
+            Scene scene = new Scene(viewRegisterRoot, 880, 800);
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void handleViewCoursesButton2() {
+        try {
+            Stage stage =(Stage) sceneChanger.getScene().getWindow();
+            Parent viewRegisterRoot = FXMLLoader.load(getClass().getResource("../fxml/IguanaDetails.fxml"));
+            Scene scene = new Scene(viewRegisterRoot, 880, 800);
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void handleViewCoursesButton3() {
+        try {
+            Stage stage =(Stage) sceneChanger.getScene().getWindow();
+            Parent viewRegisterRoot = FXMLLoader.load(getClass().getResource("../fxml/GymOneDetails.fxml"));
+            Scene scene = new Scene(viewRegisterRoot, 880, 800);
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();

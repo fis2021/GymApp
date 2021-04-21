@@ -11,7 +11,7 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proiect.fis.gym.aplication.controllers.CustomerController">
 
     <children>
-        <Button layoutX="80.0" layoutY="81.0" mnemonicParsing="false">
+        <Button onAction="#handleViewCoursesButton1" layoutX="80.0" layoutY="81.0" mnemonicParsing="false">
             <font>
                 <Font size="3.0" />
             </font>
@@ -70,7 +70,7 @@
         </font></Label>
 
     <children>
-        <Button layoutX="300.0" layoutY="81.0" mnemonicParsing="false">
+        <Button onAction="#handleViewCoursesButton2" layoutX="300.0" layoutY="81.0" mnemonicParsing="false">
             <font>
                 <Font size="3.0" />
             </font>
@@ -129,14 +129,14 @@
         </font></Label>
 
     <children>
-        <Button layoutX="550.0" layoutY="81.0" mnemonicParsing="false">
+        <Button onAction="#handleViewCoursesButton3" layoutX="550.0" layoutY="81.0" mnemonicParsing="false">
             <font>
                 <Font size="3.0" />
             </font>
             <graphic>
                 <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="https://lh3.googleusercontent.com/IwPcon-nAbZdB7x9QLWwRpIK0JEWkyBuhtXwboH4t46VUjhgG7M-BuqTSU3vMwEfvhOqHAg=s113" />
+                        <Image url="https://lh3.googleusercontent.com/iX3gu_j3hxS9VyaORVHCMxz42XElgdlVurwZP81GIl-0IOwbVW-0DFsPaNlU8gYIPra0VQ=s113" />
                     </image>
                 </ImageView>
             </graphic>
