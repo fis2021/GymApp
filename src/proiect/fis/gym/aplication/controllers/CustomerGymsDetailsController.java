@@ -17,7 +17,7 @@ import proiect.fis.gym.aplication.services.GymManagerService;
 
 import java.io.IOException;
 
-public class CustomerGymsDetailsController {
+public class CustomerGymsDetailsController{
 
     @FXML
     public TableView coursesTableView;
@@ -61,6 +61,28 @@ public class CustomerGymsDetailsController {
             for(Course course: manager.getCourseList()){
                 coursesTableView.getItems().add(course);
             }
+        }
+    }
+
+    public void backToLogin(){
+        try {
+            Stage stage =(Stage) warningLabel.getScene().getWindow();
+            Parent viewRegisterRoot = FXMLLoader.load(getClass().getResource("../fxml/login.fxml"));
+            Scene scene = new Scene(viewRegisterRoot, 700, 500);
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void handleBackToMainPageButton(){
+        try {
+            Stage stage =(Stage) warningLabel.getScene().getWindow();
+            Parent viewRegisterRoot = FXMLLoader.load(getClass().getResource("../fxml/CustomerAfterLoginPage.fxml"));
+            Scene scene = new Scene(viewRegisterRoot, 800, 800);
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

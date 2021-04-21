@@ -34,6 +34,8 @@
                 <Font size="15.0" />
             </font>
         </Label>
+        <Button onAction="#backToLogin" layoutX="728.0" layoutY="50.0" mnemonicParsing="false" text="Log out" />
+        <Button onAction="#handleBackToMainPageButton" layoutX="599.0" layoutY="50.0" mnemonicParsing="false" text="Back to main page" />
     </children>
 
 </AnchorPane>
