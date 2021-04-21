@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="proiect.fis.gym.aplication.controllers.GymOneDatailsController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <children>
+        <Label layoutX="37.0" layoutY="62.0" text="Courses:">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </Label>
+
+        <!--<StackPane layoutX="36.0" layoutY="120.0" prefHeight="400" prefWidth="815">
+           <children>-->
+        <TableView fx:id="coursesTableView" layoutX="36.0" layoutY="120.0" prefHeight="480.0" prefWidth="807.0">
+            <columns>
+
+            </columns>
+        </TableView>
+        <!-- </children>
+      </StackPane>-->
+
+        <Label fx:id="warningLabel" alignment="CENTER_RIGHT" layoutX="470" layoutY="630" prefHeight="31.0" prefWidth="310.0" text="warning Label" visible="false">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </Label>
+        <Button onAction="#backToLogin" layoutX="728.0" layoutY="50.0" mnemonicParsing="false" text="Log out" />
+        <Button onAction="#handleBackToMainPageButton" layoutX="599.0" layoutY="50.0" mnemonicParsing="false" text="Back to main page" />
+    </children>
+
+</AnchorPane>
