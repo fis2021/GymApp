@@ -72,9 +72,7 @@ public class CustomerService {
                     currentdate = currentdate.plusMonths(12);
                 }
                 customer.setGym(i,gym);
-                customer.setSubscriptionExpirationDay(i,"" + currentdate.getDayOfMonth());
-                customer.setSubscriptionExpirationYear(i,"" + currentdate.getYear());
-                customer.setSubscriptionExpirationMonth(i,"" + currentdate.getMonth());
+                customer.setDate(i,currentdate);
                 customerRepository.update(customer);
                 break;
             }

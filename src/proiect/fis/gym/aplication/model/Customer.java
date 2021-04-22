@@ -1,5 +1,5 @@
 package proiect.fis.gym.aplication.model;
-
+import java.time.LocalDate;
 import org.dizitart.no2.objects.Id;
 
 import java.util.Arrays;
@@ -14,9 +14,7 @@ public class Customer {
     private String lastName;
     private String phoneNumber;
     private String email;
-    private String[] subscriptionExpirationDay= new String[3];
-    private String[] subscriptionExpirationMonth= new String [3];
-    private String[] subscriptionExpirationYear= new String[3];
+    private LocalDate[] date=new LocalDate[3];
     private String[] gym=new String[3];
     private final int k=3;
 
@@ -32,9 +30,7 @@ public class Customer {
         this.email = email;
         for(int i=0;i<k;i++) {
             gym[i] = "";
-            subscriptionExpirationDay[i] = "";
-            subscriptionExpirationMonth[i] = "";
-            subscriptionExpirationYear[i] = "";
+            date[i]=null;
         }
 
     }
@@ -95,28 +91,12 @@ public class Customer {
         this.email = email;
     }
 
-    public String[] getSubscriptionExpirationDay() {
-        return subscriptionExpirationDay;
-    }
+   public LocalDate[] getDate(){
+        return date;
+   }
 
-    public void setSubscriptionExpirationDay(int i,String subscriptionExpirationDay) {
-        this.subscriptionExpirationDay[i] = subscriptionExpirationDay;
-    }
-
-    public String[] getSubscriptionExpirationMonth() {
-        return subscriptionExpirationMonth;
-    }
-
-    public void setSubscriptionExpirationMonth(int i,String subscriptionExpirationMonth) {
-        this.subscriptionExpirationMonth[i] = subscriptionExpirationMonth;
-    }
-
-    public String[] getSubscriptionExpirationYear() {
-        return subscriptionExpirationYear;
-    }
-
-    public void setSubscriptionExpirationYear(int i,String subscriptionExpirationYear) {
-        this.subscriptionExpirationYear[i] = subscriptionExpirationYear;
+    public void setDate(int i,LocalDate date){
+        this.date[i]=date;
     }
 
     public String[] getGym() {
@@ -132,6 +112,22 @@ public class Customer {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Customer customer = (Customer) o;
+        return k == customer.k && Objects.equals(username, customer.username) && Objects.equals(password, customer.password) && Objects.equals(role, customer.role) && Objects.equals(firstName, customer.firstName) && Objects.equals(lastName, customer.lastName) && Objects.equals(phoneNumber, customer.phoneNumber) && Objects.equals(email, customer.email) && Arrays.equals(date, customer.date) && Arrays.equals(gym, customer.gym);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(username, password, role, firstName, lastName, phoneNumber, email, k);
+        result = 31 * result + Arrays.hashCode(date);
+        result = 31 * result + Arrays.hashCode(gym);
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "Customer{" +
                 "username='" + username + '\'' +
@@ -141,29 +137,9 @@ public class Customer {
                 ", lastName='" + lastName + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
-                ", subscriptionExpirationDay=" + Arrays.toString(subscriptionExpirationDay) +
-                ", subscriptionExpirationMonth=" + Arrays.toString(subscriptionExpirationMonth) +
-                ", subscriptionExpirationYear=" + Arrays.toString(subscriptionExpirationYear) +
+                ", date=" + Arrays.toString(date) +
                 ", gym=" + Arrays.toString(gym) +
                 ", k=" + k +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Customer customer = (Customer) o;
-        return k == customer.k && Objects.equals(username, customer.username) && Objects.equals(password, customer.password) && Objects.equals(role, customer.role) && Objects.equals(firstName, customer.firstName) && Objects.equals(lastName, customer.lastName) && Objects.equals(phoneNumber, customer.phoneNumber) && Objects.equals(email, customer.email) && Arrays.equals(subscriptionExpirationDay, customer.subscriptionExpirationDay) && Arrays.equals(subscriptionExpirationMonth, customer.subscriptionExpirationMonth) && Arrays.equals(subscriptionExpirationYear, customer.subscriptionExpirationYear) && Arrays.equals(gym, customer.gym);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = Objects.hash(username, password, role, firstName, lastName, phoneNumber, email, k);
-        result = 31 * result + Arrays.hashCode(subscriptionExpirationDay);
-        result = 31 * result + Arrays.hashCode(subscriptionExpirationMonth);
-        result = 31 * result + Arrays.hashCode(subscriptionExpirationYear);
-        result = 31 * result + Arrays.hashCode(gym);
-        return result;
     }
 }
