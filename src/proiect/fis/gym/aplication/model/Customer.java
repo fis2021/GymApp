@@ -1,7 +1,13 @@
 package proiect.fis.gym.aplication.model;
 import java.time.LocalDate;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import org.dizitart.no2.objects.Id;
 
+import javax.validation.constraints.Past;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -99,11 +105,23 @@ public class Customer {
         this.date[i]=date;
     }
 
-    public String[] getGym() {
-        return gym;
+    public LocalDate getDate(int i,LocalDate[] date){
+        return date[i];
     }
 
-    public void setGym(int i,String gym) {
+    public LocalDate[] getDate2(){
+       return date;
+   }
+
+    public String getGym(int i,String[] gym) {
+        return gym[i];
+    }
+
+   public String[] getGym2() {
+       return gym;
+    }
+
+    public void setGym(int i, String gym) {
         this.gym[i] = gym;
     }
 

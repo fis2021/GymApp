@@ -1,5 +1,6 @@
 package proiect.fis.gym.aplication;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,6 +9,9 @@ import javafx.stage.Stage;
 
 import proiect.fis.gym.aplication.model.GymManager;
 import proiect.fis.gym.aplication.services.*;
+
+import java.time.LocalDate;
+
 
 import proiect.fis.gym.aplication.services.AdminService;
 import proiect.fis.gym.aplication.services.FileSystemService;

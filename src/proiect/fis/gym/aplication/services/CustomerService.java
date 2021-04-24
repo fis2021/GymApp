@@ -47,6 +47,18 @@ public class CustomerService {
         customerRepository.insert(new Customer(username, encodePassword(username, password), role, firstName, lastName, phoneNumber, email));
     }
 
+    public static String showSubscriptions(Customer customer){
+        String tmp = "";
+            for(int i=0;i<3;i++){
+                if( customer.getGym(i,customer.getGym2())!=null && customer.getDate(i,customer.getDate2())!=null){
+                    tmp += customer.getGym(i,customer.getGym2()) + " : " + customer.getDate(i,customer.getDate2()) + "\n";
+                }
+            }
+            if(tmp.equals(""))
+                tmp +="No subscriptions";
+            return tmp;
+    }
+
     public static void makePayment(String gym,String cardOwnerName,String expM,String expY,String cardN,String CVC,String duration,String username) throws incorectCardDetailsException, IncorectCardNumberException, IncorectCVCException,NotEnoughMoneyException,CheckPaymentFieldNotEmptyException{
         paymentFieldsException(cardOwnerName,expM,expY,cardN,CVC,username);
         CVCException(CVC);
