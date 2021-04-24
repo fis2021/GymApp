@@ -9,7 +9,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import proiect.fis.gym.aplication.exceptions.*;
+import proiect.fis.gym.aplication.model.Customer;
+import proiect.fis.gym.aplication.model.GymManager;
 import proiect.fis.gym.aplication.services.CustomerService;
+import proiect.fis.gym.aplication.services.GymManagerService;
 
 import java.io.IOException;
 
@@ -28,6 +31,9 @@ public class CustomerController extends RegisterController{
 
     @FXML
     private Text paymentMessage;
+
+    @FXML
+    private Text customerMessage;
 
     @FXML
     public void handleCreateSubscription(){
@@ -106,6 +112,21 @@ public class CustomerController extends RegisterController{
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static Customer getCustomerFromDatabase(String username){
+        for(Customer customer : CustomerService.getCustomerRepository().find()) {
+            if (username.equals(customer.getUsername())) {
+                return customer;
+            }
+        }
+        return null;
+    }
+
+    public void handleViewSubscriptionsButton(){
+        Customer customer = CustomerController.getCustomerFromDatabase(LoginController.getCurrentUsername());
+        String a = CustomerService.showSubscriptions(customer);
+        customerMessage.setText(a);
     }
 
     public void handleBackToMainPageButton(){

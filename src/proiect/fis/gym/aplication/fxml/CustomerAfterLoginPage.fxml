@@ -194,6 +194,8 @@
     <Text fx:id="sceneChanger" text="ok" />
    <Button onAction="#handleCreateSubscription" layoutX="67.0" layoutY="360.0" mnemonicParsing="false" text="Create subscription" />
    <Button layoutX="232.0" layoutY="360.0" mnemonicParsing="false" text="Extend subscription" />
-   <Button layoutX="397.0" layoutY="360.0" mnemonicParsing="false" text="View active subscriptions" />
+   <Button onAction="#handleViewSubscriptionsButton" layoutX="397.0" layoutY="360.0" mnemonicParsing="false" text="View active subscriptions" />
     <Button onAction="#backToLogin" layoutX="592.0" layoutY="360.0" mnemonicParsing="false" text="Log out" />
+
+     <Text fx:id="customerMessage" layoutX="330" layoutY="450"/>
 </AnchorPane>
