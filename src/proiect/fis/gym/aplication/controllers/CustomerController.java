@@ -93,6 +93,17 @@ public class CustomerController extends RegisterController{
         }
     }
 
+    public void handleExtendButton(){
+        try {
+            Stage stage =(Stage) sceneChanger.getScene().getWindow();
+            Parent viewRegisterRoot = FXMLLoader.load(getClass().getResource("../fxml/ExtendSubscription.fxml"));
+            Scene scene = new Scene(viewRegisterRoot, 700, 500);
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static Customer getCustomerFromDatabase(String username){
         for(Customer customer : CustomerService.getCustomerRepository().find()) {
             if (username.equals(customer.getUsername())) {
@@ -122,9 +133,18 @@ public class CustomerController extends RegisterController{
 
     public void handleMakePaymentButton(){
         try {
-            CustomerService.makePayment(selectGym.getValue(),ownerName.getText(),month.getValue(),year.getValue(),cardNumber.getText(),cvc.getText(),duration.getValue(),username.getText());
+            CustomerService.makePayment(selectGym.getValue(),ownerName.getText(),month.getValue(),year.getValue(),cardNumber.getText(),cvc.getText(),duration.getValue());
             paymentMessage.setText("Payment made succesfully");
         } catch (incorectCardDetailsException | IncorectCardNumberException | IncorectCVCException | NotEnoughMoneyException | CheckPaymentFieldNotEmptyException e) {
+            paymentMessage.setText(e.getMessage());
+        }
+    }
+
+    public void handleExtendSubscriptionButton(){
+        try {
+            CustomerService.extendSubscription(selectGym.getValue(),ownerName.getText(),month.getValue(),year.getValue(),cardNumber.getText(),cvc.getText(),duration.getValue());
+            paymentMessage.setText("Subscription extended successfully");
+        } catch (noActiveSubscriptionException| incorectCardDetailsException | IncorectCardNumberException | IncorectCVCException | NotEnoughMoneyException | CheckPaymentFieldNotEmptyException e) {
             paymentMessage.setText(e.getMessage());
         }
     }

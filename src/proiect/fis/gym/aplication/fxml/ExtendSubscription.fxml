@@ -80,7 +80,7 @@
 
     <TextField fx:id="cvc" GridPane.columnIndex="1" GridPane.rowIndex="6" />
 
-    <Label text="Subscription duration:" GridPane.columnIndex="0" GridPane.rowIndex="7" />
+    <Label text="Extend duration:" GridPane.columnIndex="0" GridPane.rowIndex="7" />
 
     <ChoiceBox fx:id="duration" value="1 month - 50$" GridPane.columnIndex="1" GridPane.rowIndex="7">
         <items>
@@ -94,31 +94,31 @@
     </ChoiceBox>
 
     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="9">
-        <Button onAction="#handleMakePaymentButton" text="Make payment" />
+        <Button onAction="#handleExtendSubscriptionButton" text="Extend subscription" />
     </HBox>
 
     <HBox alignment="bottom_left" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="9">
         <Button onAction="#handleBackToLoginButton" text="Log out" />
-      <Button onAction="#handleBackToMainPageButton" mnemonicParsing="false" text="Back to main page"/>
+        <Button onAction="#handleBackToMainPageButton" mnemonicParsing="false" text="Back to main page"/>
     </HBox>
 
     <Text fx:id="paymentMessage" GridPane.columnIndex="0" GridPane.rowIndex="10" />
-   <columnConstraints>
-      <ColumnConstraints />
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-   </rowConstraints>
+    <columnConstraints>
+        <ColumnConstraints />
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+    </rowConstraints>
 
 </GridPane>
