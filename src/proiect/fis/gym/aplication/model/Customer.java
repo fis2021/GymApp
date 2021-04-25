@@ -105,6 +105,8 @@ public class Customer {
         this.date[i]=date;
     }
 
+    public void setDate2(LocalDate[] date){this.date=date;}
+
     public LocalDate getDate(int i,LocalDate[] date){
         return date[i];
     }

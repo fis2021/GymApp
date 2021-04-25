@@ -5,6 +5,7 @@ import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.WriteResult;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.dizitart.no2.util.Iterables;
+import proiect.fis.gym.aplication.controllers.LoginController;
 import proiect.fis.gym.aplication.exceptions.*;
 import proiect.fis.gym.aplication.model.Bank;
 import proiect.fis.gym.aplication.model.Customer;
@@ -59,8 +60,68 @@ public class CustomerService {
             return tmp;
     }
 
-    public static void makePayment(String gym,String cardOwnerName,String expM,String expY,String cardN,String CVC,String duration,String username) throws incorectCardDetailsException, IncorectCardNumberException, IncorectCVCException,NotEnoughMoneyException,CheckPaymentFieldNotEmptyException{
-        paymentFieldsException(cardOwnerName,expM,expY,cardN,CVC,username);
+    public static void noActiveSubscription(String username,String gym) throws noActiveSubscriptionException{
+        for(Customer customer : customerRepository.find()){
+            if(Objects.equals(username,customer.getUsername())){
+                int i;
+                if(gym.equals("Smartfit"))
+                    i=0;
+                else if(gym.equals("Gym one"))
+                    i=1;
+                else i=2;
+                LocalDate date = customer.getDate(i, customer.getDate2());
+                LocalDate currentDate = LocalDate.now();
+                if(date==null)
+                    throw new noActiveSubscriptionException();
+                if(date.getYear() < currentDate.getYear())
+                    throw new noActiveSubscriptionException();
+                if(date.getMonthValue()<currentDate.getMonthValue())
+                    throw new noActiveSubscriptionException();
+                if(date.getMonthValue()==currentDate.getMonthValue() && date.getYear()==currentDate.getYear())
+                    if(date.getDayOfMonth()<currentDate.getDayOfMonth())
+                        throw new noActiveSubscriptionException();
+                break;
+            }
+        }
+    }
+
+    public static void extendSubscription(String gym,String cardOwnerName,String expM,String expY,String cardN,String CVC,String duration)throws noActiveSubscriptionException,incorectCardDetailsException, IncorectCardNumberException, IncorectCVCException,NotEnoughMoneyException,CheckPaymentFieldNotEmptyException{
+        String username = LoginController.getCurrentUsername();
+        noActiveSubscription(username,gym);
+        paymentFieldsException(cardOwnerName,expM,expY,cardN,CVC);
+        CVCException(CVC);
+        cardNumberException(cardN);
+        cardDetailsException(cardOwnerName,expM,expY,cardN,CVC);
+        enoughMoney(cardOwnerName,expM,expY,cardN,CVC,duration);
+        for(Customer customer : customerRepository.find()){
+            if(Objects.equals(username,customer.getUsername())){
+                int i;
+                if(gym.equals("Smartfit"))
+                    i=0;
+                else if(gym.equals("Gym one"))
+                    i=1;
+                else i=2;
+                LocalDate[] date = new LocalDate[3];
+                date = customer.getDate2();
+                if(duration.equals("1 month - 50$")) {
+                    date[i] = date[i].plusMonths(1);
+                }else if(duration.equals("3 months - 130$")){
+                    date[i] = date[i].plusMonths(3);
+                }else if(duration.equals("6 months - 240$")){
+                    date[i] = date[i].plusMonths(6);
+                }else if(duration.equals("1 year - 440$")){
+                    date[i] = date[i].plusMonths(12);
+                }
+                customer.setDate2(date);
+                customerRepository.update(customer);
+                break;
+            }
+        }
+    }
+
+    public static void makePayment(String gym,String cardOwnerName,String expM,String expY,String cardN,String CVC,String duration) throws incorectCardDetailsException, IncorectCardNumberException, IncorectCVCException,NotEnoughMoneyException,CheckPaymentFieldNotEmptyException{
+        String username = LoginController.getCurrentUsername();
+        paymentFieldsException(cardOwnerName,expM,expY,cardN,CVC);
         CVCException(CVC);
         cardNumberException(cardN);
         cardDetailsException(cardOwnerName,expM,expY,cardN,CVC);
@@ -91,8 +152,8 @@ public class CustomerService {
         }
     }
 
-    private static void paymentFieldsException(String cardOwnerName,String expM,String expY,String cardN,String CVC,String username) throws CheckPaymentFieldNotEmptyException{
-        if(cardOwnerName.isEmpty() || expM.isEmpty() || expY.isEmpty() || cardN.isEmpty() || CVC.isEmpty() || username.isEmpty()) {
+    private static void paymentFieldsException(String cardOwnerName,String expM,String expY,String cardN,String CVC) throws CheckPaymentFieldNotEmptyException{
+        if(cardOwnerName.isEmpty() || expM.isEmpty() || expY.isEmpty() || cardN.isEmpty() || CVC.isEmpty()) {
             throw new CheckPaymentFieldNotEmptyException();
         }
     }
