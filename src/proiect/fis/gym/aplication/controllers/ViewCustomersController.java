@@ -11,6 +11,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import proiect.fis.gym.aplication.model.Course;
 import proiect.fis.gym.aplication.model.Customer;
+import proiect.fis.gym.aplication.model.GymManager;
+import proiect.fis.gym.aplication.services.CustomerService;
+import proiect.fis.gym.aplication.services.LoginService;
 
 import java.io.IOException;
 
@@ -34,10 +37,10 @@ public class ViewCustomersController {
         lastNameColumn.setMinWidth(200);
         lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
 
-        phoneColumn.setMinWidth(200);
+        phoneColumn.setMinWidth(130);
         phoneColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
 
-        emailColumn.setMinWidth(200);
+        emailColumn.setMinWidth(270);
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
 
         if(customersTableView.getColumns() != null) {
@@ -45,6 +48,16 @@ public class ViewCustomersController {
             customersTableView.getColumns().add(lastNameColumn);
             customersTableView.getColumns().add(phoneColumn);
             customersTableView.getColumns().add(emailColumn);
+        }
+
+        //adaugam clientii din baza de data in tabel
+        GymManager currentManager = GymManagerProfileController.getManagerFromDatabase(LoginController.getCurrentUsername());
+        for(Customer customer : CustomerService.getCustomerRepository().find()){
+            for(String gym: customer.getGym2()){
+                if(currentManager.getUsername().equals(gym)){
+                    customersTableView.getItems().add(customer);
+                }
+            }
         }
     }
 

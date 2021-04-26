@@ -69,7 +69,6 @@ public class CustomerController extends RegisterController{
         }
     }
 
-
     public void handleViewCoursesButton1() {
         try {
             Stage stage =(Stage) sceneChanger.getScene().getWindow();
