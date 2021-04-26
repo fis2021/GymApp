@@ -47,7 +47,27 @@ public class CustomerController extends RegisterController{
         }
     }
 
+    public void backToLogin(){
+        try {
+            Stage stage =(Stage) sceneChanger.getScene().getWindow();
+            Parent viewRegisterRoot = FXMLLoader.load(getClass().getResource("../fxml/login.fxml"));
+            Scene scene = new Scene(viewRegisterRoot, 700, 500);
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+    public void handleBackToMainPageButton(){
+        try {
+            Stage stage =(Stage) paymentMessage.getScene().getWindow();
+            Parent viewRegisterRoot = FXMLLoader.load(getClass().getResource("../fxml/CustomerAfterLoginPage.fxml"));
+            Scene scene = new Scene(viewRegisterRoot, 800, 800);
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void handleViewCoursesButton1() {
         try {
@@ -82,17 +102,6 @@ public class CustomerController extends RegisterController{
         }
     }
 
-    public void backToLogin(){
-        try {
-            Stage stage =(Stage) sceneChanger.getScene().getWindow();
-            Parent viewRegisterRoot = FXMLLoader.load(getClass().getResource("../fxml/login.fxml"));
-            Scene scene = new Scene(viewRegisterRoot, 700, 500);
-            stage.setScene(scene);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void handleExtendButton(){
         try {
             Stage stage =(Stage) sceneChanger.getScene().getWindow();
@@ -118,18 +127,6 @@ public class CustomerController extends RegisterController{
         String a = CustomerService.showSubscriptions(customer);
         customerMessage.setText(a);
     }
-
-    public void handleBackToMainPageButton(){
-        try {
-            Stage stage =(Stage) paymentMessage.getScene().getWindow();
-            Parent viewRegisterRoot = FXMLLoader.load(getClass().getResource("../fxml/CustomerAfterLoginPage.fxml"));
-            Scene scene = new Scene(viewRegisterRoot, 800, 800);
-            stage.setScene(scene);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 
     public void handleMakePaymentButton(){
         try {

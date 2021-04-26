@@ -64,9 +64,9 @@ public class CustomerService {
         for(Customer customer : customerRepository.find()){
             if(Objects.equals(username,customer.getUsername())){
                 int i;
-                if(gym.equals("Smartfit"))
+                if(gym.equals("SmartFit"))
                     i=0;
-                else if(gym.equals("Gym one"))
+                else if(gym.equals("GymOne"))
                     i=1;
                 else i=2;
                 LocalDate date = customer.getDate(i, customer.getDate2());
@@ -96,9 +96,9 @@ public class CustomerService {
         for(Customer customer : customerRepository.find()){
             if(Objects.equals(username,customer.getUsername())){
                 int i;
-                if(gym.equals("Smartfit"))
+                if(gym.equals("SmartFit"))
                     i=0;
-                else if(gym.equals("Gym one"))
+                else if(gym.equals("GymOne"))
                     i=1;
                 else i=2;
                 LocalDate[] date = new LocalDate[3];
@@ -129,9 +129,9 @@ public class CustomerService {
         for (Customer customer : customerRepository.find()) {
             if (Objects.equals(username, customer.getUsername())) {
                 int i;
-                if(gym.equals("Smartfit"))
+                if(gym.equals("SmartFit"))
                     i=0;
-                else if(gym.equals("Gym one"))
+                else if(gym.equals("GymOne"))
                     i=1;
                 else i=2;
                 LocalDate currentdate= LocalDate.now();

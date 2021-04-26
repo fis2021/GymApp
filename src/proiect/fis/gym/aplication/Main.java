@@ -37,6 +37,9 @@ public class Main extends Application {
         //Parent root = FXMLLoader.load(getClass().getResource("fxml/CustomerAfterLoginPage.fxml"));
         primaryStage.setTitle("Gym Aplication");
         primaryStage.setScene(new Scene(root, 800, 500));
+
+      
+
         primaryStage.show();
     }
 
