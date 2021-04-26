@@ -26,8 +26,8 @@
     <ChoiceBox fx:id="selectGym" value="Smartfit" GridPane.columnIndex="1" GridPane.rowIndex="1">
         <items>
             <FXCollections fx:factory="observableArrayList">
-                <String fx:value="Smartfit" />
-                <String fx:value="Gym one" />
+                <String fx:value="SmartFit" />
+                <String fx:value="GymOne" />
                 <String fx:value="Iguana" />
             </FXCollections>
         </items>
