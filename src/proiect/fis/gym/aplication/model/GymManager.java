@@ -19,6 +19,7 @@ public class GymManager {
     private String username;
     private String password;
     private ArrayList<Course> courseList;
+    private ArrayList<Review> reviewList;
 
     public GymManager(String firstName, String lastName, String phoneNumber, String email, String gymLocation, String companyName, String username, String password) {
         this.firstName = firstName;
@@ -30,6 +31,7 @@ public class GymManager {
         this.username = username;
         this.password = password;
         courseList = new ArrayList<Course>();
+        reviewList = new ArrayList<Review>();
     }
 
     public GymManager(){
@@ -79,6 +81,8 @@ public class GymManager {
     public ArrayList<Course> getCourseList() {
         return courseList;
     }
+
+    public ArrayList<Review> getReviewList(){return reviewList; }
 
     public void setCourseList(ArrayList<Course> courseList) {
         this.courseList = courseList;
