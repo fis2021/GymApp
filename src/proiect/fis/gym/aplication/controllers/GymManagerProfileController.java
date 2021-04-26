@@ -134,4 +134,8 @@ public class GymManagerProfileController {
     public void handleViewCoursesButton(ActionEvent actionEvent) {
         openNewScene("ViewCourses.fxml");
     }
+
+    public void handleViewCustomersButton(ActionEvent actionEvent) {
+        openNewScene("ViewCustomers.fxml");
+    }
 }

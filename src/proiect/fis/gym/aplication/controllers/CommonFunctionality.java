@@ -1,10 +1,18 @@
 package proiect.fis.gym.aplication.controllers;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Control;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import proiect.fis.gym.aplication.exceptions.FieldsAreNotEmptyException;
 import proiect.fis.gym.aplication.model.GymManager;
+
+import java.io.IOException;
 
 
 public class CommonFunctionality {
@@ -20,5 +28,6 @@ public class CommonFunctionality {
         }
         return true;
     }
+
 
 }
