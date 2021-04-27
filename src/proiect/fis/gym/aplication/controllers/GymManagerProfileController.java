@@ -8,7 +8,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import proiect.fis.gym.aplication.exceptions.CourseAlreadyExistException;
 import proiect.fis.gym.aplication.exceptions.FieldsAreNotEmptyException;
@@ -18,6 +22,9 @@ import proiect.fis.gym.aplication.model.GymManager;
 import proiect.fis.gym.aplication.services.GymManagerService;
 
 import javax.naming.ldap.Control;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import static proiect.fis.gym.aplication.services.LoginService.login;
@@ -45,6 +52,8 @@ public class GymManagerProfileController {
     public TextField scheduleTextField;
     @FXML
     public Label errorMessageAddCourseLabel;
+    @FXML
+    public ImageView profilePicImageView;
 
     private String currentUserName;
 
@@ -75,6 +84,16 @@ public class GymManagerProfileController {
             locationLabel.setText(manager.getGymLocation());
             phoneLabel.setText(manager.getPhoneNumber());
             emailLabel.setText(manager.getEmail());
+
+            if(manager.getProfilePicURL() != null) {
+                try {
+                    String path = manager.getProfilePicURL();
+                    Image newPhoto = new Image(new FileInputStream(path));
+                    profilePicImageView.setImage(newPhoto);
+                } catch (FileNotFoundException e) {
+                    //e.printStackTrace();
+                }
+            }
         }
     }
 
@@ -137,5 +156,37 @@ public class GymManagerProfileController {
 
     public void handleViewCustomersButton(ActionEvent actionEvent) {
         openNewScene("ViewCustomers.fxml");
+    }
+
+    public void handleAddProfilePhotoButton(ActionEvent actionEvent) {
+        FileChooser fc = new FileChooser();
+        fc.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Images", "*.jpeg", "*.jpg", "*.gif","*.tiff", "*.tif", "*.png", "*.jtif" ));
+
+        File selectedImage = fc.showOpenDialog(null);
+
+        if(selectedImage != null){
+            //System.out.println("\\" + selectedImage.getAbsolutePath());
+            String path = "\\" + selectedImage.getAbsolutePath();
+            try {
+                // schimbam poza din image view
+                Image newPhoto = new Image(new FileInputStream(path));
+                profilePicImageView.setImage(newPhoto);
+
+                //punem url nou pt poza in baza de date:
+                GymManager manager = getManagerFromDatabase(LoginController.getCurrentUsername());
+                if(manager != null){
+                    manager.setProfilePicURL(path);
+                    GymManagerService.getGymManagerRepository().update(manager);
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
+
+        }
+        else{
+            System.out.println("NULL");
+        }
     }
 }

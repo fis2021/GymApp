@@ -7,7 +7,10 @@
 
 <AnchorPane prefHeight="588.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proiect.fis.gym.aplication.controllers.GymManagerProfileController">
    <children>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="43.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+
+      <ImageView
+              fx:id="profilePicImageView"
+              fitHeight="150.0" fitWidth="200.0" layoutX="43.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../main/resources/gym_default_profile_pic.jpg" />
          </image></ImageView>
@@ -119,7 +122,12 @@
             <Image url="@../../../../../main/resources/icons8-person-64.png" />
          </image>
       </ImageView>
-      <Button layoutX="83.0" layoutY="362.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="130.0" text="Add profile photo" />
+
+      <Button
+              layoutX="83.0" layoutY="362.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="130.0"
+              text="Add profile photo"
+              onAction="#handleAddProfilePhotoButton"
+      />
 
    </children>
 </AnchorPane>

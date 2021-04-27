@@ -1,5 +1,6 @@
 package proiect.fis.gym.aplication.model;
 
+import javafx.scene.image.Image;
 import org.dizitart.no2.objects.Id;
 
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class GymManager {
     private String password;
     private ArrayList<Course> courseList;
     private ArrayList<Review> reviewList;
+    private String profilePicURL;
 
     public GymManager(String firstName, String lastName, String phoneNumber, String email, String gymLocation, String companyName, String username, String password) {
         this.firstName = firstName;
@@ -150,5 +152,13 @@ public class GymManager {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getProfilePicURL() {
+        return profilePicURL;
+    }
+
+    public void setProfilePicURL(String profilePicURL) {
+        this.profilePicURL = profilePicURL;
     }
 }
