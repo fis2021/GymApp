@@ -36,6 +36,46 @@
         </Label>
         <Button onAction="#backToLogin" layoutX="728.0" layoutY="50.0" mnemonicParsing="false" text="Log out" />
         <Button onAction="#handleBackToMainPageButton" layoutX="599.0" layoutY="50.0" mnemonicParsing="false" text="Back to main page" />
+        <Button onAction="#handleAddReviewButton" layoutX="37.0" layoutY="650.0" mnemonicParsing="false" text="Add a review" prefWidth="100.0"/>
     </children>
+
+    <children>
+        <Label layoutX="600.0" layoutY="650.0" text="Reviews:">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </Label>
+        <TableView fx:id="reviewTableView" layoutX="600.0" layoutY="650.0" prefHeight="200.0" prefWidth="250.0">
+            <columns>
+
+            </columns>
+        </TableView>
+    </children>
+
+    <GridPane fx:id="reviewGridPane" layoutX="170.0" layoutY="650.0" prefHeight="2000.0" prefWidth="1000" visible="false">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="115.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="335.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="120.4" minHeight="10.0" prefHeight="30.4" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="120.4" minHeight="10.0" prefHeight="30.4" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+        <children>
+            <TextArea fx:id="textArea" layoutY="650" layoutX="100"/>
+        </children>
+    </GridPane>
+
+    <Button fx:id="submitNewReviewButton" onAction="#handleSubmitReviewButton" layoutX="37.0" layoutY="700.0" mnemonicParsing="false"  prefHeight="26.0" prefWidth="100.0" text="Submit review" visible="false" />
+    <Label fx:id="errorMessageAddCourseLabel"
+           layoutX="245.0" layoutY="770.0" prefHeight="26.0" prefWidth="200" text="trm"
+           alignment="CENTER_RIGHT"
+           visible="false">
+        <font>
+            <Font size="15.0" />
+        </font>
+    </Label>
+    <Label fx:id="message" layoutX="245" layoutY="650" />
 
 </AnchorPane>

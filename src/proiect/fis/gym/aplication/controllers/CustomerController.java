@@ -73,7 +73,7 @@ public class CustomerController extends RegisterController{
         try {
             Stage stage =(Stage) sceneChanger.getScene().getWindow();
             Parent viewRegisterRoot = FXMLLoader.load(getClass().getResource("../fxml/SmartfitDetails.fxml"));
-            Scene scene = new Scene(viewRegisterRoot, 880, 800);
+            Scene scene = new Scene(viewRegisterRoot, 880, 900);
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
@@ -83,8 +83,8 @@ public class CustomerController extends RegisterController{
     public void handleViewCoursesButton2() {
         try {
             Stage stage =(Stage) sceneChanger.getScene().getWindow();
-            Parent viewRegisterRoot = FXMLLoader.load(getClass().getResource("../fxml/IguanaDetails.fxml"));
-            Scene scene = new Scene(viewRegisterRoot, 880, 800);
+            Parent viewRegisterRoot = FXMLLoader.load(getClass().getResource("../fxml/GymOneDetails.fxml"));
+            Scene scene = new Scene(viewRegisterRoot, 880, 900);
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
@@ -94,8 +94,8 @@ public class CustomerController extends RegisterController{
     public void handleViewCoursesButton3() {
         try {
             Stage stage =(Stage) sceneChanger.getScene().getWindow();
-            Parent viewRegisterRoot = FXMLLoader.load(getClass().getResource("../fxml/GymOneDetails.fxml"));
-            Scene scene = new Scene(viewRegisterRoot, 880, 800);
+            Parent viewRegisterRoot = FXMLLoader.load(getClass().getResource("../fxml/IguanaDetails.fxml"));
+            Scene scene = new Scene(viewRegisterRoot, 880, 900);
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
