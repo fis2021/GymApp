@@ -26,7 +26,7 @@
             <Font size="15.0" />
          </font></Label>
 
-      <Button id="addCourseButton" layoutX="105.0" layoutY="224.0" mnemonicParsing="false" onAction="#handleAddCourseButton" text="Add course" />
+      <Button id="addCourseButton" layoutX="83.0" layoutY="224.0" mnemonicParsing="false" onAction="#handleAddCourseButton" prefHeight="26.0" prefWidth="130.0" text="Add course" />
 
       <Label fx:id="emailLabel" layoutX="330.0" layoutY="118.0" prefHeight="26.0" prefWidth="346.0" text="email">
          <font>
@@ -99,7 +99,7 @@
 
       <Button fx:id="submitNewCourseButton" layoutX="599.0" layoutY="371.0" mnemonicParsing="false" onAction="#handleSubmitNewCourseButton" prefHeight="26.0" prefWidth="150.0" text="Submit new course" visible="false" />
 
-      <Button layoutX="226.0" layoutY="223.0" mnemonicParsing="false" onAction="#handleViewCoursesButton" prefHeight="26.0" prefWidth="120.0" text="View Courses" />
+      <Button layoutX="83.0" layoutY="270.0" mnemonicParsing="false" onAction="#handleViewCoursesButton" prefHeight="26.0" prefWidth="130.0" text="View Courses" />
 
       <Label fx:id="errorMessageAddCourseLabel" alignment="CENTER_RIGHT" layoutX="555.0" layoutY="429.0" prefHeight="26.0" prefWidth="200" text="trm" visible="false">
          <font>
@@ -107,11 +107,7 @@
          </font>
       </Label>
 
-      <Button
-              layoutX="387.0" layoutY="223.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0"
-              text="View Customers"
-              onAction="#handleViewCustomersButton"
-      />
+      <Button layoutX="83.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleViewCustomersButton" prefHeight="26.0" prefWidth="130.0" text="View Customers" />
 
       <ImageView fitHeight="22.0" fitWidth="26.0" layoutX="296.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -123,6 +119,7 @@
             <Image url="@../../../../../main/resources/icons8-person-64.png" />
          </image>
       </ImageView>
+      <Button layoutX="83.0" layoutY="362.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="130.0" text="Add profile photo" />
 
    </children>
 </AnchorPane>
