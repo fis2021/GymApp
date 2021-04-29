@@ -64,8 +64,10 @@ public class CustomerGymsDetailsController{
         }
 
         if(manager != null){
-            for(Review review: manager.getReviewList()){
-                reviewTableView.getItems().add(review);
+            if(manager.getReviewList() != null) {
+                for (Review review : manager.getReviewList()) {
+                    reviewTableView.getItems().add(review);
+                }
             }
         }
     }
