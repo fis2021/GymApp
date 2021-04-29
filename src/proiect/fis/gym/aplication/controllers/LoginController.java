@@ -9,7 +9,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import proiect.fis.gym.aplication.exceptions.IncorectLoginException;
-import proiect.fis.gym.aplication.services.CustomerService;
 import proiect.fis.gym.aplication.services.LoginService;
 
 import java.io.IOException;
@@ -48,7 +47,7 @@ public class LoginController {
             }
             if(c==2){
                 Stage stage = (Stage) usernameField.getScene().getWindow();
-                stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../fxml/AdminAfterLoginPage.fxml")), 800, 500));
+                stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../fxml/AdminProfile.fxml")), 800, 500));
             }
             if(c==3){
                 //currentUsername = usernameField.getText();

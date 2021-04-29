@@ -131,31 +131,18 @@ public class GymManagerProfileController {
         }
     }
 
-    private void openNewScene(String fxmlLoaded){
-       try {
-            Stage stage = (Stage) submitNewCourseButton.getScene().getWindow();
-            String path = "../fxml/" + fxmlLoaded;
-            //System.out.println(path);
-            Parent viewRegisterRoot = FXMLLoader.load(getClass().getResource(path));
-            Scene scene = new Scene(viewRegisterRoot, 880, 800);
-            stage.setScene(scene);
-       } catch (IOException e) {
-            e.printStackTrace();
-       }
-    }
 
-
-
+    CommonFunctionality cf = new CommonFunctionality();
     public void handleLogOutButton(ActionEvent actionEvent) {
-        openNewScene("login.fxml");
+        cf.openNewScene("login.fxml", gymNameLabel);
     }
 
     public void handleViewCoursesButton(ActionEvent actionEvent) {
-        openNewScene("ViewCourses.fxml");
+        cf.openNewScene("ViewCourses.fxml", gymNameLabel);
     }
 
     public void handleViewCustomersButton(ActionEvent actionEvent) {
-        openNewScene("ViewCustomers.fxml");
+        cf.openNewScene("ViewCustomers.fxml", gymNameLabel);
     }
 
     public void handleAddProfilePhotoButton(ActionEvent actionEvent) {

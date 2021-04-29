@@ -59,9 +59,11 @@ public class IguanaDetailsController {
             reviewTableView.getColumns().add(column4);
         }
 
-        if(manager != null){
-            for(Review review: manager.getReviewList()){
-                reviewTableView.getItems().add(review);
+        if(manager != null) {
+            if (manager.getReviewList() != null) {
+                for (Review review : manager.getReviewList()) {
+                    reviewTableView.getItems().add(review);
+                }
             }
         }
     }

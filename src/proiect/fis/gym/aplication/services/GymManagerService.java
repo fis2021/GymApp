@@ -69,5 +69,3 @@ public class GymManagerService extends RegisterService{
         }
     }
 }
-
-
