@@ -16,5 +16,7 @@
       </TableView>
 
       <Button layoutX="379.0" layoutY="61.0" mnemonicParsing="false" onAction="#handleLogOutButton" text="Log out" />
+
+      <Label fx:id="warningLabel" alignment="CENTER_RIGHT" layoutX="208.0" layoutY="323.0" prefHeight="26.0" prefWidth="228.0" text="This gym has already been taxed" visible="false" />
    </children>
 </AnchorPane>

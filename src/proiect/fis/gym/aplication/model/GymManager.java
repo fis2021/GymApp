@@ -22,6 +22,7 @@ public class GymManager {
     private ArrayList<Course> courseList;
     private ArrayList<Review> reviewList;
     private String profilePicURL;
+    private boolean isTaxed = false;
 
     public GymManager(String firstName, String lastName, String phoneNumber, String email, String gymLocation, String companyName, String username, String password) {
         this.firstName = firstName;
@@ -160,5 +161,13 @@ public class GymManager {
 
     public void setProfilePicURL(String profilePicURL) {
         this.profilePicURL = profilePicURL;
+    }
+
+    public boolean isTaxed() {
+        return isTaxed;
+    }
+
+    public void setTaxed(boolean taxed) {
+        isTaxed = taxed;
     }
 }
