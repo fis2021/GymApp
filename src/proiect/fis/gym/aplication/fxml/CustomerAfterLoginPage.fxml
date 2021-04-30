@@ -140,7 +140,7 @@
             <graphic>
                 <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="https://lh3.googleusercontent.com/iX3gu_j3hxS9VyaORVHCMxz42XElgdlVurwZP81GIl-0IOwbVW-0DFsPaNlU8gYIPra0VQ=s113" />
+                        <Image url="https://lh3.googleusercontent.com/jrZ22ZWIm3SYxr6lT3DrwbD3YoxqvfS7d2pJ-ieea6w4MNjC2ZEYmjJQYx2qlEwy18J0m8s=s113" />
                     </image>
                 </ImageView>
             </graphic>
@@ -193,9 +193,10 @@
 
     <Text fx:id="sceneChanger" text="ok" />
    <Button onAction="#handleCreateSubscription" layoutX="67.0" layoutY="360.0" mnemonicParsing="false" text="Create subscription" />
-   <Button onAction="#handleExtendButton" layoutX="232.0" layoutY="360.0" mnemonicParsing="false" text="Extend subscription" />
-   <Button onAction="#handleViewSubscriptionsButton" layoutX="397.0" layoutY="360.0" mnemonicParsing="false" text="View subscriptions" />
-    <Button onAction="#backToLogin" layoutX="592.0" layoutY="360.0" mnemonicParsing="false" text="Log out" />
+   <Button onAction="#handleExtendButton" layoutX="200.0" layoutY="360.0" mnemonicParsing="false" text="Extend subscription" />
+   <Button onAction="#handleViewSubscriptionsButton" layoutX="330.0" layoutY="360.0" mnemonicParsing="false" text="View subscriptions" />
+    <Button onAction="#backToLogin" layoutX="455.0" layoutY="360.0" mnemonicParsing="false" text="Log out" />
+    <Button onAction="#handleViewJoinedCoursesButton" layoutX="520.0" layoutY="360.0" mnemonicParsing="false" text="View joined courses" />
 
      <Text fx:id="customerMessage" layoutX="330" layoutY="450"/>
 </AnchorPane>

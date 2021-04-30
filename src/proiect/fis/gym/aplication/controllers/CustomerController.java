@@ -8,13 +8,17 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.dizitart.no2.objects.ObjectRepository;
 import proiect.fis.gym.aplication.exceptions.*;
+import proiect.fis.gym.aplication.model.Course;
 import proiect.fis.gym.aplication.model.Customer;
 import proiect.fis.gym.aplication.model.GymManager;
 import proiect.fis.gym.aplication.services.CustomerService;
 import proiect.fis.gym.aplication.services.GymManagerService;
+import sun.rmi.runtime.Log;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import static javafx.fxml.FXMLLoader.load;
 
@@ -34,6 +38,8 @@ public class CustomerController extends RegisterController{
 
     @FXML
     private Text customerMessage;
+
+
 
     @FXML
     public void handleCreateSubscription(){
@@ -73,7 +79,7 @@ public class CustomerController extends RegisterController{
         try {
             Stage stage =(Stage) sceneChanger.getScene().getWindow();
             Parent viewRegisterRoot = FXMLLoader.load(getClass().getResource("../fxml/SmartfitDetails.fxml"));
-            Scene scene = new Scene(viewRegisterRoot, 880, 900);
+            Scene scene = new Scene(viewRegisterRoot, 880, 1100);
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
@@ -84,7 +90,7 @@ public class CustomerController extends RegisterController{
         try {
             Stage stage =(Stage) sceneChanger.getScene().getWindow();
             Parent viewRegisterRoot = FXMLLoader.load(getClass().getResource("../fxml/GymOneDetails.fxml"));
-            Scene scene = new Scene(viewRegisterRoot, 880, 900);
+            Scene scene = new Scene(viewRegisterRoot, 880, 1100);
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
@@ -95,7 +101,7 @@ public class CustomerController extends RegisterController{
         try {
             Stage stage =(Stage) sceneChanger.getScene().getWindow();
             Parent viewRegisterRoot = FXMLLoader.load(getClass().getResource("../fxml/IguanaDetails.fxml"));
-            Scene scene = new Scene(viewRegisterRoot, 880, 900);
+            Scene scene = new Scene(viewRegisterRoot, 880, 1100);
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
@@ -144,6 +150,27 @@ public class CustomerController extends RegisterController{
         } catch (noActiveSubscriptionException| incorectCardDetailsException | IncorectCardNumberException | IncorectCVCException | NotEnoughMoneyException | CheckPaymentFieldNotEmptyException e) {
             paymentMessage.setText(e.getMessage());
         }
+    }
+
+    public void handleViewJoinedCoursesButton(){
+        String username = LoginController.getCurrentUsername();
+        ObjectRepository<Customer> customerRepository= CustomerService.getCustomerRepository();
+        String a ="";
+        for(Customer customer : customerRepository.find()){
+            if(customer.getUsername().equals(username)){
+                ArrayList<Course> array=customer.getArraySmart();
+
+                for(int i=0;i<array.size();i++)
+                    a+="Smartfit: " + array.get(i) + "\n";
+                array = customer.getArrayIguana();
+                for(int i=0;i<array.size();i++)
+                    a+="Iguana: " + array.get(i) + "\n";
+                array = customer.getArrayOne();
+                for(int i=0;i<array.size();i++)
+                    a+="GymOne: " + array.get(i) + "\n";
+            }
+        }
+        customerMessage.setText(a);
     }
 
     public void handleBackToLoginButton(){

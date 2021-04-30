@@ -23,7 +23,7 @@
 
     <Label text="Select gym:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
 
-    <ChoiceBox fx:id="selectGym" value="Smartfit" GridPane.columnIndex="1" GridPane.rowIndex="1">
+    <ChoiceBox fx:id="selectGym" value="SmartFit" GridPane.columnIndex="1" GridPane.rowIndex="1">
         <items>
             <FXCollections fx:factory="observableArrayList">
                 <String fx:value="SmartFit" />

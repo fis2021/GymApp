@@ -1,5 +1,6 @@
 package proiect.fis.gym.aplication.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,10 +9,16 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.util.Callback;
+import org.dizitart.no2.objects.ObjectRepository;
+import proiect.fis.gym.aplication.exceptions.CheckJoinedCourse;
 import proiect.fis.gym.aplication.exceptions.EmptyTextArea;
+import proiect.fis.gym.aplication.exceptions.noActiveSubscriptionException;
 import proiect.fis.gym.aplication.model.Course;
+import proiect.fis.gym.aplication.model.Customer;
 import proiect.fis.gym.aplication.model.GymManager;
 import proiect.fis.gym.aplication.model.Review;
+import proiect.fis.gym.aplication.services.CustomerService;
 import proiect.fis.gym.aplication.services.GymManagerService;
 
 import java.io.IOException;
@@ -38,6 +45,11 @@ public class GymOneDatailsController {
 
     @FXML
     public Label message;
+
+    @FXML
+    public Label joined;
+
+    private static ObjectRepository<Customer> customerRepository=CustomerService.getCustomerRepository();
 
     TableColumn<Course, String> column1 = new TableColumn<>("Course");
     TableColumn<Course, String> column2 = new TableColumn<>("Trainer");
@@ -88,7 +100,7 @@ public class GymOneDatailsController {
             coursesTableView.getColumns().add(column1);
             coursesTableView.getColumns().add(column2);
             coursesTableView.getColumns().add(column3);
-
+            addButtonToTable("Join");
         }
 
         if(manager != null){
@@ -96,6 +108,69 @@ public class GymOneDatailsController {
                 coursesTableView.getItems().add(course);
             }
         }
+    }
+
+    private void addButtonToTable(String buttonText) {
+        TableColumn<Course, Void> colBtn = new TableColumn();
+
+        Callback<TableColumn<Course, Void>, TableCell<Course, Void>> cellFactory = new Callback<TableColumn<Course, Void>, TableCell<Course, Void>>() {
+            @Override
+            public TableCell<Course, Void> call(final TableColumn<Course, Void> param) {
+                final TableCell<Course, Void> cell = new TableCell<Course, Void>() {
+
+                    //functionalitate pt butonul de delete:
+                    private final Button btn = new Button(buttonText);
+                    {
+                        btn.setOnAction((ActionEvent event) -> {
+
+                            int ok=0;
+                            String username = LoginController.getCurrentUsername();
+                            for(Customer customer : customerRepository.find()){
+                                if(username.equals(customer.getUsername())){
+                                    Course joinedCourse = getTableView().getItems().get(getIndex());
+                                    try {
+                                        CustomerService.checkActive(customer,"GymOne");
+                                        CustomerService.alreadyJoined2(customer, joinedCourse);
+                                    } catch (CheckJoinedCourse e) {
+                                        joined.setText(e.getMessage());
+                                        break;
+                                    } catch (noActiveSubscriptionException e) {
+                                        joined.setText(e.getMessage());
+                                        break;
+                                    }
+                                    customer.addGymOneCourse(joinedCourse);
+                                    customerRepository.update(customer);
+                                    ok=1;
+                                    break;
+                                }
+                            }
+                            if(ok==1) {
+                                joined.setText("Congrats " + LoginController.getCurrentUsername() + " you joined a course");
+                            }
+
+
+                        });
+
+                    }
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(btn);
+                        }
+                    }
+                };
+                return cell;
+            }
+        };
+
+        colBtn.setCellFactory(cellFactory);
+
+        coursesTableView.getColumns().add(colBtn);
+
     }
 
     public void handleAddReviewButton(){

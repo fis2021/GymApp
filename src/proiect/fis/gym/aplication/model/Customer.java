@@ -1,4 +1,5 @@
 package proiect.fis.gym.aplication.model;
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -8,6 +9,7 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import org.dizitart.no2.objects.Id;
 
 import javax.validation.constraints.Past;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -23,6 +25,29 @@ public class Customer {
     private LocalDate[] date=new LocalDate[3];
     private String[] gym=new String[3];
     private final int k=3;
+    private ArrayList<Course> Smartfitcourses;
+    private ArrayList<Course> Iguanacourses;
+    private ArrayList<Course> GymOnecourses;
+
+    public void addSmartfitCourse(Course c){
+        Smartfitcourses.add(c);
+    }
+    public void addGymOneCourse(Course c){GymOnecourses.add(c);}
+    public void addIguanaCourse(Course c){Iguanacourses.add(c);}
+
+    public ArrayList<Course> getArraySmart(){return Smartfitcourses;}
+    public ArrayList<Course> getArrayOne(){return GymOnecourses;}
+    public ArrayList<Course> getArrayIguana(){return Iguanacourses;}
+
+    public ArrayList<Course> getSmartfitCourse(){
+        return Smartfitcourses;
+    }
+    public ArrayList<Course> getGymOneCourse(){
+        return GymOnecourses;
+    }
+    public ArrayList<Course> getIguanaCourse(){
+        return Iguanacourses;
+    }
 
     public Customer(){}
 
@@ -38,7 +63,9 @@ public class Customer {
             gym[i] = "";
             date[i]=null;
         }
-
+        Smartfitcourses = new ArrayList<Course>();
+        GymOnecourses=new ArrayList<Course>();
+        Iguanacourses=new ArrayList<Course>();
     }
 
     public String getUsername() {

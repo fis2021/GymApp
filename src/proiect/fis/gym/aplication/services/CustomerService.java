@@ -8,6 +8,7 @@ import org.dizitart.no2.util.Iterables;
 import proiect.fis.gym.aplication.controllers.LoginController;
 import proiect.fis.gym.aplication.exceptions.*;
 import proiect.fis.gym.aplication.model.Bank;
+import proiect.fis.gym.aplication.model.Course;
 import proiect.fis.gym.aplication.model.Customer;
 
 import javax.swing.plaf.synth.Region;
@@ -58,6 +59,27 @@ public class CustomerService {
             if(tmp.equals(""))
                 tmp +="No subscriptions";
             return tmp;
+    }
+
+    public static void checkActive(Customer c,String gym) throws noActiveSubscriptionException{
+        int i;
+        if(gym.equals("SmartFit"))
+            i=0;
+        else if(gym.equals("GymOne"))
+            i=1;
+        else i=2;
+        LocalDate date = c.getDate(i, c.getDate2());
+        LocalDate currentDate = LocalDate.now();
+        if(date==null)
+            throw new noActiveSubscriptionException();
+        if(date.getYear() < currentDate.getYear())
+            throw new noActiveSubscriptionException();
+        if(date.getMonthValue()<currentDate.getMonthValue())
+            throw new noActiveSubscriptionException();
+        if(date.getMonthValue()==currentDate.getMonthValue() && date.getYear()==currentDate.getYear())
+            if(date.getDayOfMonth()<currentDate.getDayOfMonth())
+                throw new noActiveSubscriptionException();
+
     }
 
     public static void noActiveSubscription(String username,String gym) throws noActiveSubscriptionException{
@@ -150,6 +172,21 @@ public class CustomerService {
                 break;
             }
         }
+    }
+
+    public static void alreadyJoined(Customer c, Course cr) throws CheckJoinedCourse{
+        if(c.getSmartfitCourse().contains(cr))
+            throw new CheckJoinedCourse();
+    }
+
+    public static void alreadyJoined2(Customer c, Course cr) throws CheckJoinedCourse{
+        if(c.getGymOneCourse().contains(cr))
+            throw new CheckJoinedCourse();
+    }
+
+    public static void alreadyJoined3(Customer c, Course cr) throws CheckJoinedCourse{
+        if(c.getIguanaCourse().contains(cr))
+            throw new CheckJoinedCourse();
     }
 
     private static void paymentFieldsException(String cardOwnerName,String expM,String expY,String cardN,String CVC) throws CheckPaymentFieldNotEmptyException{
