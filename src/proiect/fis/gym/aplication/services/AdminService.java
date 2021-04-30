@@ -1,6 +1,7 @@
 package proiect.fis.gym.aplication.services;
 
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -11,6 +12,7 @@ import org.dizitart.no2.objects.ObjectRepository;
 import proiect.fis.gym.aplication.exceptions.*;
 import proiect.fis.gym.aplication.model.Admin;
 import proiect.fis.gym.aplication.model.Customer;
+import proiect.fis.gym.aplication.model.GymManager;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -119,5 +121,17 @@ public class AdminService {
             throw new IllegalStateException("SHA-512 does not exist!");
         }
         return md;
+    }
+
+    public static boolean taxGym(GymManager manager, Label warningLabel) {
+        if (!manager.isTaxed()) {
+            manager.setTaxed(true);
+            warningLabel.setVisible(false);
+            return true;
+        }
+        else{
+            warningLabel.setVisible(true);
+            return false;
+        }
     }
 }

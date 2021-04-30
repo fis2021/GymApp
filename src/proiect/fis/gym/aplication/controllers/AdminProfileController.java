@@ -2,19 +2,19 @@ package proiect.fis.gym.aplication.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 import proiect.fis.gym.aplication.model.Course;
 import proiect.fis.gym.aplication.model.GymManager;
+import proiect.fis.gym.aplication.services.AdminService;
 import proiect.fis.gym.aplication.services.GymManagerService;
 
 public class AdminProfileController {
     @FXML
     public TableView managersTableView;
+    @FXML
+    public Label warningLabel;
     TableColumn<GymManager, String> gymColumn = new TableColumn<>("Gym");
 
     @FXML
@@ -35,18 +35,24 @@ public class AdminProfileController {
     }
 
     private void addButtonToTable(String buttonText) {
-        TableColumn<Course, Void> colBtn = new TableColumn();
+        TableColumn<GymManager, Void> colBtn = new TableColumn();
 
-        Callback<TableColumn<Course, Void>, TableCell<Course, Void>> cellFactory = new Callback<TableColumn<Course, Void>, TableCell<Course, Void>>() {
+        Callback<TableColumn<GymManager, Void>, TableCell<GymManager, Void>> cellFactory = new Callback<TableColumn<GymManager, Void>, TableCell<GymManager, Void>>() {
             @Override
-            public TableCell<Course, Void> call(final TableColumn<Course, Void> param) {
-                final TableCell<Course, Void> cell = new TableCell<Course, Void>() {
+            public TableCell<GymManager, Void> call(final TableColumn<GymManager, Void> param) {
+                final TableCell<GymManager, Void> cell = new TableCell<GymManager, Void>() {
 
                     //functionalitate pt butonul de delete:
                     private final Button btn = new Button(buttonText);
                     {
+                        //aplicam taxa
                         btn.setOnAction((ActionEvent event) -> {
+                            GymManager selectedGym = getTableView().getItems().get(getIndex());
 
+                            AdminService.taxGym(selectedGym, warningLabel);
+
+                            //facem update in baza de date
+                            GymManagerService.getGymManagerRepository().update(selectedGym);
                         });
                     }
 
