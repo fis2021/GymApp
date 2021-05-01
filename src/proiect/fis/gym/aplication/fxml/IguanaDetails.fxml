@@ -40,12 +40,7 @@
     </children>
 
     <children>
-        <Label layoutX="600.0" layoutY="650.0" text="Reviews:">
-            <font>
-                <Font size="15.0" />
-            </font>
-        </Label>
-        <TableView fx:id="reviewTableView" layoutX="600.0" layoutY="650.0" prefHeight="200.0" prefWidth="250.0">
+        <TableView fx:id="reviewTableView" layoutX="36.0" layoutY="800.0" prefHeight="200.0" prefWidth="807.0">
             <columns>
 
             </columns>
@@ -77,5 +72,5 @@
         </font>
     </Label>
     <Label fx:id="message" layoutX="245" layoutY="650" />
-
+    <Label fx:id="newcourse" layoutX="200" layoutY="50" />
 </AnchorPane>
