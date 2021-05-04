@@ -12,9 +12,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import proiect.fis.gym.aplication.exceptions.FieldsAreNotEmptyException;
+import proiect.fis.gym.aplication.exceptions.IncorectCVCException;
+import proiect.fis.gym.aplication.exceptions.IncorectCardNumberException;
+import proiect.fis.gym.aplication.exceptions.incorectCardDetailsException;
+import proiect.fis.gym.aplication.model.Bank;
 import proiect.fis.gym.aplication.model.GymManager;
+import proiect.fis.gym.aplication.services.BankService;
 
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 
 public class CommonFunctionality {
@@ -56,4 +62,28 @@ public class CommonFunctionality {
         }
     }
 
+    public static void CVCException(String CVC) throws IncorectCVCException {
+        if(CVC.length()!=3){
+            throw new IncorectCVCException();
+        }
+    }
+
+    public static void cardNumberException(String cardN) throws IncorectCardNumberException {
+        String regex= "^\\d{16}$";
+        Pattern pat = Pattern.compile(regex);
+        if( !(pat.matcher(cardN).matches()) )
+            throw new IncorectCardNumberException();
+    }
+
+    public static void cardDetailsException(String cardOwnerName,String expM,String expY,String cardN,String CVC) throws incorectCardDetailsException {
+        int ok=0;
+        for(Bank bank : BankService.getBankRepository().find()){
+            if(cardOwnerName.equals(bank.getNumeDetinator()) && expM.equals(bank.getLuna()) && expY.equals(bank.getAnu()) && cardN.equals(bank.getNumarCard()) && CVC.equals(bank.getCVC())){
+                ok=1;
+                break;
+            }
+        }
+        if(ok==0)
+            throw new incorectCardDetailsException();
+    }
 }
