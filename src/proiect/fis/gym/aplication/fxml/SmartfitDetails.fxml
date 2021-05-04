@@ -13,6 +13,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import java.net.URL?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proiect.fis.gym.aplication.controllers.CustomerGymsDetailsController">
 
     <children>
@@ -38,16 +39,12 @@
             </font>
         </Label>
       <Button onAction="#backToLogin" layoutX="728.0" layoutY="50.0" mnemonicParsing="false" text="Log out" />
-      <Button onAction="#handleBackToMainPageButton" layoutX="599.0" layoutY="50.0" mnemonicParsing="false" text="Back to main page" />
-        <Button onAction="#handleAddReviewButton" layoutX="37.0" layoutY="650.0" mnemonicParsing="false" text="Add a review" prefWidth="100.0"/>
+      <Button onAction="#handleBackToMainPageButton" layoutX="580.0" layoutY="50.0" mnemonicParsing="false" text="Back to main page" />
+        <Button onAction="#handleAddReviewButton" layoutX="37.0" layoutY="650.0" mnemonicParsing="false" text="Add review" prefWidth="100.0"/>
     </children>
 
     <children>
-        <TableView fx:id="reviewTableView" layoutX="36.0" layoutY="800.0" prefHeight="200.0" prefWidth="807.0">
-            <columns>
-
-            </columns>
-        </TableView>
+        <TableView fx:id="reviewTableView" layoutX="36.0" layoutY="800.0" prefHeight="200.0" prefWidth="807.0"/>
     </children>
 
     <GridPane fx:id="reviewGridPane" layoutX="170.0" layoutY="650.0" prefHeight="2000.0" prefWidth="1000" visible="false">
@@ -65,7 +62,7 @@
     </children>
     </GridPane>
 
-    <Button fx:id="submitNewReviewButton" onAction="#handleSubmitReviewButton" layoutX="37.0" layoutY="700.0" mnemonicParsing="false"  prefHeight="26.0" prefWidth="100.0" text="Submit review" visible="false" />
+    <Button fx:id="submitNewReviewButton" onAction="#handleSubmitReviewButton" layoutX="37.0" layoutY="700.0" mnemonicParsing="false"  prefHeight="26.0" prefWidth="100.0" text="Submit" visible="false" />
     <Label fx:id="errorMessageAddCourseLabel"
            layoutX="245.0" layoutY="770.0" prefHeight="26.0" prefWidth="200" text="trm"
            alignment="CENTER_RIGHT"
@@ -76,4 +73,9 @@
     </Label>
     <Label fx:id="message" layoutX="245" layoutY="650" />
     <Label fx:id="joinedCourses" layoutX="200" layoutY="50" />
+
+    <stylesheets>
+        <URL value="@../CSS/gyms.css"/>
+    </stylesheets>
+
 </AnchorPane>

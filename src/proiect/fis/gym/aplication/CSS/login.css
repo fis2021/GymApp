@@ -1,0 +1,21 @@
+.root {
+     -fx-background-image: url("background.png");
+     -fx-background-size: 800px;
+     -fx-background-repeat: no-repeat;
+}
+
+.Button
+{
+    -fx-font-weight: bold
+}
+
+.text {
+      -fx-font-family: "Courier New";
+      -fx-font-weight: bold
+}
+
+.label {
+    -fx-font-family: "Courier New";
+  -fx-font-weight: bold
+}
+

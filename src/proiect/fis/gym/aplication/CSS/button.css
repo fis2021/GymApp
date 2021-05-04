@@ -1,0 +1,5 @@
+.button{
+    -fx-font-family: "Courier New";
+    -fx-background-color: #000000;
+    -fx-text-fill: white;
+}
