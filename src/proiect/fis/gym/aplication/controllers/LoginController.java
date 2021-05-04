@@ -43,7 +43,7 @@ public class LoginController {
             c=LoginService.login(usernameField.getText(), passwordField.getText());
             if(c==1) {
             Stage stage = (Stage) usernameField.getScene().getWindow();
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../fxml/CustomerAfterLoginPage.fxml")), 800, 500));
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../fxml/CustomerAfterLoginPage.fxml")), 800, 600));
             }
             if(c==2){
                 Stage stage = (Stage) usernameField.getScene().getWindow();

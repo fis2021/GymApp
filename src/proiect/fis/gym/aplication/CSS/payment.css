@@ -1,0 +1,20 @@
+.root {
+     -fx-background-image: url("background4.jpg");
+     -fx-background-size: 750px;
+     -fx-background-repeat: no-repeat;
+}
+
+.text {
+      -fx-font-family: "Courier New";
+      -fx-font-weight: bold
+}
+
+.button{
+    -fx-font-family: "Courier New";
+    -fx-background-color: #000000;
+    -fx-text-fill: white;
+}
+
+.label {
+    -fx-font-family: "Courier New";
+}

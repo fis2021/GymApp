@@ -8,7 +8,12 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.control.Label?>
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proiect.fis.gym.aplication.controllers.CustomerController">
+<?import java.net.URL?>
+<AnchorPane styleClass="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proiect.fis.gym.aplication.controllers.CustomerController">
+
+    <stylesheets>
+        <URL value="@../CSS/page.css"/>
+    </stylesheets>
 
     <children>
         <Button onAction="#handleViewCoursesButton1" layoutX="80.0" layoutY="81.0" mnemonicParsing="false">
@@ -42,7 +47,7 @@
         </image>
     </ImageView>
 
-    <Label layoutX="110.0" layoutY="240.0" prefHeight="15.0" prefWidth="250.0" text="Calea Șagului nr.100">
+    <Label layoutX="110.0" layoutY="240.0" prefHeight="15.0" prefWidth="250.0" text="Calea Șagului nr.100"  >
         <font>
             <Font size="15.0" />
         </font></Label>
@@ -192,11 +197,32 @@
         </font></Label>
 
     <Text fx:id="sceneChanger" text="ok" />
-   <Button onAction="#handleCreateSubscription" layoutX="67.0" layoutY="360.0" mnemonicParsing="false" text="Create subscription" />
-   <Button onAction="#handleExtendButton" layoutX="200.0" layoutY="360.0" mnemonicParsing="false" text="Extend subscription" />
-   <Button onAction="#handleViewSubscriptionsButton" layoutX="330.0" layoutY="360.0" mnemonicParsing="false" text="View subscriptions" />
-    <Button onAction="#backToLogin" layoutX="455.0" layoutY="360.0" mnemonicParsing="false" text="Log out" />
-    <Button onAction="#handleViewJoinedCoursesButton" layoutX="520.0" layoutY="360.0" mnemonicParsing="false" text="View joined courses" />
+   <Button onAction="#handleCreateSubscription" layoutX="67.0" layoutY="360.0" mnemonicParsing="false" text="Create subscription" >
+    <stylesheets>
+        <URL value="@../CSS/button2.css"/>
+    </stylesheets>
+   </Button>
+   <Button onAction="#handleExtendButton" layoutX="225.0" layoutY="360.0" mnemonicParsing="false" text="Extend subscription" >
+    <stylesheets>
+        <URL value="@../CSS/button2.css"/>
+    </stylesheets>
+   </Button>
+   <Button onAction="#handleViewSubscriptionsButton" layoutX="383.0" layoutY="360.0" mnemonicParsing="false" text="View subscriptions" >
+    <stylesheets>
+        <URL value="@../CSS/button2.css"/>
+    </stylesheets>
+   </Button>
+    <Button onAction="#backToLogin" layoutX="695.0" layoutY="360.0" mnemonicParsing="false" text="Log out" >
+    <stylesheets>
+        <URL value="@../CSS/button2.css"/>
+    </stylesheets>
+    </Button>
+    <Button onAction="#handleViewJoinedCoursesButton" layoutX="535.0" layoutY="360.0" mnemonicParsing="false" text="View joined courses" >
+    <stylesheets>
+        <URL value="@../CSS/button2.css"/>
+    </stylesheets>
+    </Button>
 
-     <Text fx:id="customerMessage" layoutX="330" layoutY="450"/>
+     <Text fx:id="customerMessage" layoutX="330" layoutY="450" styleClass="text" />
+
 </AnchorPane>

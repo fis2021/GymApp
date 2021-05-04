@@ -65,7 +65,7 @@ public class CustomerGymsDetailsController{
 
     public void fillReviewList(){
         GymManager manager = GymManagerProfileController.getManagerFromDatabase("SmartFit");
-        column4.setMinWidth(300);
+        column4.setMinWidth(790);
         column4.setCellValueFactory(new PropertyValueFactory<>("review"));
 
         if(reviewTableView.getColumns() != null) {
@@ -88,11 +88,11 @@ public class CustomerGymsDetailsController{
         column1.setCellValueFactory(new PropertyValueFactory<>("name"));
 
 
-        column2.setMinWidth(200);
+        column2.setMinWidth(223);
         column2.setCellValueFactory(new PropertyValueFactory<>("trainer"));
 
 
-        column3.setMinWidth(200);
+        column3.setMinWidth(223);
         column3.setCellValueFactory(new PropertyValueFactory<>("schedule"));
 
 
@@ -179,7 +179,7 @@ public class CustomerGymsDetailsController{
         try {
             Stage stage =(Stage) warningLabel.getScene().getWindow();
             Parent viewRegisterRoot = FXMLLoader.load(getClass().getResource("../fxml/login.fxml"));
-            Scene scene = new Scene(viewRegisterRoot, 700, 500);
+            Scene scene = new Scene(viewRegisterRoot, 800, 500);
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
@@ -231,7 +231,7 @@ public class CustomerGymsDetailsController{
         try {
             Stage stage =(Stage) warningLabel.getScene().getWindow();
             Parent viewRegisterRoot = FXMLLoader.load(getClass().getResource("../fxml/CustomerAfterLoginPage.fxml"));
-            Scene scene = new Scene(viewRegisterRoot, 800, 800);
+            Scene scene = new Scene(viewRegisterRoot, 800, 600);
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();

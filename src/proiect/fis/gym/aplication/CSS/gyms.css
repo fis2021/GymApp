@@ -1,0 +1,49 @@
+.root {
+     -fx-background-color: #DCDCDC;
+}
+
+.text {
+      -fx-font-family: "Courier New";
+      -fx-font-weight: bold
+}
+
+.button{
+    -fx-font-family: "Courier New";
+    -fx-background-color: #696969;
+    -fx-text-fill: white;
+}
+
+.label {
+    -fx-font-family: "Courier New";
+}
+
+.table-view .column-header-background .label{
+   -fx-background-color: transparent;
+   -fx-text-fill: black;
+}
+
+.table-view .column-header {
+   -fx-background-color: transparent;
+}
+
+.table-view .table-cell{
+   -fx-text-fill: black;
+   -fx-font-weight: bold;
+}
+
+.table-row-cell:even{
+   -fx-background-color: -fx-table-cell-border-color, #BDB76B;
+   -fx-background-insets: 0, 0 0 1 0;
+}
+
+
+.table-row-cell:odd{
+   -fx-background-color: -fx-table-cell-border-color, #BDB76B;
+   -fx-background-insets: 0, 0 0 1 0;
+}
+
+.table-row-cell:selected {
+   -fx-background-color: #006400;
+   -fx-background-insets: 0;
+   -fx-background-radius: 1;
+}

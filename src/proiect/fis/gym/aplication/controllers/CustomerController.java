@@ -57,7 +57,7 @@ public class CustomerController extends RegisterController{
         try {
             Stage stage =(Stage) sceneChanger.getScene().getWindow();
             Parent viewRegisterRoot = FXMLLoader.load(getClass().getResource("../fxml/login.fxml"));
-            Scene scene = new Scene(viewRegisterRoot, 700, 500);
+            Scene scene = new Scene(viewRegisterRoot, 800, 500);
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
@@ -68,7 +68,7 @@ public class CustomerController extends RegisterController{
         try {
             Stage stage =(Stage) paymentMessage.getScene().getWindow();
             Parent viewRegisterRoot = FXMLLoader.load(getClass().getResource("../fxml/CustomerAfterLoginPage.fxml"));
-            Scene scene = new Scene(viewRegisterRoot, 800, 800);
+            Scene scene = new Scene(viewRegisterRoot, 800, 600);
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();

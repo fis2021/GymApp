@@ -109,7 +109,7 @@ public abstract class RegisterController {
         try {
             Stage stage = (Stage) control.getScene().getWindow();
             Parent viewRegisterRoot = FXMLLoader.load(getClass().getResource("../fxml/login.fxml"));
-            Scene scene = new Scene(viewRegisterRoot, 600, 400);
+            Scene scene = new Scene(viewRegisterRoot, 800, 500);
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
