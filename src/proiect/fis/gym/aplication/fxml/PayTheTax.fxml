@@ -7,9 +7,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
+<?import java.net.URL?>
 <GridPane
         fx:id="paymentGridPane"
-        alignment="center" hgap="10" prefHeight="400" prefWidth="600" vgap="10" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proiect.fis.gym.aplication.controllers.PayTheTaxController">
+        alignment="center" hgap="10" prefHeight="400" prefWidth="600" vgap="10" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proiect.fis.gym.aplication.controllers.PayTheTaxController">
 
 <padding>
     <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
@@ -92,5 +93,9 @@
     <RowConstraints />
       <RowConstraints />
 </rowConstraints>
+
+    <stylesheets>
+        <URL value="@../CSS/Managers.css" />
+    </stylesheets>
 
 </GridPane>

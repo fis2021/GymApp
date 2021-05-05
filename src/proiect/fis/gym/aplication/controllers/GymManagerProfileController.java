@@ -137,15 +137,15 @@ public class GymManagerProfileController {
 
     CommonFunctionality cf = new CommonFunctionality();
     public void handleLogOutButton(ActionEvent actionEvent) {
-        cf.openNewScene("login.fxml", gymNameLabel);
+        cf.openNewScene("login.fxml", gymNameLabel, 800, 500);
     }
 
     public void handleViewCoursesButton(ActionEvent actionEvent) {
-        cf.openNewScene("ViewCourses.fxml", gymNameLabel);
+        cf.openNewScene("ViewCourses.fxml", gymNameLabel, 900, 800);
     }
 
     public void handleViewCustomersButton(ActionEvent actionEvent) {
-        cf.openNewScene("ViewCustomers.fxml", gymNameLabel);
+        cf.openNewScene("ViewCustomers.fxml", gymNameLabel, 900, 800);
     }
 
     public void handleAddProfilePhotoButton(ActionEvent actionEvent) {
@@ -192,7 +192,7 @@ public class GymManagerProfileController {
         else{
             //deschidem o scena pt plata taxei:
             CommonFunctionality cf = new CommonFunctionality();
-            cf.openNewScene("PayTheTax.fxml", taxWarningLabel);
+            cf.openNewScene("PayTheTax.fxml", taxWarningLabel, 600,500);
         }
     }
 }

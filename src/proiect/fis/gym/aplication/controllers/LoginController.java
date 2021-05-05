@@ -47,7 +47,7 @@ public class LoginController {
             }
             if(c==2){
                 Stage stage = (Stage) usernameField.getScene().getWindow();
-                stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../fxml/AdminProfile.fxml")), 800, 500));
+                stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../fxml/AdminProfile.fxml")), 600, 500));
             }
             if(c==3){
                 //currentUsername = usernameField.getText();

@@ -98,6 +98,6 @@ public class PayTheTaxController {
 
     public void handleBackButton(ActionEvent actionEvent) {
         CommonFunctionality cf = new CommonFunctionality();
-        cf.openNewScene("GymManagerProfile.fxml", backButton);
+        cf.openNewScene("GymManagerProfile.fxml", backButton, 800, 500);
     }
 }
