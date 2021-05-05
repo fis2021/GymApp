@@ -1,39 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="588.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proiect.fis.gym.aplication.controllers.GymManagerProfileController">
+<AnchorPane prefHeight="588.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proiect.fis.gym.aplication.controllers.GymManagerProfileController">
    <children>
 
       <ImageView fx:id="profilePicImageView" fitHeight="150.0" fitWidth="200.0" layoutX="43.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../main/resources/gym_default_profile_pic.jpg" />
          </image></ImageView>
-      <Label fx:id="gymNameLabel" layoutX="330.0" layoutY="39.0" prefHeight="26.0" prefWidth="268.0" text="gym name">
+      
+      <Label fx:id="gymNameLabel" layoutX="330.0" layoutY="39.0" prefHeight="26.0" prefWidth="294.0" text="gym name">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="managerNameLabel" layoutX="330.0" layoutY="65.0" prefHeight="26.0" prefWidth="293.0" text="Name">
+      <Label fx:id="managerNameLabel" layoutX="330.0" layoutY="65.0" prefHeight="26.0" prefWidth="294.0" text="Name">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label id="locationLabel" fx:id="locationLabel" layoutX="330.0" layoutY="92.0" prefHeight="26.0" prefWidth="345.0" text="Location">
+      <Label id="locationLabel" fx:id="locationLabel" layoutX="330.0" layoutY="90.0" prefHeight="26.0" prefWidth="294.0" text="Location">
          <font>
             <Font size="15.0" />
          </font></Label>
 
-      <Button id="addCourseButton" layoutX="63.0" layoutY="221.0" mnemonicParsing="false" onAction="#handleAddCourseButton" prefHeight="26.0" prefWidth="160.0" text="Add course" />
+      <Button id="addCourseButton" layoutX="63.0" layoutY="221.0" mnemonicParsing="false" onAction="#handleAddCourseButton" prefHeight="26.0" prefWidth="160.0" styleClass="Button" text="Add course">
+      <stylesheets>
+         <URL value="@../CSS/button.css" />
+      </stylesheets>
+      </Button>
 
-      <Label fx:id="emailLabel" layoutX="330.0" layoutY="118.0" prefHeight="26.0" prefWidth="346.0" text="email">
+      <Label fx:id="emailLabel" layoutX="330.0" layoutY="116.0" prefHeight="26.0" prefWidth="294.0" text="email">
          <font>
             <Font size="15.0" />
          </font></Label>
-      <Label fx:id="phoneLabel" layoutX="330.0" layoutY="145.0" prefHeight="26.0" prefWidth="346.0" text="tel">
+      <Label fx:id="phoneLabel" layoutX="330.0" layoutY="142.0" prefHeight="26.0" prefWidth="294.0" text="tel">
          <font>
             <Font size="15.0" />
          </font></Label>
@@ -52,10 +58,10 @@
          </image>
       </ImageView>
 
-      <GridPane fx:id="courseGridPane" layoutX="300.0" layoutY="270.0" prefHeight="91.0" prefWidth="450" visible="false">
+      <GridPane fx:id="courseGridPane" layoutX="300.0" layoutY="270.0" prefHeight="91.0" prefWidth="440.0" visible="false">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="115.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="335.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="178.2" minWidth="10.0" prefWidth="178.2" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="382.2" minWidth="10.0" prefWidth="289.8" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="30.4" minHeight="10.0" prefHeight="30.4" vgrow="SOMETIMES" />
@@ -68,12 +74,12 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label prefHeight="30.0" prefWidth="115.0" text="Nume antrenor:" GridPane.rowIndex="1">
+            <Label prefHeight="30.0" prefWidth="124.0" text="Nume antrenor:" GridPane.rowIndex="1">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label text="Program: " GridPane.rowIndex="2">
+            <Label prefHeight="30.0" prefWidth="124.0" text="Program: " GridPane.rowIndex="2">
                <font>
                   <Font size="15.0" />
                </font>
@@ -96,11 +102,23 @@
          </children>
       </GridPane>
 
-      <Button id="logOutButton" layoutX="698.0" layoutY="40.0" mnemonicParsing="false" onAction="#handleLogOutButton" text="Log out" />
+      <Button id="logOutButton" layoutX="698.0" layoutY="40.0" mnemonicParsing="false" onAction="#handleLogOutButton" styleClass="Button" text="Log out">
+         <stylesheets>
+            <URL value="@../CSS/button.css" />
+         </stylesheets>
+      </Button>
 
-      <Button fx:id="submitNewCourseButton" layoutX="599.0" layoutY="371.0" mnemonicParsing="false" onAction="#handleSubmitNewCourseButton" prefHeight="26.0" prefWidth="150.0" text="Submit new course" visible="false" />
+      <Button fx:id="submitNewCourseButton" layoutX="569.0" layoutY="371.0" mnemonicParsing="false" onAction="#handleSubmitNewCourseButton" prefHeight="26.0" prefWidth="180" styleClass="Button" text="Submit new course" visible="false">
+         <stylesheets>
+            <URL value="@../CSS/button.css" />
+         </stylesheets>
+      </Button>
 
-      <Button layoutX="63.0" layoutY="270.0" mnemonicParsing="false" onAction="#handleViewCoursesButton" prefHeight="26.0" prefWidth="160.0" text="View Courses" />
+      <Button layoutX="63.0" layoutY="270.0" mnemonicParsing="false" onAction="#handleViewCoursesButton" prefHeight="26.0" prefWidth="160.0" styleClass="Button" text="View Courses">
+         <stylesheets>
+            <URL value="@../CSS/button.css" />
+         </stylesheets>
+      </Button>
 
       <Label fx:id="errorMessageAddCourseLabel" alignment="CENTER_RIGHT" layoutX="555.0" layoutY="429.0" prefHeight="26.0" prefWidth="200" text="trm" visible="false">
          <font>
@@ -108,9 +126,13 @@
          </font>
       </Label>
 
-      <Button layoutX="63.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleViewCustomersButton" prefHeight="26.0" prefWidth="160.0" text="View Customers" />
+      <Button layoutX="63.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleViewCustomersButton" prefHeight="26.0" prefWidth="160.0" styleClass="Button" text="View Customers">
+         <stylesheets>
+            <URL value="@../CSS/button.css" />
+         </stylesheets>
+      </Button>
 
-      <ImageView fitHeight="22.0" fitWidth="26.0" layoutX="296.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="22.0" fitWidth="26.0" layoutX="296.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../main/resources/gym-icon.png" />
          </image>
@@ -121,24 +143,28 @@
          </image>
       </ImageView>
 
-      <Button layoutX="63.0" layoutY="358.0" mnemonicParsing="false" onAction="#handleAddProfilePhotoButton" prefHeight="26.0" prefWidth="160.0" text="Add profile photo" />
+      <Button layoutX="63.0" layoutY="358.0" mnemonicParsing="false" onAction="#handleAddProfilePhotoButton" prefHeight="26.0" prefWidth="160.0" styleClass="Button" text="Add profile photo">
+         <stylesheets>
+            <URL value="@../CSS/button.css" />
+         </stylesheets>
+      </Button>
 
-      <Button
-              fx:id="payTheTaxButton"
-              onAction="#handlePayTheTaxButton"
-              layoutX="63.0" layoutY="403.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="160.0"
-              text="Pay the tax"
-      />
+      <Button fx:id="payTheTaxButton" layoutX="63.0" layoutY="403.0" mnemonicParsing="false" onAction="#handlePayTheTaxButton" prefHeight="26.0" prefWidth="160.0" styleClass="Button" text="Pay the tax">
+         <stylesheets>
+            <URL value="@../CSS/button.css" />
+         </stylesheets>
+      </Button>
 
-      <Label
-              fx:id="taxWarningLabel"
-              visible="false"
-              layoutX="307.0" layoutY="442.0" prefHeight="26.0" prefWidth="200.0"
-              text="You have already paid the tax">
+      <Label fx:id="taxWarningLabel" layoutX="307.0" layoutY="442.0" prefHeight="26.0" prefWidth="200.0" text="You have already paid the tax" visible="false">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
 
    </children>
+
+   <stylesheets>
+      <URL value="@../CSS/Managers.css" />
+   </stylesheets>
+
 </AnchorPane>
