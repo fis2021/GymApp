@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
-<?import java.net.URL?>
-<GridPane fx:id="gridPane" xmlns:fx="http://javafx.com/fxml/1" alignment="center" hgap="10" vgap="10" prefWidth="600" prefHeight="400"
-          xmlns="http://javafx.com/javafx/8.0.172-ea"
-          fx:controller="proiect.fis.gym.aplication.controllers.RegisterGymManagerController">
+<GridPane fx:id="gridPane" alignment="center" hgap="10" prefHeight="479.0" prefWidth="600" vgap="10" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proiect.fis.gym.aplication.controllers.RegisterGymManagerController">
     <padding>
-        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
+        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
     </padding>
-    <Text id="title-text" text="Manager Register Form" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0" styleClass="text"/>
+    <Text id="title-text" styleClass="text" text="Manager Register Form" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0" />
 
-    <Label text="Select role:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <Label text="Select role:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
 
     <ChoiceBox fx:id="selectRoleChoiceBox" value="Gym Manager" GridPane.columnIndex="1" GridPane.rowIndex="1">
         <items>
@@ -29,64 +27,85 @@
     </ChoiceBox>
 
 
-    <Label text="First name: " GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+    <Label text="First name: " GridPane.columnIndex="0" GridPane.rowIndex="2" />
 
-    <TextField fx:id="firstNameField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+    <TextField fx:id="firstNameField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
-    <Label text="Last name:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+    <Label text="Last name:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
 
-    <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+    <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 
-    <Label text="Phone number:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+    <Label text="Phone number:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
 
-    <TextField fx:id="phoneField" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+    <TextField fx:id="phoneField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
 
-    <Label fx:id="phoneWarningLabel" visible="false" text="incorrect phone format" GridPane.columnIndex="2" GridPane.rowIndex="4"/>
+    <Label fx:id="phoneWarningLabel" text="incorrect phone format" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4" />
 
-    <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+    <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
 
-    <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+    <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
 
     <Label fx:id="emailWarningLabel" text="Invalid email pattern" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="5" />
 
-    <Label text="Gym location:" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+    <Label text="Gym location:" GridPane.columnIndex="0" GridPane.rowIndex="6" />
 
-    <TextField fx:id="gymLocation" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+    <TextField fx:id="gymLocation" GridPane.columnIndex="1" GridPane.rowIndex="6" />
 
-    <Label text="Company name:" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+    <Label text="Company name:" GridPane.columnIndex="0" GridPane.rowIndex="7" />
 
-    <TextField fx:id="companyName" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+    <TextField fx:id="companyName" GridPane.columnIndex="1" GridPane.rowIndex="7" />
 
-    <Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+    <Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="8" />
 
-    <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+    <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="8" />
 
-    <Label fx:id="usernameWarningLabel" visible="false" text="incorrect username format" GridPane.columnIndex="2" GridPane.rowIndex="8"/>
+    <Label fx:id="usernameWarningLabel" text="incorrect username format" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="8" />
 
-    <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+    <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="9" />
 
-    <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
+    <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="9" />
 
-    <Label fx:id="passwordRegexWarningLabel"  visible="false" text="Poor password" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+    <Label fx:id="passwordRegexWarningLabel" text="Poor password" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="9" />
 
-    <Label text="Confirm Password:" GridPane.columnIndex="0" GridPane.rowIndex="10"/>
+    <Label text="Confirm Password:" GridPane.columnIndex="0" GridPane.rowIndex="10" />
 
-    <PasswordField fx:id="confirmPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="10"/>
+    <PasswordField fx:id="confirmPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="10" />
 
     <Label fx:id="passwordWarningLabel" text="Passwords are not matching" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="10" />
 
     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="12">
-        <Button onAction="#handleSubmitRegistrationButton" text="Submit registration"/>
+        <Button onAction="#handleSubmitRegistrationButton" text="Submit registration" />
     </HBox>
 
     <HBox alignment="bottom_left" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="12">
-        <Button onAction="#handleBackToLoginButton" text="Back to login"/>
+        <Button onAction="#handleBackToLoginButton" text="Back to login" />
     </HBox>
 
-    <Label fx:id="registrationMessageLabel" visible="false" GridPane.columnIndex="1" GridPane.rowIndex = "13" styleClass="label"/>
+    <Label fx:id="registrationMessageLabel" styleClass="label" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="13" />
 
     <stylesheets>
-        <URL value="@../CSS/payment.css"/>
+        <URL value="@../CSS/payment.css" />
     </stylesheets>
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
 
 </GridPane>

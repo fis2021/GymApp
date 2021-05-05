@@ -49,20 +49,12 @@ public class CommonFunctionality {
         return true;
     }
 
-    public void openNewScene(String fxmlLoaded, Control control){
+    public void openNewScene(String fxmlLoaded, Control control, int width, int height){
         try {
             Stage stage = (Stage) control.getScene().getWindow();
             String path = "../fxml/" + fxmlLoaded;
             //System.out.println(path);
             Parent viewRegisterRoot = FXMLLoader.load(getClass().getResource(path));
-
-            int width = 900;
-            int height = 800;
-
-            if(fxmlLoaded.equals("login.fxml")){
-                height = 500;
-                width = 800;
-            }
 
             Scene scene = new Scene(viewRegisterRoot, width, height);
             stage.setScene(scene);

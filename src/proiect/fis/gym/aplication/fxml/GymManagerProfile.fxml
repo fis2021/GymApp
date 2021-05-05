@@ -155,7 +155,7 @@
          </stylesheets>
       </Button>
 
-      <Label fx:id="taxWarningLabel" layoutX="307.0" layoutY="442.0" prefHeight="26.0" prefWidth="200.0" text="You have already paid the tax" visible="false">
+      <Label fx:id="taxWarningLabel" layoutX="307.0" layoutY="470" prefHeight="26.0" prefWidth="240.0" text="You have already paid the tax" visible="false">
          <font>
             <Font size="15.0" />
          </font>
