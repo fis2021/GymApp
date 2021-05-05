@@ -7,13 +7,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
+<?import java.net.URL?>
 <GridPane fx:id="gridPaneAdmin" alignment="center" hgap="10" prefHeight="514.0" prefWidth="634.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proiect.fis.gym.aplication.controllers.RegisterAdminController">
 
     <padding>
         <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
     </padding>
 
-    <Text id="title-text" text="Admin Register Form" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0" />
+    <Text id="title-text" text="Admin Register Form" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0" styleClass="text"/>
 
     <Label text="Select role:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
 
@@ -71,6 +72,10 @@
    <Label prefHeight="18.0" prefWidth="121.0" text="Invalid email pattern" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4" />
    <Label prefHeight="18.0" prefWidth="115.0" text="Invalid email pattern" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4" />
 
-    <Label fx:id="registrationMessageLabel" visible="false" GridPane.columnIndex="1" GridPane.rowIndex = "11"/>
+    <Label fx:id="registrationMessageLabel" visible="false" GridPane.columnIndex="1" GridPane.rowIndex = "11" styleClass="label"/>
+
+    <stylesheets>
+        <URL value="@../CSS/payment.css"/>
+    </stylesheets>
 
 </GridPane>
