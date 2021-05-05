@@ -8,6 +8,7 @@
 
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
+<?import java.net.URL?>
 <GridPane xmlns:fx="http://javafx.com/fxml/1" alignment="center" hgap="10" vgap="10" prefWidth="600" prefHeight="400"
           xmlns="http://javafx.com/javafx/8.0.172-ea"
           fx:controller="proiect.fis.gym.aplication.controllers.RegisterCustomerController">
@@ -61,6 +62,10 @@
         <Button onAction="#handleBackToLoginButton" text="Back to login"/>
     </HBox>
 
-    <Text fx:id="registerMessage" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+    <Text fx:id="registerMessage" GridPane.columnIndex="1" GridPane.rowIndex="9" styleClass="text"/>
+
+    <stylesheets>
+        <URL value="@../CSS/payment.css"/>
+    </stylesheets>
 
 </GridPane>
