@@ -1,5 +1,9 @@
+
+
 .root {
-     -fx-background-color: #DCDCDC;
+     -fx-background-image: url("background6.jpg");
+     -fx-background-size: 950px;
+     -fx-background-repeat: no-repeat;
 }
 
 .text {
