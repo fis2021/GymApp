@@ -185,6 +185,10 @@ public class GymManagerProfileController {
         if(manager.getHasPaid()){
             taxWarningLabel.setVisible(true);
         }
+        else if(!manager.isTaxed()){
+            taxWarningLabel.setVisible(true);
+            taxWarningLabel.setText("You have not been taxed yet");
+        }
         else{
             //deschidem o scena pt plata taxei:
             CommonFunctionality cf = new CommonFunctionality();
