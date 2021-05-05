@@ -60,7 +60,8 @@ public class CommonFunctionality {
             int height = 800;
 
             if(fxmlLoaded.equals("login.fxml")){
-                height = 600;
+                height = 500;
+                width = 800;
             }
 
             Scene scene = new Scene(viewRegisterRoot, width, height);
