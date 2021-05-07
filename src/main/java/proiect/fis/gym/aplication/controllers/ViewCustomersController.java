@@ -60,7 +60,7 @@ public class ViewCustomersController {
     }
 
     public void handleBackToProfileButton(ActionEvent actionEvent) {
-        try {
+        /*try {
             Stage stage = (Stage) customersTableView.getScene().getWindow();
             String path = "fxml/" + "GymManagerProfile.fxml";
             Parent viewRegisterRoot = FXMLLoader.load(getClass().getClassLoader().getResource(path));
@@ -68,6 +68,9 @@ public class ViewCustomersController {
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
+
+        CommonFunctionality cf = new CommonFunctionality();
+        cf.openNewScene("GymManagerProfile.fxml", customersTableView, 800, 500);
     }
 }

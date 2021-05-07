@@ -45,7 +45,7 @@ public class ViewCoursesController {
     }
 
     public void handleBackToProfileButton(ActionEvent actionEvent) {
-        try {
+        /*try {
             Stage stage = (Stage) backToProfileButton.getScene().getWindow();
             String path = "fxml/" + "GymManagerProfile.fxml";
             //System.out.println(path);
@@ -54,7 +54,10 @@ public class ViewCoursesController {
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
+
+        CommonFunctionality cf = new CommonFunctionality();
+        cf.openNewScene("GymManagerProfile.fxml", backToProfileButton, 800, 500);
     }
 
     public void fillCoursesListView(){

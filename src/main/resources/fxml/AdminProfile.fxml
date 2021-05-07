@@ -1,22 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proiect.fis.gym.aplication.controllers.AdminProfileController">
    <children>
-      <Label layoutX="62.0" layoutY="63.0" text="Registered Gym Managers">
+      <Label layoutX="115.0" layoutY="63.0" text="Registered Gym Managers">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
 
-      <TableView fx:id="managersTableView" layoutX="62.0" layoutY="113.0" prefHeight="200.0" prefWidth="375.0">
+      <TableView fx:id="managersTableView" layoutX="112.0" layoutY="123.0" prefHeight="200.0" prefWidth="375.0">
       </TableView>
 
-      <Button layoutX="379.0" layoutY="61.0" mnemonicParsing="false" onAction="#handleLogOutButton" text="Log out" />
+      <Button layoutX="412.0" layoutY="61.0" mnemonicParsing="false" onAction="#handleLogOutButton" text="Log out" />
 
-      <Label fx:id="warningLabel" alignment="CENTER_RIGHT" layoutX="208.0" layoutY="323.0" prefHeight="26.0" prefWidth="228.0" text="This gym has already been taxed" visible="false" />
+      <Label fx:id="warningLabel" alignment="CENTER_RIGHT" layoutX="208.0" layoutY="350" prefHeight="26.0" prefWidth="250.0" text="This gym has already been taxed" visible="false" />
    </children>
+
+   <stylesheets>
+      <URL value="@../CSS/Managers.css" />
+   </stylesheets>
+
 </AnchorPane>

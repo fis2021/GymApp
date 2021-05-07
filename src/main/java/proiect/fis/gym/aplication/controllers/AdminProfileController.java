@@ -77,6 +77,6 @@ public class AdminProfileController {
 
     CommonFunctionality cf = new CommonFunctionality();
     public void handleLogOutButton(ActionEvent actionEvent) {
-        cf.openNewScene("login.fxml", managersTableView);
+        cf.openNewScene("login.fxml", managersTableView, 800, 500);
     }
 }
