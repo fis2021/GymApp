@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.Label?>
+<?import java.net.URL?>
+<AnchorPane styleClass="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proiect.fis.gym.aplication.controllers.CustomerController">
+
+    <stylesheets>
+        <URL value="@../CSS/page.css"/>
+    </stylesheets>
+
+    <children>
+        <Button onAction="#handleViewCoursesButton1" layoutX="80.0" layoutY="81.0" mnemonicParsing="false">
+            <font>
+                <Font size="3.0" />
+            </font>
+            <graphic>
+                <ImageView fitHeight="110.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="http://www.profitness.ro/uploads/sali/new-file_4fe499e5ac8cc_1.jpg" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+    </children>
+
+    <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="80.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@../icon11.png" />
+        </image>
+    </ImageView>
+
+    <Label layoutX="110.0" layoutY="210.0" prefHeight="15.0" prefWidth="250.0" text="Smartfit Studio">
+        <font>
+            <Font size="15.0" />
+        </font></Label>
+
+    <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="80.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@../icons8-marker-50.png" />
+        </image>
+    </ImageView>
+
+    <Label layoutX="110.0" layoutY="240.0" prefHeight="15.0" prefWidth="250.0" text="Calea Șagului nr.100"  >
+        <font>
+            <Font size="15.0" />
+        </font></Label>
+
+    <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="80.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@../icons8-email-64.png" />
+        </image>
+    </ImageView>
+
+    <Label layoutX="110.0" layoutY="270.0" prefHeight="15.0" prefWidth="250.0" text="office@smartfitstudio.ro">
+        <font>
+            <Font size="15.0" />
+        </font></Label>
+
+    <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="80.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+    <image>
+        <Image url="@../icons8-phone-50.png" />
+    </image>
+    </ImageView>
+
+    <Label layoutX="110.0" layoutY="300.0" prefHeight="15.0" prefWidth="250.0" text="0741.332.001">
+        <font>
+            <Font size="15.0" />
+        </font></Label>
+
+    <children>
+
+        <Button onAction="#handleViewCoursesButton2" layoutX="300.0" layoutY="81.0" mnemonicParsing="false">
+
+            <font>
+                <Font size="3.0" />
+            </font>
+            <graphic>
+                <ImageView fitHeight="110.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="https://upfit.world/data_files/cluburi-fitness/110/logo-gym-one_110.jpg?cache=1582641129" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+    </children>
+
+    <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="300.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@../icon11.png" />
+        </image>
+    </ImageView>
+
+    <Label layoutX="330.0" layoutY="210.0" prefHeight="15.0" prefWidth="250.0" text="Gym One">
+        <font>
+            <Font size="15.0" />
+        </font></Label>
+
+    <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="300.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@../icons8-marker-50.png" />
+        </image>
+    </ImageView>
+
+    <Label layoutX="330.0" layoutY="240.0" prefHeight="15.0" prefWidth="250.0" text="Str. Divizia 9 Cavalerie nr. 19">
+        <font>
+            <Font size="15.0" />
+        </font></Label>
+
+    <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="300.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@../icons8-email-64.png" />
+        </image>
+    </ImageView>
+
+    <Label layoutX="330.0" layoutY="270.0" prefHeight="15.0" prefWidth="250.0" text="gymonetimisoara@yahoo.com">
+        <font>
+            <Font size="15.0" />
+        </font></Label>
+
+    <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="300.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@../icons8-phone-50.png" />
+        </image>
+    </ImageView>
+
+    <Label layoutX="330.0" layoutY="300.0" prefHeight="15.0" prefWidth="250.0" text="0732.533.123">
+        <font>
+            <Font size="15.0" />
+        </font></Label>
+
+    <children>
+
+        <Button onAction="#handleViewCoursesButton3" layoutX="550.0" layoutY="81.0" mnemonicParsing="false">
+
+            <font>
+                <Font size="3.0" />
+            </font>
+            <graphic>
+                <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="https://lh3.googleusercontent.com/VbUFmAmrG66OEe0RgQ-lZ6x4shcptnbIPt2TXvw5jTD4NukTNaSrdEz21RGRsYXahaY7JA=s113" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+    </children>
+
+    <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="550.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@../icon11.png" />
+        </image>
+    </ImageView>
+
+    <Label layoutX="580.0" layoutY="210.0" prefHeight="15.0" prefWidth="250.0" text="Iguana">
+        <font>
+            <Font size="15.0" />
+        </font></Label>
+
+    <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="550.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@../icons8-marker-50.png" />
+        </image>
+    </ImageView>
+
+    <Label layoutX="580.0" layoutY="240.0" prefHeight="15.0" prefWidth="250.0" text="Strada Simion Bărnuțiu 49">
+        <font>
+            <Font size="15.0" />
+        </font></Label>
+
+    <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="550.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@../icons8-email-64.png" />
+        </image>
+    </ImageView>
+
+    <Label layoutX="580.0" layoutY="270.0" prefHeight="15.0" prefWidth="250.0" text="iguanafitness@yahoo.com">
+        <font>
+            <Font size="15.0" />
+        </font></Label>
+
+    <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="550.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@../icons8-phone-50.png" />
+        </image>
+    </ImageView>
+
+    <Label layoutX="580.0" layoutY="300.0" prefHeight="15.0" prefWidth="250.0" text="0720.655.359">
+        <font>
+            <Font size="15.0" />
+        </font></Label>
+
+    <Text fx:id="sceneChanger" text="ok" />
+   <Button onAction="#handleCreateSubscription" layoutX="67.0" layoutY="360.0" mnemonicParsing="false" text="Create subscription" >
+    <stylesheets>
+        <URL value="@../CSS/button2.css"/>
+    </stylesheets>
+   </Button>
+   <Button onAction="#handleExtendButton" layoutX="225.0" layoutY="360.0" mnemonicParsing="false" text="Extend subscription" >
+    <stylesheets>
+        <URL value="@../CSS/button2.css"/>
+    </stylesheets>
+   </Button>
+   <Button onAction="#handleViewSubscriptionsButton" layoutX="383.0" layoutY="360.0" mnemonicParsing="false" text="View subscriptions" >
+    <stylesheets>
+        <URL value="@../CSS/button2.css"/>
+    </stylesheets>
+   </Button>
+    <Button onAction="#backToLogin" layoutX="695.0" layoutY="360.0" mnemonicParsing="false" text="Log out" >
+    <stylesheets>
+        <URL value="@../CSS/button2.css"/>
+    </stylesheets>
+    </Button>
+    <Button onAction="#handleViewJoinedCoursesButton" layoutX="535.0" layoutY="360.0" mnemonicParsing="false" text="View joined courses" >
+    <stylesheets>
+        <URL value="@../CSS/button2.css"/>
+    </stylesheets>
+    </Button>
+
+     <Text fx:id="customerMessage" layoutX="330" layoutY="450" styleClass="text" />
+
+</AnchorPane>
