@@ -15,6 +15,7 @@ import proiect.fis.gym.aplication.exceptions.IncorectLoginException;
 import proiect.fis.gym.aplication.model.Course;
 import proiect.fis.gym.aplication.model.GymManager;
 import proiect.fis.gym.aplication.services.GymManagerService;
+import proiect.fis.gym.aplication.services.LoginService;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -45,6 +46,8 @@ public class GymManagerProfileController {
     public Label errorMessageAddCourseLabel;
     @FXML
     public ImageView profilePicImageView;
+    @FXML
+    public Label taxWarningLabel;
 
     private String currentUserName;
 
@@ -165,6 +168,18 @@ public class GymManagerProfileController {
         }
         else{
             System.out.println("NULL");
+        }
+    }
+
+    public void handlePayTheTaxButton(ActionEvent actionEvent) {
+        GymManager manager = getManagerFromDatabase(LoginController.getCurrentUsername());
+        if(manager.getHasPaid()){
+            taxWarningLabel.setVisible(true);
+        }
+        else{
+            //deschidem o scena pt plata taxei:
+            CommonFunctionality cf = new CommonFunctionality();
+            cf.openNewScene("PayTheTax.fxml", taxWarningLabel);
         }
     }
 }
