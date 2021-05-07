@@ -40,7 +40,7 @@ public class CommonFunctionality {
         return true;
     }
 
-    public void openNewScene(String fxmlLoaded, Control control){
+    public void openNewScene(String fxmlLoaded, Control control,int a, int b){
         try {
             Stage stage = (Stage) control.getScene().getWindow();
             String path = "fxml/" + fxmlLoaded;
