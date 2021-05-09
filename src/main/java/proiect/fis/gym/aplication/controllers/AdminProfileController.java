@@ -4,12 +4,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 import javafx.util.Callback;
 import proiect.fis.gym.aplication.model.GymManager;
 import proiect.fis.gym.aplication.services.GymManagerService;
 import proiect.fis.gym.aplication.services.AdminService;
 
 public class AdminProfileController {
+    @FXML
+    private Text forTest;
     @FXML
     public TableView managersTableView;
     @FXML

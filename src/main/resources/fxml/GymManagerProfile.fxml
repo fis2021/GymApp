@@ -167,4 +167,6 @@
       <URL value="@../CSS/Managers.css" />
    </stylesheets>
 
+   <Text fx:id="text" id="LoginTest"/>
+
 </AnchorPane>
