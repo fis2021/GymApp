@@ -100,7 +100,7 @@
 
     <HBox alignment="bottom_left" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="9">
         <Button onAction="#handleBackToLoginButton" text="Log out" />
-      <Button onAction="#handleBackToMainPageButton" mnemonicParsing="false" text="Back to main page"/>
+      <Button id="backToMain" onAction="#handleBackToMainPageButton" mnemonicParsing="false" text="Back to main page"/>
     </HBox>
 
     <Text fx:id="paymentMessage" id="paymentMessage" GridPane.columnIndex="0" GridPane.rowIndex="10" styleClass="text"/>

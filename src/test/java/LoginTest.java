@@ -41,7 +41,24 @@ public class LoginTest {
 
     @Test
     void testCustomerLogin(FxRobot robot){
-
+        robot.clickOn("#reg");
+        robot.clickOn("#username");
+        robot.write("userusername2");
+        robot.clickOn("#password");
+        robot.write("moneyMeremere@1");
+        robot.clickOn("#firstname");
+        robot.write("firstname");
+        robot.clickOn("#lastname");
+        robot.write("lastname");
+        robot.clickOn("#phone");
+        robot.write("+40727447520");
+        robot.clickOn("#email");
+        robot.write("geo@yahoo.com");
+        robot.clickOn("#registerButton");
+        assertThat(robot.lookup("#registerMessage").queryText()).hasText(
+                ("Account created successfully!")
+        );
+        robot.clickOn("#back");
         robot.clickOn("#LoginButton");
         assertThat(robot.lookup("#LoginMessage").queryText()).hasText(
                 String.format("Incorrect login!")
@@ -62,7 +79,7 @@ public class LoginTest {
         );
 
         robot.clickOn("#LoginUsername");
-        robot.write("name");
+        robot.write("name2");
         robot.clickOn("#LoginButton");
         assertThat(robot.lookup("#LoginMessage").queryText()).hasText(
                 String.format("Incorrect login!")

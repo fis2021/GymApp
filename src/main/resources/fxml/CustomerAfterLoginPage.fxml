@@ -202,7 +202,7 @@
         <URL value="@../CSS/button2.css"/>
     </stylesheets>
    </Button>
-   <Button onAction="#handleExtendButton" layoutX="225.0" layoutY="360.0" mnemonicParsing="false" text="Extend subscription" >
+   <Button id="Extend" onAction="#handleExtendButton" layoutX="225.0" layoutY="360.0" mnemonicParsing="false" text="Extend subscription" >
     <stylesheets>
         <URL value="@../CSS/button2.css"/>
     </stylesheets>

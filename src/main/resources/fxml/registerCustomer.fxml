@@ -59,7 +59,7 @@
     </HBox>
 
     <HBox alignment="bottom_left" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="8">
-        <Button onAction="#handleBackToLoginButton" text="Back to login"/>
+        <Button id="back" onAction="#handleBackToLoginButton" text="Back to login"/>
     </HBox>
 
     <Text fx:id="registerMessage" id="registerMessage" GridPane.columnIndex="1" GridPane.rowIndex="9" styleClass="text"/>

@@ -30,7 +30,7 @@
     </HBox>
 
     <HBox alignment="bottom_left" spacing="1000" GridPane.columnIndex="1" GridPane.rowIndex="3">
-        <Button onAction="#handleRegisterButton" text="Register">
+        <Button id="reg" onAction="#handleRegisterButton" text="Register">
         <stylesheets>
             <URL value="@../CSS/button.css"/>
         </stylesheets>
