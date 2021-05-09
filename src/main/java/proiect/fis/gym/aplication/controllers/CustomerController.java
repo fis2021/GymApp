@@ -134,7 +134,7 @@ public class CustomerController extends RegisterController{
     public void handleMakePaymentButton(){
         try {
             CustomerService.makePayment(selectGym.getValue(),ownerName.getText(),month.getValue(),year.getValue(),cardNumber.getText(),cvc.getText(),duration.getValue());
-            paymentMessage.setText("Payment made succesfully");
+            paymentMessage.setText("Payment made successfully");
         } catch (incorectCardDetailsException | IncorectCardNumberException | IncorectCVCException | NotEnoughMoneyException | CheckPaymentFieldNotEmptyException e) {
             paymentMessage.setText(e.getMessage());
         }

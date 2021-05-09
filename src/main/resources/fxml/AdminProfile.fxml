@@ -25,4 +25,6 @@
       <URL value="@../CSS/Managers.css" />
    </stylesheets>
 
+   <Text fx:id="forTest" id="AdminTest"/>
+
 </AnchorPane>

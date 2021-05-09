@@ -24,7 +24,7 @@ class CustomerRegistrationTest {
 
     @BeforeEach
     void setUp() throws Exception{
-        FileSystemService.APPLICATION_FOLDER=".test-GymAplication";
+        FileSystemService.APPLICATION_FOLDER=".test-GymApplication";
         FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
         CustomerService.initDatabase();
     }
@@ -39,26 +39,61 @@ class CustomerRegistrationTest {
 
     @Test
     void testRegistration(FxRobot robot) {
+
+        robot.clickOn("#registerButton");
+        assertThat(robot.lookup("#registerMessage").queryText()).hasText(
+                String.format("Please complete all the fields!")
+        );
+
         robot.clickOn("#username");
-        robot.write(USERNAME);
+        robot.write("user");
         robot.clickOn("#password");
-        robot.write(PASSWORD);
+        robot.write("money");
         robot.clickOn("#firstname");
         robot.write(FIRSTNAME);
         robot.clickOn("#lastname");
         robot.write(LASTNAME);
         robot.clickOn("#phone");
-        robot.write(PHONE);
+        robot.write("+2");
         robot.clickOn("#email");
-        robot.write(EMAIL);
+        robot.write("geo");
         robot.clickOn("#registerButton");
+        assertThat(robot.lookup("#registerMessage").queryText()).hasText(
+                String.format("The username must be at least 5 characters long.")
+        );
 
+        robot.clickOn("#username");
+        robot.write(USERNAME);
+        robot.clickOn("#registerButton");
+        assertThat(robot.lookup("#registerMessage").queryText()).hasText(
+               "Please enter a valid password!\nThe password must contain:\n-at least one numeric character\n-at least one lowercase character,\n-at least one uppercase character\n-at least one special symbol among @#$%^&+=_\n-the password length must be between 8 and 20 characters"
+        );
+
+        robot.clickOn("#password");
+        robot.write(PASSWORD);
+
+        robot.clickOn("#registerButton");
+        assertThat(robot.lookup("#registerMessage").queryText()).hasText(
+                String.format("Please enter a valid email adress!")
+        );
+
+        robot.clickOn("#email");
+        robot.write("@yahoo.com");
+        robot.clickOn("#registerButton");
+        assertThat(robot.lookup("#registerMessage").queryText()).hasText(
+                String.format("Please type a valid phone number!")
+        );
+
+        robot.clickOn("#phone");
+        robot.write("0727337520");
+
+        robot.clickOn("#registerButton");
         assertThat(robot.lookup("#registerMessage").queryText()).hasText("Account created successfully!");
         assertThat(CustomerService.getAllUsers()).size().isEqualTo(1);
 
         robot.clickOn("#registerButton");
-        assertThat(robot.lookup("#registrationMessage").queryText()).hasText(
-                String.format("An account with the username %s already exists!", USERNAME)
+        assertThat(robot.lookup("#registerMessage").queryText()).hasText(
+                String.format("An account with the username %s already exists!", "user" + USERNAME)
         );
 
         robot.clickOn("#username");

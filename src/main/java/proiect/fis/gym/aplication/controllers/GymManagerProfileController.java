@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import proiect.fis.gym.aplication.exceptions.CourseAlreadyExistException;
 import proiect.fis.gym.aplication.exceptions.FieldsAreNotEmptyException;
@@ -51,6 +52,8 @@ public class GymManagerProfileController {
 
     private String currentUserName;
 
+    @FXML
+    private Text text;
 
     @FXML
     private void initialize() throws IncorectLoginException {

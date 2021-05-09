@@ -197,17 +197,17 @@
         </font></Label>
 
     <Text fx:id="sceneChanger" text="ok" />
-   <Button onAction="#handleCreateSubscription" layoutX="67.0" layoutY="360.0" mnemonicParsing="false" text="Create subscription" >
+   <Button onAction="#handleCreateSubscription" id="createSubscription" layoutX="67.0" layoutY="360.0" mnemonicParsing="false" text="Create subscription" >
     <stylesheets>
         <URL value="@../CSS/button2.css"/>
     </stylesheets>
    </Button>
-   <Button onAction="#handleExtendButton" layoutX="225.0" layoutY="360.0" mnemonicParsing="false" text="Extend subscription" >
+   <Button id="Extend" onAction="#handleExtendButton" layoutX="225.0" layoutY="360.0" mnemonicParsing="false" text="Extend subscription" >
     <stylesheets>
         <URL value="@../CSS/button2.css"/>
     </stylesheets>
    </Button>
-   <Button onAction="#handleViewSubscriptionsButton" layoutX="383.0" layoutY="360.0" mnemonicParsing="false" text="View subscriptions" >
+   <Button onAction="#handleViewSubscriptionsButton" id="viewSubs" layoutX="383.0" layoutY="360.0" mnemonicParsing="false" text="View subscriptions" >
     <stylesheets>
         <URL value="@../CSS/button2.css"/>
     </stylesheets>
@@ -223,6 +223,6 @@
     </stylesheets>
     </Button>
 
-     <Text fx:id="customerMessage" layoutX="330" layoutY="450" styleClass="text" />
+     <Text fx:id="customerMessage" id="CustomerMessage" layoutX="330" layoutY="450" styleClass="text" />
 
 </AnchorPane>
