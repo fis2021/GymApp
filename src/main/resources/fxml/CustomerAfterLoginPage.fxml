@@ -223,6 +223,6 @@
     </stylesheets>
     </Button>
 
-     <Text fx:id="customerMessage" layoutX="330" layoutY="450" styleClass="text" />
+     <Text fx:id="customerMessage" id="CustomerMessage" layoutX="330" layoutY="450" styleClass="text" />
 
 </AnchorPane>
