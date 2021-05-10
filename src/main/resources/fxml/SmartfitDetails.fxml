@@ -14,6 +14,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import java.net.URL?>
+<?import javafx.scene.text.Text?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proiect.fis.gym.aplication.controllers.CustomerGymsDetailsController">
 
     <children>
@@ -40,7 +41,7 @@
         </Label>
       <Button onAction="#backToLogin" layoutX="728.0" layoutY="50.0" mnemonicParsing="false" text="Log out" />
       <Button onAction="#handleBackToMainPageButton" layoutX="580.0" layoutY="50.0" mnemonicParsing="false" text="Back to main page" />
-        <Button onAction="#handleAddReviewButton" layoutX="37.0" layoutY="650.0" mnemonicParsing="false" text="Add review" prefWidth="100.0"/>
+        <Button id="addReviewSmart" onAction="#handleAddReviewButton" layoutX="37.0" layoutY="650.0" mnemonicParsing="false" text="Add review" prefWidth="100.0"/>
     </children>
 
     <children>
@@ -58,11 +59,11 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <TextArea fx:id="textArea" layoutY="650" layoutX="100"/>
+        <TextArea fx:id="textArea" id="textSmart" layoutY="650" layoutX="100"/>
     </children>
     </GridPane>
 
-    <Button fx:id="submitNewReviewButton" onAction="#handleSubmitReviewButton" layoutX="37.0" layoutY="700.0" mnemonicParsing="false"  prefHeight="26.0" prefWidth="100.0" text="Submit" visible="false" />
+    <Button fx:id="submitNewReviewButton" id="submitSmart" onAction="#handleSubmitReviewButton" layoutX="37.0" layoutY="700.0" mnemonicParsing="false"  prefHeight="26.0" prefWidth="100.0" text="Submit" visible="false" />
     <Label fx:id="errorMessageAddCourseLabel"
            layoutX="245.0" layoutY="770.0" prefHeight="26.0" prefWidth="200" text="trm"
            alignment="CENTER_RIGHT"
@@ -71,7 +72,7 @@
             <Font size="15.0" />
         </font>
     </Label>
-    <Label fx:id="message" layoutX="245" layoutY="650" />
+    <Text fx:id="message" id="messageSmart" layoutX="245" layoutY="650" />
     <Label fx:id="joinedCourses" layoutX="200" layoutY="100" />
 
     <stylesheets>

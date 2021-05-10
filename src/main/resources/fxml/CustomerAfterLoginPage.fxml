@@ -16,7 +16,7 @@
     </stylesheets>
 
     <children>
-        <Button onAction="#handleViewCoursesButton1" layoutX="80.0" layoutY="81.0" mnemonicParsing="false">
+        <Button id="smartfit" onAction="#handleViewCoursesButton1" layoutX="80.0" layoutY="81.0" mnemonicParsing="false">
             <font>
                 <Font size="3.0" />
             </font>
