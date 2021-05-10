@@ -23,7 +23,6 @@ import static org.testfx.assertions.api.Assertions.assertThat;
 public class CreateSubscriptionTest {
 
     private static ObjectRepository<Bank> bankRepository;
-    private static ObjectRepository<Customer> customerRepository;
     @BeforeEach
     void setUp() throws Exception{
         FileSystemService.APPLICATION_FOLDER=".test-GymApplication";
@@ -34,7 +33,6 @@ public class CreateSubscriptionTest {
         GymManagerService.initDatabase();
         LoginService.initDatabase();
         bankRepository=BankService.getBankRepository();
-        customerRepository=CustomerService.getCustomerRepository();
     }
 
     @Start

@@ -217,7 +217,7 @@
         <URL value="@../CSS/button2.css"/>
     </stylesheets>
     </Button>
-    <Button onAction="#handleViewJoinedCoursesButton" layoutX="535.0" layoutY="360.0" mnemonicParsing="false" text="View joined courses" >
+    <Button onAction="#handleViewJoinedCoursesButton" id="viewCourse" layoutX="535.0" layoutY="360.0" mnemonicParsing="false" text="View joined courses" >
     <stylesheets>
         <URL value="@../CSS/button2.css"/>
     </stylesheets>

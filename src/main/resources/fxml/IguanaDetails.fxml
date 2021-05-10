@@ -73,7 +73,7 @@
         </font>
     </Label>
     <Label fx:id="message" layoutX="245" layoutY="650" />
-    <Label fx:id="newcourse" layoutX="200" layoutY="50" />
+    <Label fx:id="newcourse" layoutX="200" layoutY="100" />
     <stylesheets>
         <URL value="@../CSS/gyms.css"/>
     </stylesheets>

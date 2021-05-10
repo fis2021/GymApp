@@ -3,24 +3,21 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.apache.commons.io.FileUtils;
-import org.dizitart.no2.objects.ObjectRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
-import proiect.fis.gym.aplication.model.Bank;
 import proiect.fis.gym.aplication.services.*;
 
 import static org.testfx.assertions.api.Assertions.assertThat;
 
 @ExtendWith(ApplicationExtension.class)
-public class ViewSubscriptionsTest {
+public class ViewJoinedCoursesTest {
 
-    private static ObjectRepository<Bank> bankRepository;
-    public static final String USERNAME="userusername1";
-    public static final String PASSWORD="moneyMeremere@1";
+    public static final String USERNAME="george";
+    public static final String PASSWORD="Meremere@1";
 
     @BeforeEach
     void setUp() throws Exception{
@@ -31,7 +28,6 @@ public class ViewSubscriptionsTest {
         CustomerService.initDatabase();
         GymManagerService.initDatabase();
         LoginService.initDatabase();
-        bankRepository=BankService.getBankRepository();
     }
 
     @Start
@@ -43,15 +39,15 @@ public class ViewSubscriptionsTest {
     }
 
     @Test
-    void viewSubs(FxRobot robot){
+    void viewCoursesTest(FxRobot robot){
         robot.clickOn("#LoginUsername");
         robot.write(USERNAME);
         robot.clickOn("#LoginPassword");
         robot.write(PASSWORD);
         robot.clickOn("#LoginButton");
-        robot.clickOn("#viewSubs");
+        robot.clickOn("#viewCourse");
         assertThat(robot.lookup("#CustomerMessage").queryText()).hasText(
-                ("SmartFit : 2021-06-10\n")
+                ("Smartfit: Aerobic trainer: Andrei schedule: 8-10\n")
         );
     }
 }
