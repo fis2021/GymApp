@@ -35,11 +35,11 @@
     </ChoiceBox>
     <Label text="Card Owner name:" GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="label"/>
 
-    <TextField fx:id="ownerName" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+    <TextField fx:id="ownerName" id="cardOwnerName" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
     <Label text="Expiration month:" GridPane.columnIndex="0" GridPane.rowIndex="3" styleClass="label"/>
 
-    <ChoiceBox fx:id="month" value="01" GridPane.columnIndex="1" GridPane.rowIndex="3">
+    <ChoiceBox fx:id="month" id="month" value="01" GridPane.columnIndex="1" GridPane.rowIndex="3">
         <items>
             <FXCollections fx:factory="observableArrayList">
                 <String fx:value="01" />
@@ -75,11 +75,11 @@
 
     <Label text="Card number: (xxxx-xxxx-xxxx-xxxx)" GridPane.columnIndex="0" GridPane.rowIndex="5" styleClass="label"/>
 
-    <TextField fx:id="cardNumber" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+    <TextField fx:id="cardNumber" id="cardNumber" GridPane.columnIndex="1" GridPane.rowIndex="5" />
 
     <Label text="CVC:" GridPane.columnIndex="0" GridPane.rowIndex="6" styleClass="label"/>
 
-    <TextField fx:id="cvc" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+    <TextField fx:id="cvc" id="cvc" GridPane.columnIndex="1" GridPane.rowIndex="6" />
 
     <Label text="Subscription duration:" GridPane.columnIndex="0" GridPane.rowIndex="7" styleClass="label"/>
 
@@ -95,15 +95,15 @@
     </ChoiceBox>
 
     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="9">
-        <Button onAction="#handleMakePaymentButton" text="Make payment" />
+        <Button id="MakePayment" onAction="#handleMakePaymentButton" text="Make payment" />
     </HBox>
 
     <HBox alignment="bottom_left" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="9">
         <Button onAction="#handleBackToLoginButton" text="Log out" />
-      <Button onAction="#handleBackToMainPageButton" mnemonicParsing="false" text="Back to main page"/>
+      <Button id="backToMain" onAction="#handleBackToMainPageButton" mnemonicParsing="false" text="Back to main page"/>
     </HBox>
 
-    <Text fx:id="paymentMessage" GridPane.columnIndex="0" GridPane.rowIndex="10" styleClass="text"/>
+    <Text fx:id="paymentMessage" id="paymentMessage" GridPane.columnIndex="0" GridPane.rowIndex="10" styleClass="text"/>
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints />

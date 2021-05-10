@@ -15,14 +15,14 @@
 
     <Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="label"/>
 
-    <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    <TextField fx:id="usernameField" id="LoginUsername" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
 
     <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="label" />
 
-    <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+    <PasswordField fx:id="passwordField" id="LoginPassword" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
 
     <HBox alignment="bottom_left" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="3" >
-        <Button onAction="#handleLoginButton" text="Login" styleClass="Button" >
+        <Button id="LoginButton" onAction="#handleLoginButton" text="Login" styleClass="Button" >
         <stylesheets>
             <URL value="@../CSS/button.css"/>
         </stylesheets>
@@ -30,14 +30,14 @@
     </HBox>
 
     <HBox alignment="bottom_left" spacing="1000" GridPane.columnIndex="1" GridPane.rowIndex="3">
-        <Button onAction="#handleRegisterButton" text="Register">
+        <Button id="reg" onAction="#handleRegisterButton" text="Register">
         <stylesheets>
             <URL value="@../CSS/button.css"/>
         </stylesheets>
         </Button>
     </HBox>
 
-    <Text fx:id="loginMessage" GridPane.columnIndex="1" GridPane.rowIndex="6" styleClass="text"/>
+    <Text fx:id="loginMessage" id="LoginMessage" GridPane.columnIndex="1" GridPane.rowIndex="6" styleClass="text"/>
 
     <stylesheets>
         <URL value="@../CSS/login.css"/>

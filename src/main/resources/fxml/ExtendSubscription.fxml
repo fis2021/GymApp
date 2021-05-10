@@ -24,7 +24,7 @@
 
     <Label text="Select gym:" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="label"/>
 
-    <ChoiceBox fx:id="selectGym" value="SmartFit" GridPane.columnIndex="1" GridPane.rowIndex="1">
+    <ChoiceBox fx:id="selectGym" id="choiceBox" value="SmartFit" GridPane.columnIndex="1" GridPane.rowIndex="1">
         <items>
             <FXCollections fx:factory="observableArrayList">
                 <String fx:value="SmartFit" />
@@ -35,7 +35,7 @@
     </ChoiceBox>
     <Label text="Card Owner name:" GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="label"/>
 
-    <TextField fx:id="ownerName" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+    <TextField id="cardOwnerName" fx:id="ownerName" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
     <Label text="Expiration month:" GridPane.columnIndex="0" GridPane.rowIndex="3" styleClass="label"/>
 
@@ -75,11 +75,11 @@
 
     <Label text="Card number: (xxxx-xxxx-xxxx-xxxx)" GridPane.columnIndex="0" GridPane.rowIndex="5" styleClass="label"/>
 
-    <TextField fx:id="cardNumber" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+    <TextField id="extendCardNumber" fx:id="cardNumber" GridPane.columnIndex="1" GridPane.rowIndex="5" />
 
     <Label text="CVC:" GridPane.columnIndex="0" GridPane.rowIndex="6" styleClass="label"/>
 
-    <TextField fx:id="cvc" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+    <TextField id="extendCVC" fx:id="cvc" GridPane.columnIndex="1" GridPane.rowIndex="6" />
 
     <Label text="Extend duration:" GridPane.columnIndex="0" GridPane.rowIndex="7" styleClass="label"/>
 
@@ -95,7 +95,7 @@
     </ChoiceBox>
 
     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="9">
-        <Button onAction="#handleExtendSubscriptionButton" text="Extend subscription" />
+        <Button id="extendSubs" onAction="#handleExtendSubscriptionButton" text="Extend subscription" />
     </HBox>
 
     <HBox alignment="bottom_left" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="9">
@@ -103,7 +103,7 @@
         <Button onAction="#handleBackToMainPageButton" mnemonicParsing="false" text="Back to main page"/>
     </HBox>
 
-    <Text fx:id="paymentMessage" GridPane.columnIndex="0" GridPane.rowIndex="10" styleClass="text"/>
+    <Text fx:id="paymentMessage" id="extendMessage" GridPane.columnIndex="0" GridPane.rowIndex="10" styleClass="text"/>
     <columnConstraints>
         <ColumnConstraints />
         <ColumnConstraints />
