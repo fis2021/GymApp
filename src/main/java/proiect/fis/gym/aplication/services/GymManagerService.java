@@ -24,6 +24,14 @@ public class GymManagerService extends RegisterService{
 
     }
 
+    public static void initTestDatabase(String dbName){
+        Nitrite database = Nitrite.builder()
+                .filePath(FileSystemService.getPathToTestFile(dbName).toFile())
+                .openOrCreate("Geo", "Rares");
+
+        gymManagerRepository = database.getRepository(GymManager.class);
+    }
+
     public static ObjectRepository<GymManager> getGymManagerRepository(){
         return gymManagerRepository;
     }
