@@ -19,16 +19,17 @@ import static org.testfx.assertions.api.Assertions.assertThat;
 public class ViewSubscriptionsTest {
 
     private static ObjectRepository<Bank> bankRepository;
-    public static final String USERNAME="userusername1";
+    public static final String USERNAME="userusername3";
     public static final String PASSWORD="moneyMeremere@1";
 
     @BeforeEach
     void setUp() throws Exception{
         FileSystemService.APPLICATION_FOLDER=".test-GymApplication";
-        FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
+        FileSystemService.initDirectory();
+        //FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
         BankService.initDatabase();
         AdminService.initDatabase();
-        CustomerService.initDatabase();
+        CustomerService.initTestDatabase("CustomerTest.db");
         GymManagerService.initDatabase();
         LoginService.initDatabase();
         bankRepository=BankService.getBankRepository();
@@ -51,7 +52,7 @@ public class ViewSubscriptionsTest {
         robot.clickOn("#LoginButton");
         robot.clickOn("#viewSubs");
         assertThat(robot.lookup("#CustomerMessage").queryText()).hasText(
-                ("SmartFit : 2021-06-10\n")
+                ("SmartFit : 2021-07-11\n")
         );
     }
 }

@@ -63,7 +63,7 @@ public class CustomerGymsDetailsController{
 
     public void fillReviewList(){
         GymManager manager = GymManagerProfileController.getManagerFromDatabase("SmartFit");
-        column4.setMinWidth(790);
+        column4.setMinWidth(805);
         column4.setCellValueFactory(new PropertyValueFactory<>("review"));
 
         if(reviewTableView.getColumns() != null) {

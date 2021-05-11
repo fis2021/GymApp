@@ -26,10 +26,11 @@ public class CreateSubscriptionTest {
     @BeforeEach
     void setUp() throws Exception{
         FileSystemService.APPLICATION_FOLDER=".test-GymApplication";
-        FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
+        FileSystemService.initDirectory();
+        //FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
         BankService.initDatabase();
         AdminService.initDatabase();
-        CustomerService.initDatabase();
+        CustomerService.initTestDatabase("CustomerTest.db");
         GymManagerService.initDatabase();
         LoginService.initDatabase();
         bankRepository=BankService.getBankRepository();
@@ -144,7 +145,7 @@ public class CreateSubscriptionTest {
     @Test
     void testEnoughMoneyException(FxRobot robot){
         robot.clickOn("#LoginUsername");
-        robot.write("userusername");
+        robot.write("userusername1");
         robot.clickOn("#LoginPassword");
         robot.write("moneyMeremere@1");
         robot.clickOn("#LoginButton");
