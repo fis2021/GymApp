@@ -2,6 +2,7 @@ package proiect.fis.gym.aplication.services;
 
 import javafx.scene.control.PasswordField;
 import javafx.scene.layout.GridPane;
+import proiect.fis.gym.aplication.controllers.CommonFunctionality;
 import proiect.fis.gym.aplication.model.GymManager;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
@@ -9,14 +10,16 @@ import proiect.fis.gym.aplication.exceptions.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class GymManagerService extends RegisterService{
+    private static Nitrite database;
     private static ObjectRepository<GymManager> gymManagerRepository;
     private static final ArrayList<String> usernameList = new ArrayList<String>(Arrays.asList("GymOne", "SmartFit", "Iguana"));
 
     public static void initDatabase() {
 
-        Nitrite database = Nitrite.builder()
+        database = Nitrite.builder()
                 .filePath(FileSystemService.getPathToFile("Managers.db").toFile())
                 .openOrCreate("Geo", "Rares");
 
@@ -25,7 +28,7 @@ public class GymManagerService extends RegisterService{
     }
 
     public static void initTestDatabase(String dbName){
-        Nitrite database = Nitrite.builder()
+        database = Nitrite.builder()
                 .filePath(FileSystemService.getPathToTestFile(dbName).toFile())
                 .openOrCreate("Geo", "Rares");
 
@@ -36,14 +39,14 @@ public class GymManagerService extends RegisterService{
         return gymManagerRepository;
     }
 
-    public static void addUser( GridPane gridPane, PasswordField confirmPassword, String firstName, String lastName, String phoneNumber, String email, String gymLocation, String companyCode, String username, String password)
+    public static void addUser( String confirmPassword, String firstName, String lastName, String phoneNumber, String email, String gymLocation, String companyCode, String username, String password)
             throws UsernameAlreadyExistsException, FieldsAreNotEmptyException, ValidPasswordException, NotMatchingPasswordsException,
             corectEmailException, validPhoneNumberException, ValidUsernameException, ManagerUsernameIsNotOnShortListException {
         checkUserDoesNotAlreadyExist(username);
         checkInvalidEmail(email);
         checkManagersList(username);
         checkInvalidPasswordException(password);
-        checkNotMatchingPasswords(password, confirmPassword.getText());
+        checkNotMatchingPasswords(password, confirmPassword);
         checkPhoneNumber(phoneNumber);
         checkUsername(username);
         gymManagerRepository.insert(new GymManager(firstName, lastName, phoneNumber, email, gymLocation, companyCode, username, encodePassword(username, password)));
@@ -63,10 +66,21 @@ public class GymManagerService extends RegisterService{
         }
     }
 
-    private static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
+    public static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
         for (GymManager gymManager : gymManagerRepository.find()) {
-            if (username.equals(gymManager.getUsername()))
+            System.out.println(gymManager.getUsername());
+            if (username.equals(gymManager.getUsername())) {
                 throw new UsernameAlreadyExistsException(username);
+            }
         }
+
+    }
+
+    public static List<GymManager> getAllUsers() {
+        return gymManagerRepository.find().toList();
+    }
+
+    public static Nitrite getDatabase() {
+        return database;
     }
 }

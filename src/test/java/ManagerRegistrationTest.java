@@ -5,6 +5,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.apache.commons.io.FileUtils;
 import org.dizitart.no2.objects.ObjectRepository;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,6 +20,7 @@ import proiect.fis.gym.aplication.services.*;
 
 import java.time.LocalDate;
 
+import static org.assertj.core.api.Assertions.shouldHaveThrown;
 import static org.testfx.assertions.api.Assertions.assertThat;
 
 import java.io.File;
@@ -27,11 +30,30 @@ public class ManagerRegistrationTest {
 
     @BeforeEach
     void setUp() throws Exception{
+        System.out.println("before");
+
         FileSystemService.APPLICATION_FOLDER = ".test-GymApplication";
         FileSystemService.initDirectory();
+        if(GymManagerService.getGymManagerRepository() != null){
+            System.out.println(GymManagerService.getGymManagerRepository().isClosed());
+        }
         FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
-        GymManagerService.initTestDatabase("Managers.db");
-        System.out.println(FileSystemService.getPathToTestFile());
+        GymManagerService.initTestDatabase("ManagersTest.db");
+
+        //GymManagerService.getGymManagerTestRepository().insert(new GymManager("x", "sef", "+400757806405", "r@r.com", "tm",
+          //      "gym one", "GymOne", "meremere1@M"));
+
+        GymManagerService.getGymManagerRepository().insert(new GymManager("y", "sef", "+400757806405", "r@r.com", "tm",
+                "smartfit", "SmartFit", "meremere1@M"));
+
+        GymManagerService.getGymManagerRepository().insert(new GymManager("z", "sef", "+400757806405", "r@r.com", "tm",
+                "iguana", "Iguana", "meremere1@M"));
+    }
+
+    @AfterEach
+    void tearDown() throws Exception{
+        System.out.println("after");
+        GymManagerService.getGymManagerRepository().close();
     }
 
     @Start
@@ -43,69 +65,50 @@ public class ManagerRegistrationTest {
     }
 
     @Test
-    void testRegistration(FxRobot robot) {
+    void emptyTest(FxRobot robot) {
+        robot.clickOn("#firstNameField");
+        robot.write("x");
+        robot.clickOn("#lastNameField");
+        robot.write("sef");
 
-        /*robot.clickOn("#registerButton");
-        assertThat(robot.lookup("#registerMessage").queryText()).hasText(
+        robot.clickOn("#registerButton");
+        assertThat(robot.lookup("#registrationMessageLabel").queryLabeled()).hasText(
+                String.format("Please complete all the fields!")
+        );
+    }
+
+    @Test
+    void successfulRegistrationTest(FxRobot robot) {
+        robot.clickOn("#firstNameField");
+        robot.write("x");
+        robot.clickOn("#lastNameField");
+        robot.write("sef");
+
+        robot.clickOn("#registerButton");
+        assertThat(robot.lookup("#registrationMessageLabel").queryLabeled()).hasText(
                 String.format("Please complete all the fields!")
         );
 
-        robot.clickOn("#username");
-        robot.write("user");
-        robot.clickOn("#password");
-        robot.write("money");
-        robot.clickOn("#firstname");
-        robot.write(FIRSTNAME);
-        robot.clickOn("#lastname");
-        robot.write(LASTNAME);
-        robot.clickOn("#phone");
-        robot.write("+2");
-        robot.clickOn("#email");
-        robot.write("geo");
+        robot.clickOn("#phoneField");
+        robot.write("+400757806405");
+        robot.clickOn("#emailField");
+        robot.write("r@r.com");
+        robot.clickOn("#gymLocation");
+        robot.write("tm");
+        robot.clickOn("#companyName");
+        robot.write("gym one");
+        robot.clickOn("#usernameField");
+        robot.write("GymOne");
+        robot.clickOn("#passwordField");
+        robot.write("meremere1@M");
+        robot.clickOn("#confirmPasswordField");
+        robot.write("meremere1@M");
+
+        //test inregistrare cu succes:
         robot.clickOn("#registerButton");
-        assertThat(robot.lookup("#registerMessage").queryText()).hasText(
-                String.format("The username must be at least 5 characters long.")
+        assertThat(robot.lookup("#registrationMessageLabel").queryLabeled()).hasText(
+                String.format("Account created successfully!")
         );
 
-        robot.clickOn("#username");
-        robot.write(USERNAME);
-        robot.clickOn("#registerButton");
-        assertThat(robot.lookup("#registerMessage").queryText()).hasText(
-                "Please enter a valid password!\nThe password must contain:\n-at least one numeric character\n-at least one lowercase character,\n-at least one uppercase character\n-at least one special symbol among @#$%^&+=_\n-the password length must be between 8 and 20 characters"
-        );
-
-        robot.clickOn("#password");
-        robot.write(PASSWORD);
-
-        robot.clickOn("#registerButton");
-        assertThat(robot.lookup("#registerMessage").queryText()).hasText(
-                String.format("Please enter a valid email adress!")
-        );
-
-        robot.clickOn("#email");
-        robot.write("@yahoo.com");
-        robot.clickOn("#registerButton");
-        assertThat(robot.lookup("#registerMessage").queryText()).hasText(
-                String.format("Please type a valid phone number!")
-        );
-
-        robot.clickOn("#phone");
-        robot.write("0727337520");
-
-        robot.clickOn("#registerButton");
-        assertThat(robot.lookup("#registerMessage").queryText()).hasText("Account created successfully!");
-        assertThat(CustomerService.getAllUsers()).size().isEqualTo(1);
-
-        robot.clickOn("#registerButton");
-        assertThat(robot.lookup("#registerMessage").queryText()).hasText(
-                String.format("An account with the username %s already exists!", "user" + USERNAME)
-        );
-
-        robot.clickOn("#username");
-        robot.write("Andrei");
-        robot.clickOn("#registerButton");
-
-        assertThat(robot.lookup("#registerMessage").queryText()).hasText("Account created successfully!");
-        assertThat(CustomerService.getAllUsers()).size().isEqualTo(2);*/
     }
 }
