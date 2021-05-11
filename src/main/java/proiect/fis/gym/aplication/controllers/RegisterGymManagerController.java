@@ -49,7 +49,9 @@ public class RegisterGymManagerController extends RegisterController {
 
     public void handleSubmitRegistrationButton(){
         try {
-            GymManagerService.addUser(gridPane, confirmPasswordField, firstNameField.getText(),
+            CommonFunctionality.checkTextFieldsInAPaneAreNotEmpty(gridPane);
+
+            GymManagerService.addUser(confirmPasswordField.getText(), firstNameField.getText(),
                     lastNameField.getText(), phoneField.getText(), emailField.getText(),
                     gymLocation.getText(), companyName.getText(), usernameField.getText(), passwordField.getText());
             registrationMessageLabel.setText("Account created successfully!");

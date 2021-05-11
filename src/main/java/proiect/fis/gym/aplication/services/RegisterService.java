@@ -56,7 +56,7 @@ public class RegisterService {
         }
     }
 
-    protected static String encodePassword(String salt, String password) {
+    public static String encodePassword(String salt, String password) {
         MessageDigest md = getMessageDigest();
         md.update(salt.getBytes(StandardCharsets.UTF_8));
 
