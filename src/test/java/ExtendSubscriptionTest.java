@@ -24,10 +24,11 @@ public class ExtendSubscriptionTest {
     @BeforeEach
     void setUp() throws Exception{
         FileSystemService.APPLICATION_FOLDER=".test-GymApplication";
+        FileSystemService.initDirectory();
         FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
         BankService.initDatabase();
         AdminService.initDatabase();
-        CustomerService.initDatabase();
+        CustomerService.initTestDatabase("CustomerTest.db");
         GymManagerService.initDatabase();
         LoginService.initDatabase();
         bankRepository=BankService.getBankRepository();

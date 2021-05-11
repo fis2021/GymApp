@@ -32,6 +32,15 @@ public class CustomerService {
         bankRepository=BankService.getBankRepository();
     }
 
+    public static void initTestDatabase(String dbName){
+        Nitrite database = Nitrite.builder()
+                .filePath(FileSystemService.getPathToTestFile(dbName).toFile())
+                .openOrCreate("Geo", "Rares");
+
+        customerRepository = database.getRepository(Customer.class);
+        bankRepository=BankService.getBankRepository();
+    }
+
     public static ObjectRepository<Customer> getCustomerRepository(){
         return customerRepository;
     }
@@ -289,7 +298,7 @@ public class CustomerService {
         }
     }
 
-    private static String encodePassword(String salt, String password) {
+    public static String encodePassword(String salt, String password) {
         MessageDigest md = getMessageDigest();
         md.update(salt.getBytes(StandardCharsets.UTF_8));
 

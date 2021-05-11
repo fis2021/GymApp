@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import proiect.fis.gym.aplication.model.Course;
@@ -42,7 +43,7 @@ public class CustomerGymsDetailsController{
     public Label errorMessageAddCourseLabel;
 
     @FXML
-    public Label message;
+    public Text message;
 
     @FXML
     public Label joinedCourses;
@@ -62,7 +63,7 @@ public class CustomerGymsDetailsController{
 
     public void fillReviewList(){
         GymManager manager = GymManagerProfileController.getManagerFromDatabase("SmartFit");
-        column4.setMinWidth(790);
+        column4.setMinWidth(805);
         column4.setCellValueFactory(new PropertyValueFactory<>("review"));
 
         if(reviewTableView.getColumns() != null) {

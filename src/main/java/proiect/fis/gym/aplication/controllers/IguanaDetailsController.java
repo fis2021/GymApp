@@ -64,7 +64,7 @@ public class IguanaDetailsController {
 
     public void fillReviewList2(){
         GymManager manager = GymManagerProfileController.getManagerFromDatabase("Iguana");
-        column4.setMinWidth(790);
+        column4.setMinWidth(805);
         column4.setCellValueFactory(new PropertyValueFactory<>("review"));
 
         if(reviewTableView.getColumns() != null) {
