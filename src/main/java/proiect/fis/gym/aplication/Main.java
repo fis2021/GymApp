@@ -30,6 +30,8 @@ public class Main extends Application {
         GymManagerService.initDatabase();
         LoginService.initDatabase();
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/login.fxml"));
+       // BankService.addBank("Radu Mihai","01","21","1234567812342323","303","20000");
+        //BankService.addBank("Andrei Marian","01","21","1234567812345678","111","10");
         //Parent root = FXMLLoader.load(getClass().getResource("fxml/CustomerAfterLoginPage.fxml"));
         primaryStage.setTitle("Gym Aplication");
         primaryStage.setScene(new Scene(root, 800, 500));
