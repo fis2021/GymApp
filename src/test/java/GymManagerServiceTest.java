@@ -1,8 +1,5 @@
-import javafx.scene.control.PasswordField;
-import javafx.scene.layout.GridPane;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.*;
-import proiect.fis.gym.aplication.controllers.RegisterGymManagerController;
 import proiect.fis.gym.aplication.exceptions.*;
 import proiect.fis.gym.aplication.model.GymManager;
 import proiect.fis.gym.aplication.services.FileSystemService;
@@ -14,8 +11,6 @@ import static org.testfx.assertions.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GymManagerServiceTest {
-
-    private boolean canDelete;
 
     @BeforeAll
     static void beforeAll() {
