@@ -23,18 +23,17 @@ import static org.testfx.assertions.api.Assertions.assertThat;
 public class CreateSubscriptionTest {
 
     private static ObjectRepository<Bank> bankRepository;
-    private static ObjectRepository<Customer> customerRepository;
     @BeforeEach
     void setUp() throws Exception{
         FileSystemService.APPLICATION_FOLDER=".test-GymApplication";
-        FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
+        FileSystemService.initDirectory();
+        //FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
         BankService.initDatabase();
         AdminService.initDatabase();
-        CustomerService.initDatabase();
+        CustomerService.initTestDatabase("CustomerTest.db");
         GymManagerService.initDatabase();
         LoginService.initDatabase();
         bankRepository=BankService.getBankRepository();
-        customerRepository=CustomerService.getCustomerRepository();
     }
 
     @Start
@@ -146,7 +145,7 @@ public class CreateSubscriptionTest {
     @Test
     void testEnoughMoneyException(FxRobot robot){
         robot.clickOn("#LoginUsername");
-        robot.write("userusername");
+        robot.write("userusername1");
         robot.clickOn("#LoginPassword");
         robot.write("moneyMeremere@1");
         robot.clickOn("#LoginButton");

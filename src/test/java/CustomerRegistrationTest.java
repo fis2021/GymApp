@@ -25,8 +25,9 @@ class CustomerRegistrationTest {
     @BeforeEach
     void setUp() throws Exception{
         FileSystemService.APPLICATION_FOLDER=".test-GymApplication";
+        FileSystemService.initDirectory();
         FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
-        CustomerService.initDatabase();
+        CustomerService.initTestDatabase("CustomerTest.db");
     }
 
     @Start

@@ -16,7 +16,7 @@
     </stylesheets>
 
     <children>
-        <Button onAction="#handleViewCoursesButton1" layoutX="80.0" layoutY="81.0" mnemonicParsing="false">
+        <Button id="smartfit" onAction="#handleViewCoursesButton1" layoutX="80.0" layoutY="81.0" mnemonicParsing="false">
             <font>
                 <Font size="3.0" />
             </font>
@@ -217,7 +217,7 @@
         <URL value="@../CSS/button2.css"/>
     </stylesheets>
     </Button>
-    <Button onAction="#handleViewJoinedCoursesButton" layoutX="535.0" layoutY="360.0" mnemonicParsing="false" text="View joined courses" >
+    <Button onAction="#handleViewJoinedCoursesButton" id="viewCourse" layoutX="535.0" layoutY="360.0" mnemonicParsing="false" text="View joined courses" >
     <stylesheets>
         <URL value="@../CSS/button2.css"/>
     </stylesheets>

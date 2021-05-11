@@ -11,28 +11,28 @@ import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
 import proiect.fis.gym.aplication.model.Bank;
+import proiect.fis.gym.aplication.model.GymManager;
 import proiect.fis.gym.aplication.services.*;
 
 import static org.testfx.assertions.api.Assertions.assertThat;
 
 @ExtendWith(ApplicationExtension.class)
-public class ViewSubscriptionsTest {
+public class AddReviewTest {
 
-    private static ObjectRepository<Bank> bankRepository;
-    public static final String USERNAME="userusername3";
-    public static final String PASSWORD="moneyMeremere@1";
+    public static final String USERNAME="george";
+    public static final String PASSWORD="Meremere@1";
+    private static ObjectRepository<GymManager> managerRepository;
 
     @BeforeEach
     void setUp() throws Exception{
         FileSystemService.APPLICATION_FOLDER=".test-GymApplication";
-        FileSystemService.initDirectory();
-        //FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
+        FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
         BankService.initDatabase();
         AdminService.initDatabase();
-        CustomerService.initTestDatabase("CustomerTest.db");
+        CustomerService.initDatabase();
         GymManagerService.initDatabase();
         LoginService.initDatabase();
-        bankRepository=BankService.getBankRepository();
+        managerRepository=GymManagerService.getGymManagerRepository();
     }
 
     @Start
@@ -44,15 +44,39 @@ public class ViewSubscriptionsTest {
     }
 
     @Test
-    void viewSubs(FxRobot robot){
+    void viewCoursesTest(FxRobot robot){
+        int a=0,b=0;
+        for(GymManager manager: managerRepository.find()){
+            if(manager.getUsername().equals("SmartFit")){
+                a=manager.getReviewList().size();
+            }
+        }
+
         robot.clickOn("#LoginUsername");
         robot.write(USERNAME);
         robot.clickOn("#LoginPassword");
         robot.write(PASSWORD);
         robot.clickOn("#LoginButton");
-        robot.clickOn("#viewSubs");
-        assertThat(robot.lookup("#CustomerMessage").queryText()).hasText(
-                ("SmartFit : 2021-07-11\n")
+        robot.clickOn("#smartfit");
+        robot.clickOn("#addReviewSmart");
+        robot.clickOn("#textSmart");
+        robot.write("Excellent gym!");
+        robot.clickOn("#submitSmart");
+        assertThat(robot.lookup("#messageSmart").queryText()).hasText(
+                ("Review submitted successfully")
         );
+
+        for(GymManager manager: managerRepository.find()){
+            if(manager.getUsername().equals("SmartFit")){
+                b=manager.getReviewList().size();
+            }
+        }
+        a=a+1;
+        if(a!=b && a!=0 ){
+            assertThat(robot.lookup("#messageSmart").queryText()).hasText(
+                    ("Error")
+            );
+        }
+
     }
 }
