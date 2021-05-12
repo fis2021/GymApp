@@ -20,15 +20,23 @@ import java.util.List;
 import java.util.regex.Matcher;
 
 public class AdminService {
-
+    private static Nitrite database;
     private static ObjectRepository<Admin> adminRepository;
     private static final String code = "1234";
 
 
     public static void initDatabase() {
 
-        Nitrite database = Nitrite.builder()
+        database = Nitrite.builder()
                 .filePath(FileSystemService.getPathToFile("Admins.db").toFile())
+                .openOrCreate("Geo", "Rares");
+
+        adminRepository = database.getRepository(Admin.class);
+    }
+
+    public static void initTestDatabase(String dbName){
+        database = Nitrite.builder()
+                .filePath(FileSystemService.getPathToTestFile(dbName).toFile())
                 .openOrCreate("Geo", "Rares");
 
         adminRepository = database.getRepository(Admin.class);
@@ -46,16 +54,15 @@ public class AdminService {
         adminRepository.close();
     }
 
-    public static void addUser(TextField adminCode, GridPane gridPane, PasswordField confirmPassword, String firstName, String lastName, String email, String username, String password)
+    public static void addUser(String adminCode, String confirmPassword, String firstName, String lastName, String email, String username, String password)
             throws UsernameAlreadyExistsException, FieldsAreNotEmptyException, ValidPasswordException, NotMatchingPasswordsException,
             corectEmailException, InvalidAdminCodeException
     {
         checkUserDoesNotAlreadyExist(username);
-        checkEmptyFields(gridPane);
         checkInvalidEmail(email);
         checkInvalidPasswordException(password);
-        checkNotMatchingPasswords(password, confirmPassword.getText());
-        checkInvalidAdminCode(adminCode.getText());
+        checkNotMatchingPasswords(password, confirmPassword);
+        checkInvalidAdminCode(adminCode);
         adminRepository.insert(new Admin(firstName, lastName, email, username, encodePassword(username, password)));
     }
 
@@ -123,15 +130,21 @@ public class AdminService {
         return md;
     }
 
-    public static boolean taxGym(GymManager manager, Label warningLabel) {
+    public static boolean taxGym(GymManager manager) {
         if (!manager.isTaxed()) {
             manager.setTaxed(true);
-            warningLabel.setVisible(false);
             return true;
         }
         else{
-            warningLabel.setVisible(true);
             return false;
         }
+    }
+
+    public static List<Admin> getAllUsers() {
+        return adminRepository.find().toList();
+    }
+
+    public static Nitrite getDatabase() {
+        return database;
     }
 }
