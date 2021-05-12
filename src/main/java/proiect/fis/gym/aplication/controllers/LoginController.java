@@ -67,5 +67,7 @@ public class LoginController {
         return currentUsername;
     }
 
+    public static void setUsername(String username){ currentUsername=username;}
+
 }
 

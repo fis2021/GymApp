@@ -80,7 +80,7 @@ public class CustomerService {
             throw new noActiveSubscriptionException();
         if(date.getYear() < currentDate.getYear())
             throw new noActiveSubscriptionException();
-        if(date.getMonthValue()<currentDate.getMonthValue())
+        if(date.getMonthValue()<currentDate.getMonthValue() && date.getYear() == currentDate.getYear() )
             throw new noActiveSubscriptionException();
         if(date.getMonthValue()==currentDate.getMonthValue() && date.getYear()==currentDate.getYear())
             if(date.getDayOfMonth()<currentDate.getDayOfMonth())
@@ -103,7 +103,7 @@ public class CustomerService {
                     throw new noActiveSubscriptionException();
                 if(date.getYear() < currentDate.getYear())
                     throw new noActiveSubscriptionException();
-                if(date.getMonthValue()<currentDate.getMonthValue())
+                if(date.getMonthValue()<currentDate.getMonthValue() && date.getYear() == currentDate.getYear())
                     throw new noActiveSubscriptionException();
                 if(date.getMonthValue()==currentDate.getMonthValue() && date.getYear()==currentDate.getYear())
                     if(date.getDayOfMonth()<currentDate.getDayOfMonth())
