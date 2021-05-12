@@ -86,10 +86,10 @@
     <ChoiceBox fx:id="duration" value="1 month - 50$" GridPane.columnIndex="1" GridPane.rowIndex="7">
         <items>
             <FXCollections fx:factory="observableArrayList">
-                <String fx:value="1 month - 50$" />
-                <String fx:value="3 months - 130$" />
-                <String fx:value="6 months - 240$" />
-                <String fx:value="1 year - 440$" />
+                <String fx:value="1 month - 50$"/>
+                <String fx:value="3 months - 130$"/>
+                <String fx:value="6 months - 240$"/>
+                <String fx:value="1 year - 440$"/>
             </FXCollections>
         </items>
     </ChoiceBox>

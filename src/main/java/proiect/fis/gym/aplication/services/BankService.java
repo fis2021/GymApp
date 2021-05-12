@@ -3,6 +3,9 @@ package proiect.fis.gym.aplication.services;
 import proiect.fis.gym.aplication.model.Bank;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
+import proiect.fis.gym.aplication.model.Customer;
+
+import java.util.List;
 
 public class BankService {
 
@@ -19,6 +22,10 @@ public class BankService {
 
     public static ObjectRepository<Bank> getBankRepository(){
         return bankRepository;
+    }
+
+    public static List<Bank> getAllUsers() {
+        return bankRepository.find().toList();
     }
 
     public static void addBank(String ownerName, String month, String year, String cardNumber, String CVC,String sum) {
