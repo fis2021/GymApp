@@ -2,7 +2,11 @@ package proiect.fis.gym.aplication.services;
 
 import javafx.scene.control.PasswordField;
 import javafx.scene.layout.GridPane;
+
+import proiect.fis.gym.aplication.model.Admin;
+
 import proiect.fis.gym.aplication.controllers.CommonFunctionality;
+
 import proiect.fis.gym.aplication.model.GymManager;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
@@ -27,12 +31,17 @@ public class GymManagerService extends RegisterService{
 
     }
 
+
+    public static List<GymManager> getAllUsers() {
+        return gymManagerRepository.find().toList();
+
     public static void initTestDatabase(String dbName){
         database = Nitrite.builder()
                 .filePath(FileSystemService.getPathToTestFile(dbName).toFile())
                 .openOrCreate("Geo", "Rares");
 
         gymManagerRepository = database.getRepository(GymManager.class);
+
     }
 
     public static ObjectRepository<GymManager> getGymManagerRepository(){

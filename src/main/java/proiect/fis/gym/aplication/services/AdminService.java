@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import proiect.fis.gym.aplication.controllers.RegisterController;
 import proiect.fis.gym.aplication.model.Admin;
+import proiect.fis.gym.aplication.model.Customer;
 import proiect.fis.gym.aplication.model.GymManager;
 import org.dizitart.no2.*;
 import org.dizitart.no2.objects.ObjectRepository;
@@ -43,6 +44,10 @@ public class AdminService {
 
     public static ObjectRepository<Admin> getAdminRepository(){
         return adminRepository;
+    }
+
+    public static List<Admin> getAllUsers() {
+        return adminRepository.find().toList();
     }
 
     public static void closeDatabase(){
