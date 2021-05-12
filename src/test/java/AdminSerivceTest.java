@@ -84,4 +84,13 @@ public class AdminSerivceTest {
         assertEquals(expectedMessage, actualMessage);
 
     }
+
+    @Test
+    void taxGymTest(){
+        GymManager gymManager = new GymManager();
+        gymManager.setTaxed(false);
+
+        assertThat(AdminService.taxGym(gymManager)).isEqualTo(true);
+        assertThat(AdminService.taxGym(gymManager)).isEqualTo(false);
+    }
 }

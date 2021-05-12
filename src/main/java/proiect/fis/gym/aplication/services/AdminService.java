@@ -125,14 +125,12 @@ public class AdminService {
         return md;
     }
 
-    public static boolean taxGym(GymManager manager, Label warningLabel) {
+    public static boolean taxGym(GymManager manager) {
         if (!manager.isTaxed()) {
             manager.setTaxed(true);
-            warningLabel.setVisible(false);
             return true;
         }
         else{
-            warningLabel.setVisible(true);
             return false;
         }
     }
