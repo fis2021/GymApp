@@ -8,9 +8,11 @@ import proiect.fis.gym.aplication.exceptions.*;
 import proiect.fis.gym.aplication.model.Bank;
 import proiect.fis.gym.aplication.model.Course;
 import proiect.fis.gym.aplication.model.Customer;
+import proiect.fis.gym.aplication.model.GymManager;
 import proiect.fis.gym.aplication.services.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import static org.testfx.assertions.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -58,7 +60,11 @@ public class CustomerServiceTest {
     void testDatabaseIsInitializedAndNoUserIsPersisted() {
         assertThat(CustomerService.getAllUsers()).isNotNull();
         assertThat(CustomerService.getAllUsers()).isEmpty();
+        assertThat(BankService.getAllUsers()).isNotNull();
+        assertThat(AdminService.getAllUsers()).isNotNull();
+        assertThat(GymManagerService.getAllUsers()).isNotNull();
     }
+
 
     @Test
     @DisplayName("User is successfully persisted to Database")

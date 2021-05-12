@@ -2,6 +2,7 @@ package proiect.fis.gym.aplication.services;
 
 import javafx.scene.control.PasswordField;
 import javafx.scene.layout.GridPane;
+import proiect.fis.gym.aplication.model.Admin;
 import proiect.fis.gym.aplication.model.GymManager;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
@@ -9,6 +10,7 @@ import proiect.fis.gym.aplication.exceptions.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class GymManagerService extends RegisterService{
     private static ObjectRepository<GymManager> gymManagerRepository;
@@ -22,6 +24,10 @@ public class GymManagerService extends RegisterService{
 
         gymManagerRepository = database.getRepository(GymManager.class);
 
+    }
+
+    public static List<GymManager> getAllUsers() {
+        return gymManagerRepository.find().toList();
     }
 
     public static ObjectRepository<GymManager> getGymManagerRepository(){
