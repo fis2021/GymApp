@@ -1,3 +1,5 @@
+package Services;
+
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.*;
 import proiect.fis.gym.aplication.exceptions.*;
@@ -84,7 +86,6 @@ public class GymManagerServiceTest {
         String actualMessage = exception.getMessage();
 
         assertEquals(expectedMessage, actualMessage);
-
     }
 
     @Test
@@ -93,16 +94,87 @@ public class GymManagerServiceTest {
         String name2 = "Iguana";
         String name3 = "SmartFit";
 
-       assertDoesNotThrow( () ->
-            GymManagerService.checkManagersList(name1));
-       assertDoesNotThrow( () ->
-                GymManagerService.checkManagersList(name2));
-       assertDoesNotThrow( () ->
-                GymManagerService.checkManagersList(name3));
+       assertDoesNotThrow( () ->{
+           GymManagerService.checkManagersList(name1);
+           GymManagerService.checkManagersList(name2);
+           GymManagerService.checkManagersList(name3);
+               });
 
-        assertThrows(
+       assertThrows(
                 ManagerUsernameIsNotOnShortListException.class,
                 () -> GymManagerService.checkManagersList("Gym One")
         );
+    }
+
+    @Test
+    void ValidPasswordExceptionTest(){
+        Exception exception = assertThrows(ValidPasswordException.class, () -> {
+            GymManagerService.addUser("meremere","ana","are","+400757806405",
+                    "ana@ana.com", "tm", "gym one", "GymOne", "meremere");
+        });
+
+        String expectedMessage = "Please enter a valid password!\nThe password must contain:\n-at least one numeric character\n-at least one lowercase character,\n-at least one uppercase character\n-at least one special symbol among @#$%^&+=_\n-the password length must be between 8 and 20 characters";
+        String actualMessage = exception.getMessage();
+
+        assertEquals(expectedMessage, actualMessage);
+    }
+
+    @Test
+    void notMatchingPasswordsTest(){
+        Exception exception = assertThrows(NotMatchingPasswordsException.class, () -> {
+            GymManagerService.addUser("meremere1@M","ana","are","+400757806405",
+                    "ana@ana.com", "tm", "gym one", "GymOne", "meremere1@MM");
+        });
+
+        String expectedMessage = "The passwords are not matching";
+        String actualMessage = exception.getMessage();
+
+        assertEquals(expectedMessage, actualMessage);
+    }
+
+    @Test
+    void incorrectEmailExceptionTest(){
+        Exception exception = assertThrows(corectEmailException.class, () -> {
+            GymManagerService.addUser("meremere1@M","ana","are","+400757806405",
+                    "ana@ana.", "tm", "gym one", "GymOne", "meremere1@MM");
+        });
+
+        String expectedMessage = "Please enter a valid email adress!";
+        String actualMessage = exception.getMessage();
+
+        assertEquals(expectedMessage, actualMessage);
+    }
+
+    @Test
+    void validUsernameTest(){
+        Exception exception = assertThrows(ValidUsernameException.class, () -> {
+            GymManagerService.addUser("meremere1@M","ana","are","+400757806405",
+                    "ana@ana.com", "tm", "gym one", "Gym1", "meremere1@MM");
+        });
+
+        String expectedMessage = "The username must be at least 5 characters long.";
+        String actualMessage = exception.getMessage();
+
+        assertEquals(expectedMessage, actualMessage);
+    }
+
+    @Test
+    void validPhoneNumberExceptionTest(){
+        Exception exception = assertThrows(validPhoneNumberException.class, () -> {
+            GymManagerService.addUser("meremere1@M","ana","are","+07574",
+                    "ana@ana.com", "tm", "gym one", "GymOne", "meremere1@M");
+        });
+
+        Exception exception1 = assertThrows(validPhoneNumberException.class, () -> {
+            GymManagerService.addUser("meremere1@M","ana","are","07574124132",
+                    "ana@ana.com", "tm", "gym one", "SmartFit", "meremere1@M");
+        });
+
+        String expectedMessage = "Please type a valid phone number!";
+        String actualMessage = exception.getMessage();
+        String actualMessage1 = exception1.getMessage();
+
+        assertEquals(expectedMessage, actualMessage);
+        assertEquals(expectedMessage, actualMessage1);
     }
 }

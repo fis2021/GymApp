@@ -24,31 +24,31 @@ import java.io.FileNotFoundException;
 
 public class GymManagerProfileController {
     @FXML
-    public Label gymNameLabel;
+    private Label gymNameLabel;
     @FXML
-    public Label managerNameLabel;
+    private Label managerNameLabel;
     @FXML
-    public Label locationLabel;
+    private Label locationLabel;
     @FXML
-    public Label emailLabel;
+    private Label emailLabel;
     @FXML
-    public Label phoneLabel;
+    private Label phoneLabel;
     @FXML
-    public GridPane courseGridPane;
+    private GridPane courseGridPane;
     @FXML
-    public Button submitNewCourseButton;
+    private Button submitNewCourseButton;
     @FXML
-    public TextField courseNameTextField;
+    private TextField courseNameTextField;
     @FXML
-    public TextField trainerNameTextField;
+    private TextField trainerNameTextField;
     @FXML
-    public TextField scheduleTextField;
+    private TextField scheduleTextField;
     @FXML
-    public Label errorMessageAddCourseLabel;
+    private Label errorMessageAddCourseLabel;
     @FXML
-    public ImageView profilePicImageView;
+    private ImageView profilePicImageView;
     @FXML
-    public Label taxWarningLabel;
+    private Label taxWarningLabel;
 
     private String currentUserName;
 

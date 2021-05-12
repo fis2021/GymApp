@@ -53,11 +53,11 @@ public class GymManagerService extends RegisterService{
             corectEmailException, validPhoneNumberException, ValidUsernameException, ManagerUsernameIsNotOnShortListException {
         checkUserDoesNotAlreadyExist(username);
         checkInvalidEmail(email);
+        checkUsername(username);
         checkManagersList(username);
         checkInvalidPasswordException(password);
         checkNotMatchingPasswords(password, confirmPassword);
         checkPhoneNumber(phoneNumber);
-        checkUsername(username);
         gymManagerRepository.insert(new GymManager(firstName, lastName, phoneNumber, email, gymLocation, companyCode, username, encodePassword(username, password)));
     }
 
