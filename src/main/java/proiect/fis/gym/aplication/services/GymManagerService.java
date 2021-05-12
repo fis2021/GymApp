@@ -52,7 +52,7 @@ public class GymManagerService extends RegisterService{
         gymManagerRepository.insert(new GymManager(firstName, lastName, phoneNumber, email, gymLocation, companyCode, username, encodePassword(username, password)));
     }
 
-    private static void checkManagersList(String typedUsername) throws ManagerUsernameIsNotOnShortListException{
+    public static void checkManagersList(String typedUsername) throws ManagerUsernameIsNotOnShortListException{
         int exists = 0;
         for(String username: usernameList){
             if(username.equals(typedUsername)){

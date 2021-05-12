@@ -86,4 +86,23 @@ public class GymManagerServiceTest {
         assertEquals(expectedMessage, actualMessage);
 
     }
+
+    @Test
+    void checkManagersListTest(){
+        String name1 = "GymOne";
+        String name2 = "Iguana";
+        String name3 = "SmartFit";
+
+       assertDoesNotThrow( () ->
+            GymManagerService.checkManagersList(name1));
+       assertDoesNotThrow( () ->
+                GymManagerService.checkManagersList(name2));
+       assertDoesNotThrow( () ->
+                GymManagerService.checkManagersList(name3));
+
+        assertThrows(
+                ManagerUsernameIsNotOnShortListException.class,
+                () -> GymManagerService.checkManagersList("Gym One")
+        );
+    }
 }

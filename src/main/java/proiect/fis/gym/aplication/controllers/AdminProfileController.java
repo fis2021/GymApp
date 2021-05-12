@@ -51,7 +51,7 @@ public class AdminProfileController {
                         btn.setOnAction((ActionEvent event) -> {
                             GymManager selectedGym = getTableView().getItems().get(getIndex());
 
-                            AdminService.taxGym(selectedGym, warningLabel);
+                            warningLabel.setVisible(!AdminService.taxGym(selectedGym));
 
                             //facem update in baza de date
                             GymManagerService.getGymManagerRepository().update(selectedGym);
