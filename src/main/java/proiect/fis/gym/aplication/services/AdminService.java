@@ -46,10 +46,6 @@ public class AdminService {
         return adminRepository;
     }
 
-    public static List<Admin> getAllUsers() {
-        return adminRepository.find().toList();
-    }
-
     public static void closeDatabase(){
         adminRepository.close();
     }
