@@ -74,14 +74,14 @@
     <Label fx:id="passwordWarningLabel" text="Passwords are not matching" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="10" />
 
     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="12">
-        <Button onAction="#handleSubmitRegistrationButton" text="Submit registration" />
+        <Button fx:id="registerButton" id="registerButton" onAction="#handleSubmitRegistrationButton" text="Submit registration" />
     </HBox>
 
     <HBox alignment="bottom_left" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="12">
         <Button onAction="#handleBackToLoginButton" text="Back to login" />
     </HBox>
 
-    <Label fx:id="registrationMessageLabel" styleClass="label" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+    <Label fx:id="registrationMessageLabel" id="registrationMessageLabel" styleClass="label" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="13" />
 
     <stylesheets>
         <URL value="@../CSS/payment.css" />
