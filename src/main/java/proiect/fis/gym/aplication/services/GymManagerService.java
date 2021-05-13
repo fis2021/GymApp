@@ -30,10 +30,7 @@ public class GymManagerService extends RegisterService{
         gymManagerRepository = database.getRepository(GymManager.class);
 
     }
-
-
-    public static List<GymManager> getAllUsers() {
-        return gymManagerRepository.find().toList();
+    
 
     public static void initTestDatabase(String dbName){
         database = Nitrite.builder()
