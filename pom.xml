@@ -10,7 +10,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <main.class.name>Main</main.class.name>
+        <main.class.name>proiect.fis.gym.aplication.Main</main.class.name>
         <final.jar.name>GymAplication</final.jar.name>
     </properties>
 
