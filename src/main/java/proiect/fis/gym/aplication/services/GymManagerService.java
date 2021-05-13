@@ -2,7 +2,11 @@ package proiect.fis.gym.aplication.services;
 
 import javafx.scene.control.PasswordField;
 import javafx.scene.layout.GridPane;
+
+import proiect.fis.gym.aplication.model.Admin;
+
 import proiect.fis.gym.aplication.controllers.CommonFunctionality;
+
 import proiect.fis.gym.aplication.model.GymManager;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
@@ -26,6 +30,7 @@ public class GymManagerService extends RegisterService{
         gymManagerRepository = database.getRepository(GymManager.class);
 
     }
+    
 
     public static void initTestDatabase(String dbName){
         database = Nitrite.builder()
@@ -33,6 +38,7 @@ public class GymManagerService extends RegisterService{
                 .openOrCreate("Geo", "Rares");
 
         gymManagerRepository = database.getRepository(GymManager.class);
+
     }
 
     public static ObjectRepository<GymManager> getGymManagerRepository(){
@@ -44,11 +50,11 @@ public class GymManagerService extends RegisterService{
             corectEmailException, validPhoneNumberException, ValidUsernameException, ManagerUsernameIsNotOnShortListException {
         checkUserDoesNotAlreadyExist(username);
         checkInvalidEmail(email);
+        checkUsername(username);
         checkManagersList(username);
         checkInvalidPasswordException(password);
         checkNotMatchingPasswords(password, confirmPassword);
         checkPhoneNumber(phoneNumber);
-        checkUsername(username);
         gymManagerRepository.insert(new GymManager(firstName, lastName, phoneNumber, email, gymLocation, companyCode, username, encodePassword(username, password)));
     }
 
