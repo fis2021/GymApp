@@ -84,17 +84,17 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="courseNameTextField" prefHeight="31.0" prefWidth="204.0" text="curs" GridPane.columnIndex="1">
+            <TextField fx:id="courseNameTextField" prefHeight="31.0" prefWidth="204.0" GridPane.columnIndex="1">
                <font>
                   <Font size="15.0" />
                </font>
             </TextField>
-            <TextField fx:id="trainerNameTextField" text="trainer" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextField fx:id="trainerNameTextField" text="" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="15.0" />
                </font>
             </TextField>
-            <TextField fx:id="scheduleTextField" text="program" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField fx:id="scheduleTextField" text="" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="15.0" />
                </font>
@@ -108,19 +108,23 @@
          </stylesheets>
       </Button>
 
-      <Button fx:id="submitNewCourseButton" layoutX="569.0" layoutY="371.0" mnemonicParsing="false" onAction="#handleSubmitNewCourseButton" prefHeight="26.0" prefWidth="180" styleClass="Button" text="Submit new course" visible="false">
+      <Button fx:id="submitNewCourseButton"
+              id = "submitNewCourseButton"
+              layoutX="569.0" layoutY="371.0" mnemonicParsing="false" onAction="#handleSubmitNewCourseButton" prefHeight="26.0" prefWidth="180" styleClass="Button" text="Submit new course" visible="false">
          <stylesheets>
             <URL value="@../CSS/button.css" />
          </stylesheets>
       </Button>
 
-      <Button layoutX="63.0" layoutY="270.0" mnemonicParsing="false" onAction="#handleViewCoursesButton" prefHeight="26.0" prefWidth="160.0" styleClass="Button" text="View Courses">
+      <Button
+            fx:id="ViewCoursesButton"
+            layoutX="63.0" layoutY="270.0" mnemonicParsing="false" onAction="#handleViewCoursesButton" prefHeight="26.0" prefWidth="160.0" styleClass="Button" text="View Courses">
          <stylesheets>
             <URL value="@../CSS/button.css" />
          </stylesheets>
       </Button>
 
-      <Label fx:id="errorMessageAddCourseLabel" alignment="CENTER_RIGHT" layoutX="555.0" layoutY="429.0" prefHeight="26.0" prefWidth="200" text="trm" visible="false">
+      <Label fx:id="errorMessageAddCourseLabel" alignment="CENTER_RIGHT" layoutX="450" layoutY="429.0" prefHeight="26.0" prefWidth="300" text="" visible="false">
          <font>
             <Font size="15.0" />
          </font>
@@ -143,7 +147,9 @@
          </image>
       </ImageView>
 
-      <Button layoutX="63.0" layoutY="358.0" mnemonicParsing="false" onAction="#handleAddProfilePhotoButton" prefHeight="26.0" prefWidth="160.0" styleClass="Button" text="Add profile photo">
+      <Button
+              fx:id="addProfilePhotoButton"
+              layoutX="63.0" layoutY="358.0" mnemonicParsing="false" onAction="#handleAddProfilePhotoButton" prefHeight="26.0" prefWidth="160.0" styleClass="Button" text="Add profile photo">
          <stylesheets>
             <URL value="@../CSS/button.css" />
          </stylesheets>

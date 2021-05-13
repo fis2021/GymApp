@@ -1,3 +1,5 @@
+package Services;
+
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.*;
 import proiect.fis.gym.aplication.exceptions.*;
@@ -83,6 +85,58 @@ public class AdminSerivceTest {
 
         assertEquals(expectedMessage, actualMessage);
 
+    }
+
+    @Test
+    void InvalidAdminCodeExceptionTest(){
+        Exception exception = assertThrows(InvalidAdminCodeException.class, () -> {
+            AdminService.addUser("124","meremere1@M","ana","are",
+                    "ana@ana.com", "ana1ana", "meremere1@M");
+        });
+
+        String expectedMessage = "Admin code is not valid";
+        String actualMessage = exception.getMessage();
+
+        assertEquals(expectedMessage, actualMessage);
+    }
+
+    @Test
+    void validPasswordExceptionTest(){
+        Exception exception = assertThrows(ValidPasswordException.class, () -> {
+            AdminService.addUser("1234","meremere1@","ana","are",
+                    "ana@ana.com", "ana1ana", "meremere1@");
+        });
+
+        String expectedMessage = "Please enter a valid password!\nThe password must contain:\n-at least one numeric character\n-at least one lowercase character,\n-at least one uppercase character\n-at least one special symbol among @#$%^&+=_\n-the password length must be between 8 and 20 characters";
+        String actualMessage = exception.getMessage();
+
+        assertEquals(expectedMessage, actualMessage);
+    }
+
+    @Test
+    void NotMatchingPasswordsExceptionTest(){
+        Exception exception = assertThrows(NotMatchingPasswordsException.class, () -> {
+            AdminService.addUser("1234","meremere1@M","ana","are",
+                    "ana@ana.com", "ana1ana", "meremere1@MM");
+        });
+
+        String expectedMessage = "The passwords are not matching";
+        String actualMessage = exception.getMessage();
+
+        assertEquals(expectedMessage, actualMessage);
+    }
+
+    @Test
+    void corectEmailExceptionTest(){
+        Exception exception = assertThrows(corectEmailException.class, () -> {
+            AdminService.addUser("1234","meremere1@M","ana","are",
+                    "ana@ana.c", "ana1ana", "meremere1@MM");
+        });
+
+        String expectedMessage = "Please enter a valid email adress!";
+        String actualMessage = exception.getMessage();
+
+        assertEquals(expectedMessage, actualMessage);
     }
 
     @Test
