@@ -68,7 +68,7 @@ public class CustomerServiceTest {
 
     @Test
     @DisplayName("User is successfully persisted to Database")
-    void testUserIsAddedToDatabase() throws UsernameAlreadyExistsException, FieldsAreNotEmptyException, validPhoneNumberException, ValidPasswordException, ValidUsernameException, corectEmailException {
+    void testUserIsAddedToDatabase() throws UsernameAlreadyExistsException, FieldsAreNotEmptyException, validPhoneNumberException, ValidPasswordException, ValidUsernameException, corectEmailException, inappropriateUsernameException {
         CustomerService.addUser(USERNAME, PASSWORD, ROLE, FIRSTNAME, LASTNAME, PHONE, EMAIL);
         assertThat(CustomerService.getAllUsers()).isNotEmpty();
         assertThat(CustomerService.getAllUsers()).size().isEqualTo(1);
@@ -216,7 +216,7 @@ public class CustomerServiceTest {
 
     @Test
     @DisplayName("Testing to see if a user can create a subscription")
-    void testCreateSubscription() throws FieldsAreNotEmptyException, ValidUsernameException, validPhoneNumberException, ValidPasswordException, UsernameAlreadyExistsException, corectEmailException, incorectCardDetailsException, IncorectCVCException, NotEnoughMoneyException, CheckPaymentFieldNotEmptyException, IncorectCardNumberException {
+    void testCreateSubscription() throws FieldsAreNotEmptyException, ValidUsernameException, validPhoneNumberException, ValidPasswordException, UsernameAlreadyExistsException, corectEmailException, incorectCardDetailsException, IncorectCVCException, NotEnoughMoneyException, CheckPaymentFieldNotEmptyException, IncorectCardNumberException, inappropriateUsernameException {
         CustomerService.addUser(USERNAME, PASSWORD, ROLE, FIRSTNAME, LASTNAME, PHONE, EMAIL);
         LoginController.setUsername(USERNAME);
         CustomerService.makePayment("SmartFit","Radu Mihai","01","21","1234567812342323","303","1 month - 50$");
@@ -237,7 +237,7 @@ public class CustomerServiceTest {
 
     @Test
     @DisplayName("Testing to see if a user can extend his subscription")
-    void testExtendSubscription() throws FieldsAreNotEmptyException, ValidUsernameException, validPhoneNumberException, ValidPasswordException, UsernameAlreadyExistsException, corectEmailException, incorectCardDetailsException, IncorectCVCException, NotEnoughMoneyException, CheckPaymentFieldNotEmptyException, IncorectCardNumberException, noActiveSubscriptionException {
+    void testExtendSubscription() throws FieldsAreNotEmptyException, ValidUsernameException, validPhoneNumberException, ValidPasswordException, UsernameAlreadyExistsException, corectEmailException, incorectCardDetailsException, IncorectCVCException, NotEnoughMoneyException, CheckPaymentFieldNotEmptyException, IncorectCardNumberException, noActiveSubscriptionException, inappropriateUsernameException {
         CustomerService.addUser(USERNAME, PASSWORD, ROLE, FIRSTNAME, LASTNAME, PHONE, EMAIL);
         LoginController.setUsername(USERNAME);
         CustomerService.makePayment("SmartFit","Radu Mihai","01","21","1234567812342323","303","1 month - 50$");
@@ -262,7 +262,7 @@ public class CustomerServiceTest {
 
     @Test
     @DisplayName("A customer can not extend his subscription to a gym if he doesn't have an active subscription")
-    void testNoActiveSubs() throws FieldsAreNotEmptyException, ValidUsernameException, validPhoneNumberException, ValidPasswordException, UsernameAlreadyExistsException, corectEmailException, incorectCardDetailsException, IncorectCVCException, NotEnoughMoneyException, CheckPaymentFieldNotEmptyException, IncorectCardNumberException {
+    void testNoActiveSubs() throws FieldsAreNotEmptyException, ValidUsernameException, validPhoneNumberException, ValidPasswordException, UsernameAlreadyExistsException, corectEmailException, incorectCardDetailsException, IncorectCVCException, NotEnoughMoneyException, CheckPaymentFieldNotEmptyException, IncorectCardNumberException, inappropriateUsernameException {
         LoginController.setUsername(USERNAME);
         CustomerService.addUser(USERNAME, PASSWORD, ROLE, FIRSTNAME, LASTNAME, PHONE, EMAIL);
 
@@ -302,7 +302,7 @@ public class CustomerServiceTest {
 
     @Test
     @DisplayName("A customer can not join a course if he is already enrolled to the specific course")
-    void testAlreadyJoinedException() throws FieldsAreNotEmptyException, ValidUsernameException, validPhoneNumberException, ValidPasswordException, UsernameAlreadyExistsException, corectEmailException {
+    void testAlreadyJoinedException() throws FieldsAreNotEmptyException, ValidUsernameException, validPhoneNumberException, ValidPasswordException, UsernameAlreadyExistsException, corectEmailException, inappropriateUsernameException {
         LoginController.setUsername(USERNAME);
         CustomerService.addUser(USERNAME, PASSWORD, ROLE, FIRSTNAME, LASTNAME, PHONE, EMAIL);
         Course c = new Course("Fitness","Andrei","10-12");
@@ -316,7 +316,7 @@ public class CustomerServiceTest {
 
     @Test
     @DisplayName("Testing show active subscription function")
-    void testShowActiveSubscription() throws FieldsAreNotEmptyException, ValidUsernameException, validPhoneNumberException, ValidPasswordException, UsernameAlreadyExistsException, corectEmailException, incorectCardDetailsException, IncorectCVCException, NotEnoughMoneyException, CheckPaymentFieldNotEmptyException, IncorectCardNumberException {
+    void testShowActiveSubscription() throws FieldsAreNotEmptyException, ValidUsernameException, validPhoneNumberException, ValidPasswordException, UsernameAlreadyExistsException, corectEmailException, incorectCardDetailsException, IncorectCVCException, NotEnoughMoneyException, CheckPaymentFieldNotEmptyException, IncorectCardNumberException, inappropriateUsernameException {
         LoginController.setUsername(USERNAME);
         CustomerService.addUser(USERNAME, PASSWORD, ROLE, FIRSTNAME, LASTNAME, PHONE, EMAIL);
         CustomerService.makePayment("SmartFit","Radu Mihai","01","21","1234567812342323","303","1 month - 50$");

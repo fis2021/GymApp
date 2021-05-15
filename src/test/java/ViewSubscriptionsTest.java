@@ -52,7 +52,7 @@ public class ViewSubscriptionsTest {
         robot.clickOn("#LoginButton");
         robot.clickOn("#viewSubs");
         assertThat(robot.lookup("#CustomerMessage").queryText()).hasText(
-                ("SmartFit : 2021-07-11\n")
+                ("SmartFit : 2021-07-13\n")
         );
     }
 }

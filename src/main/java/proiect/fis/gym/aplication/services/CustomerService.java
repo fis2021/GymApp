@@ -45,14 +45,21 @@ public class CustomerService {
         return customerRepository;
     }
 
-    public static void addUser(String username, String password, String role, String firstName, String lastName, String phoneNumber, String email) throws UsernameAlreadyExistsException, corectEmailException, FieldsAreNotEmptyException, ValidPasswordException, ValidUsernameException, validPhoneNumberException {
+    public static void addUser(String username, String password, String role, String firstName, String lastName, String phoneNumber, String email) throws UsernameAlreadyExistsException, corectEmailException, FieldsAreNotEmptyException, ValidPasswordException, ValidUsernameException, validPhoneNumberException, inappropriateUsernameException {
         checkFieldsAreNotEmpty(username,password,role,firstName,lastName,phoneNumber,email);
+        inappropriateUsername(username);
         checkUserDoesNotAlreadyExist(username);
         checkUsername(username);
         checkPassword(password);
         checkEmailIsValid(email);
         checkPhoneNumber(phoneNumber);
         customerRepository.insert(new Customer(username, encodePassword(username, password), role, firstName, lastName, phoneNumber, email));
+    }
+
+    public static void inappropriateUsername(String username) throws inappropriateUsernameException{
+        if (username.equals("SmartFit") || username.equals("GymOne") || username.equals("Iguana") || username.equals("Admin") ){
+            throw new inappropriateUsernameException();
+        }
     }
 
     public static String showSubscriptions(Customer customer){

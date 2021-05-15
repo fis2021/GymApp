@@ -59,7 +59,7 @@ public class LoginServiceTest {
 
     @Test
     @DisplayName("Testing incorect credentials to login exception")
-    void testIncorrectLogin() throws FieldsAreNotEmptyException, ValidUsernameException, validPhoneNumberException, ValidPasswordException, UsernameAlreadyExistsException, corectEmailException, IncorectLoginException {
+    void testIncorrectLogin() throws FieldsAreNotEmptyException, ValidUsernameException, validPhoneNumberException, ValidPasswordException, UsernameAlreadyExistsException, corectEmailException, IncorectLoginException, inappropriateUsernameException {
         CustomerService.addUser(USERNAME, PASSWORD, ROLE, FIRSTNAME, LASTNAME, PHONE, EMAIL);
         assertThrows(IncorectLoginException.class, () -> {
             LoginService.login(USERNAME+"1",PASSWORD);
@@ -75,7 +75,7 @@ public class LoginServiceTest {
 
     @Test
     @DisplayName("Testing login function")
-    void testLogin() throws FieldsAreNotEmptyException, ValidUsernameException, validPhoneNumberException, ValidPasswordException, UsernameAlreadyExistsException, corectEmailException, IncorectLoginException {
+    void testLogin() throws FieldsAreNotEmptyException, ValidUsernameException, validPhoneNumberException, ValidPasswordException, UsernameAlreadyExistsException, corectEmailException, IncorectLoginException, inappropriateUsernameException {
         CustomerService.addUser(USERNAME, PASSWORD, ROLE, FIRSTNAME, LASTNAME, PHONE, EMAIL);
         int a;
         String tmp="";
