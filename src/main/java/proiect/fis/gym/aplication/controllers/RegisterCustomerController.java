@@ -40,6 +40,8 @@ public class RegisterCustomerController extends RegisterController {
             registerMessage.setText(e.getMessage());
         } catch(validPhoneNumberException e){
             registerMessage.setText(e.getMessage());
+        } catch(inappropriateUsernameException e){
+            registerMessage.setText(e.getMessage());
         }
     }
 

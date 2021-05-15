@@ -94,6 +94,8 @@ public class ViewCustomersTest {
         } catch (UsernameAlreadyExistsException | corectEmailException | FieldsAreNotEmptyException
                 | ValidPasswordException | ValidUsernameException | validPhoneNumberException e) {
             e.printStackTrace();
+        } catch (inappropriateUsernameException e) {
+            e.printStackTrace();
         }
 
         try {
