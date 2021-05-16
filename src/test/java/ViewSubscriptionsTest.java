@@ -4,6 +4,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.apache.commons.io.FileUtils;
 import org.dizitart.no2.objects.ObjectRepository;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -33,6 +34,14 @@ public class ViewSubscriptionsTest {
         GymManagerService.initDatabase();
         LoginService.initDatabase();
         bankRepository=BankService.getBankRepository();
+    }
+
+    @AfterEach
+    void tearDown() {
+        AdminService.getDatabase().close();
+        BankService.getDatabase().close();
+        CustomerService.getDatabase().close();
+        GymManagerService.getDatabase().close();
     }
 
     @Start

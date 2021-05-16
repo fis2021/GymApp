@@ -43,7 +43,10 @@ public class LoginServiceTest {
 
     @AfterEach
     void tearDown() {
-        System.out.println("After each");
+        AdminService.getDatabase().close();
+        BankService.getDatabase().close();
+        CustomerService.getDatabase().close();
+        GymManagerService.getDatabase().close();
     }
 
 

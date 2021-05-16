@@ -22,9 +22,10 @@ public class CustomerService {
 
     private static ObjectRepository<Customer> customerRepository;
     private static ObjectRepository<Bank> bankRepository;
+    private static Nitrite database;
 
     public static void initDatabase() {
-        Nitrite database = Nitrite.builder()
+        database = Nitrite.builder()
                 .filePath(getPathToFile("GymAplication.db").toFile())
                 .openOrCreate("Geo", "Rares");
 
@@ -33,12 +34,15 @@ public class CustomerService {
     }
 
     public static void initTestDatabase(String dbName){
-        Nitrite database = Nitrite.builder()
+         database = Nitrite.builder()
                 .filePath(FileSystemService.getPathToTestFile(dbName).toFile())
                 .openOrCreate("Geo", "Rares");
 
         customerRepository = database.getRepository(Customer.class);
         bankRepository=BankService.getBankRepository();
+    }
+    public static Nitrite getDatabase() {
+        return database;
     }
 
     public static ObjectRepository<Customer> getCustomerRepository(){

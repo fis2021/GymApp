@@ -4,6 +4,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import org.apache.commons.io.FileUtils;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -30,6 +31,14 @@ public class LoginTest {
         GymManagerService.initDatabase();
         AdminService.initDatabase();
         LoginService.initDatabase();
+    }
+
+    @AfterEach
+    void tearDown() {
+        AdminService.getDatabase().close();
+        BankService.getDatabase().close();
+        CustomerService.getDatabase().close();
+        GymManagerService.getDatabase().close();
     }
 
     @Start
