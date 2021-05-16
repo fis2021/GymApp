@@ -36,7 +36,6 @@ public class LoginTest {
     @AfterEach
     void tearDown() {
         AdminService.getDatabase().close();
-        BankService.getDatabase().close();
         CustomerService.getDatabase().close();
         GymManagerService.getDatabase().close();
     }
