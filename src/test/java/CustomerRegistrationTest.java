@@ -3,11 +3,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.apache.commons.io.FileUtils;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import proiect.fis.gym.aplication.services.CustomerService;
-import proiect.fis.gym.aplication.services.FileSystemService;
+import proiect.fis.gym.aplication.services.*;
 import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
@@ -36,6 +36,10 @@ class CustomerRegistrationTest {
         primaryStage.setTitle("Gym Application");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
+    }
+    @AfterEach
+    void tearDown() {
+        CustomerService.getDatabase().close();
     }
 
     @Test

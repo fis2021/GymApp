@@ -4,6 +4,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.apache.commons.io.FileUtils;
 import org.dizitart.no2.objects.ObjectRepository;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -41,6 +42,13 @@ public class AddReviewTest {
         primaryStage.setTitle("Gym Application");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
+    }
+    @AfterEach
+    void tearDown() {
+        AdminService.getDatabase().close();
+        BankService.getDatabase().close();
+        CustomerService.getDatabase().close();
+        GymManagerService.getDatabase().close();
     }
 
     @Test

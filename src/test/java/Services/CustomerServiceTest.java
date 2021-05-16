@@ -26,6 +26,7 @@ public class CustomerServiceTest {
     public static final String EMAIL="geo@yahoo.com";
     public static final String ROLE="Customer";
     private static ObjectRepository<Customer> customerRepository;
+
     @BeforeAll
     static void beforeAll() {
         System.out.println("Before Class");
@@ -51,7 +52,10 @@ public class CustomerServiceTest {
 
     @AfterEach
     void tearDown() {
-        System.out.println("After each");
+        AdminService.getDatabase().close();
+        BankService.getDatabase().close();
+        CustomerService.getDatabase().close();
+        GymManagerService.getDatabase().close();
     }
 
 
